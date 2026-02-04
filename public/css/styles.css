@@ -187,12 +187,17 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    /* Use site-wide purple gradient background; Tailwind body gradient in layout is compatible */
-    background: var(--gradient-bg);
-    color: var(--text-primary);
+    /* Use neutral background instead of purple gradient */
+    background: #f8f9fa;
+    color: #1a202c;
     min-height: 100vh;
     line-height: 1.6;
     transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+    background: #1a202c;
+    color: #e2e8f0;
 }
 
 /* Typography */
@@ -216,17 +221,17 @@ body {
 
 /* Header styles */
 .header {
-    background: var(--bg-card);
+    background: #2B8B8E;
     backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 50;
-    border-bottom: 1px solid rgba(235, 128, 253, 0.5);
+    border-bottom: 1px solid rgba(43, 139, 142, 0.5);
     transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 .dark .header {
-    border-bottom: 1px solid rgba(157, 78, 221, 0.3);
+    border-bottom: 1px solid rgba(26, 95, 98, 0.5);
 }
 
 /* Transparent header for home page - overlays hero image */
@@ -246,13 +251,13 @@ body {
 /* When scrolled, add background to transparent header */
 .header--transparent.header--scrolled {
     position: fixed;
-    background: var(--bg-card);
+    background: #2B8B8E;
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(235, 128, 253, 0.5);
+    border-bottom: 1px solid rgba(43, 139, 142, 0.5);
 }
 
 .dark .header--transparent.header--scrolled {
-    border-bottom: 1px solid rgba(157, 78, 221, 0.3);
+    border-bottom: 1px solid rgba(26, 95, 98, 0.5);
 }
 
 .nav {
@@ -266,8 +271,8 @@ body {
 
 /* Dark mode toggle button */
 .dark-mode-toggle {
-    background: var(--bg-card);
-    border: 2px solid var(--color-bright-purple);
+    background: rgba(43, 139, 142, 0.3);
+    border: 2px solid #2B8B8E;
     color: var(--text-primary);
     padding: 0.5rem 0.75rem;
     border-radius: var(--radius-lg);
@@ -281,7 +286,7 @@ body {
 }
 
 .dark-mode-toggle:hover {
-    background: var(--color-bright-purple);
+    background: #2B8B8E;
     transform: scale(1.05);
 }
 
@@ -376,13 +381,13 @@ body {
 }
 
 .nav-social:hover {
-    color: var(--color-bright-purple);
+    color: #2B8B8E;
     transform: scale(1.1);
 }
 
 /* CTA button in nav */
 .nav-cta {
-    background: var(--color-bright-purple);
+    background: #2B8B8E;
     color: white;
     font-weight: 600;
     padding: 0.5rem 1.25rem;
@@ -393,7 +398,7 @@ body {
 }
 
 .nav-cta:hover {
-    background: #d060e0;
+    background: #1A5F62;
     transform: scale(1.05);
 }
 

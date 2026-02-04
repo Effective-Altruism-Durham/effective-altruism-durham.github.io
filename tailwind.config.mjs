@@ -11,6 +11,11 @@ export default {
         'light-purple': '#E2ACFE',
         'lavender': '#B8BBFE',
         'pure-white': '#FFFFFF',
+        // EA color palette
+        'ea-teal': '#2B8B8E',
+        'ea-dark-teal': '#1A5F62',
+        'ea-purple': '#7B3F8C',
+        'ea-beige': '#FAF9F6',
         // Legacy colors for compatibility
         'ocean-blue': '#0891b2',
         'deep-blue': '#0e4a5c',
