@@ -1,348 +1,155 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import heroImage from '../assets/hero-picture.jpeg';
-import { research } from '../data/research';
-import { supporters } from '../data/supporters';
-import ResearchCarousel from '../components/ResearchCarousel.astro';
 ---
 
 <Layout 
-  title="Durham AI Safety Initiative"
-  description="Durham AI Safety Initiative (DAISI) at Durham University: events, research, seminars and community focused on reducing catastrophic risks from advanced AI."
-    heroImage={heroImage.src}
+  title="Effective Altruism Durham"
+  description="We represent the Effective Altruism movement in Durham University. By reasoning carefully and considering evidence, we can maximise our positive impact on the world."
 >
-  <script
-    type="application/ld+json"
-    slot="head"
-    set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Durham AI Safety Initiative",
-      "alternateName": "DAISI",
-      "url": "https://durhamaisafety.com",
-      "description": "Student-led initiative at Durham University focused on reducing catastrophic risks from advanced AI through education, research, and community building.",
-      "foundingLocation": {
-        "@type": "Place",
-        "name": "Durham University",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Durham",
-          "addressCountry": "UK"
-        }
-      },
-      "areaServed": "Durham University",
-      "memberOf": {
-        "@type": "EducationalOrganization",
-        "name": "Durham University"
-      }
-    })}
-  />
     <!-- Hero Section -->
-    <section id="home" class="hero-section min-h-100dvh min-h-100svh min-h-100vh flex items-center justify-center relative overflow-hidden">
-        <!-- Hero Image with Parallax -->
-        <div class="hero-parallax-container">
-            <Image
-                src={heroImage}
-                alt="Durham Cathedral"
-                class="hero-parallax-image"
-                widths={[640, 768, 1024, 1280, 1536, 1920]}
-                sizes="100vw"
-                loading="eager"
-                decoding="async"
-            />
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/40"></div>
-    <div class="site-container mx-auto px-6 text-center relative z-10">
-            <div class="max-w-6xl mx-auto space-y-6 md:space-y-8">
-                <h1 class="text-3xl md:text-4xl lg:text-6xl font-bold leading-relaxed" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.6);">
-                    <span class="text-white">Durham students and academics for </span><span class="text-bright-purple italic font-medium">reducing catastrophic risks from advanced AI</span>
-                </h1>
-                
-                <p class="text-xl md:text-2xl lg:text-3xl max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.5);">
-                    <span class="font-semibold text-light-purple">Whatever your expertise,</span> 
-                    <span class="text-white">you can contribute to the conversation and make a difference.</span>
+    <section id="home" class="py-20 md:py-32">
+        <div class="site-container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
+                Effective Altruism Durham
+            </h1>
+            
+            <h2 class="text-2xl md:text-3xl mb-12 text-slate-200">
+                We aspire to do the most good we can
+            </h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6 mb-12">
+                <p class="text-lg md:text-xl leading-relaxed">
+                    We represent the <a href="https://www.effectivealtruism.org/" target="_blank" rel="noopener noreferrer" class="text-bright-purple hover:text-light-purple underline">Effective Altruism</a> movement in Durham University. By reasoning carefully and considering evidence, we can maximise our positive impact on the world.
                 </p>
                 
-                <div class="pt-2 md:pt-4">
-                    <a href="/get-involved/"
-                       class="inline-block px-12 py-4 bg-durham-purple hover:bg-[#7a2d80] text-white font-bold text-lg rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 border-2 border-white/20">
-                        Get Involved
+                <p class="text-lg md:text-xl leading-relaxed">
+                    We empower students who want to make a change through our programmes, events, and community.
+                </p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+                <a href="/get-involved/" class="inline-block px-8 py-3 bg-durham-purple hover:bg-[#7a2d80] text-white font-bold text-lg rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+                    Get involved
+                </a>
+                <a href="https://outlook.office365.com/owa/effectivealtruismdurham@durhamuniversity.onmicrosoft.com/groupsubscription.ashx?action=join&source=MSExchange/LokiServer&guid=e5909571-b397-42c5-99bc-b362c640ca29" target="_blank" rel="noopener noreferrer" class="inline-block px-8 py-3 bg-transparent hover:bg-white/10 text-white font-bold text-lg rounded-lg transition-all duration-300 border-2 border-white">
+                    Join the mailing list
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is EA Section -->
+    <section class="py-16 section-neutral">
+        <div class="site-container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What is</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">Effective Altruism?</h2>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <p class="text-lg md:text-xl leading-relaxed text-center mb-8">
+                    <a href="https://www.effectivealtruism.org/" target="_blank" rel="noopener noreferrer" class="text-bright-purple hover:text-light-purple underline">Effective Altruism</a> is a framework for applying evidence-based reasoning to <a href="https://80000hours.org/problem-profiles/" target="_blank" rel="noopener noreferrer" class="text-bright-purple hover:text-light-purple underline">the world's most pressing problems</a>. It's also a practical community sharing diverse views on which problems to prioritise and how to tackle them.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arete Fellowship Section -->
+    <section class="py-16">
+        <div class="site-container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white/5 backdrop-blur rounded-2xl p-8 md:p-12 border border-bright-purple/30">
+                <h3 class="text-3xl md:text-4xl font-bold mb-6 text-center">Arete Fellowship</h3>
+                <p class="text-lg md:text-xl leading-relaxed text-center mb-8">
+                    An 8-week seminar programme aimed to introduce you to ideas from various disciplines for making a positive impact on the world.
+                </p>
+                <div class="text-center">
+                    <a href="/programs/#arete-fellowship" class="inline-block px-8 py-3 bg-durham-purple hover:bg-[#7a2d80] text-white font-bold text-lg rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+                        Learn more
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Events Section -->
-    <section id="events" class="py-16 section-neutral">
-    <div class="site-container mx-auto px-6 relative z-10">
+    <!-- What We Do Section -->
+    <section id="what-we-do" class="py-16 section-neutral">
+        <div class="site-container mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Our Events</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-bright-purple to-light-purple mx-auto rounded-full"></div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">What we do</h2>
             </div>
             
-            <div id="calendar" class="max-w-5xl mx-auto mb-16">
-                <p class="text-center text-lg mb-8 font-medium">
-                    We'll update this calendar with upcoming events and deadlines. Sync this to yours and watch out for updates!
-                </p>
-                <div class="bg-white/20 backdrop-blur rounded-2xl p-4 border border-bright-purple/30 calendar-container">
-                    <!-- Loading state -->
-                    <div id="calendar-loading" class="calendar-loading">
-                        <div class="text-center">
-                            <div class="spinner mx-auto mb-4"></div>
-                            <p class="text-bright-purple font-medium">Loading calendar...</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Calendar iframe -->
-                    <div class="overflow-hidden rounded-xl">                            
-                        <iframe 
-                            id="calendar-iframe" 
-                            title="Durham AISI Events Calendar"
-                            src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FLondon&showPrint=0&title=Durham%20AISI%20Events&showCalendars=0&mode=AGENDA&hl=en_GB&src=ODk2ZWRjZjRmOWNkNDczMDUyMzJiMmM3OGNjMDZkNGQxMzY1YTE4ZGFiYmFjZTc0OWJkZTIzN2NmZDkyYmVhNkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%238e24aa"
-                            class="w-full h-96 md:h-[500px] lg:h-[600px] border-0 calendar-iframe" 
-                            style="border-width:0" frameborder="0" scrolling="no" loading="lazy"
-                        ></iframe>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Program Cards -->
-            <div class="max-w-6xl mx-auto mb-16">
-                <!-- First row: 2 main cards -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    <div class="program-card rounded-2xl p-8 text-center">
-                        <div class="mb-6">
-                            <i class="fas fa-chalkboard-teacher text-5xl text-durham-purple mb-4"></i>
-                            <h4 class="text-2xl font-bold">Intro Seminars</h4>
-                            <div class="w-16 h-1 bg-durham-purple mx-auto rounded-full mt-3"></div>
-                        </div>
-                        <p class="mb-6 leading-relaxed text-slate-600">
-                            Regular sessions exploring core AI safety concepts in an accessible, interactive format.
-                        </p>
-                        <div class="flex items-center justify-center gap-2 mb-6">
-                            <i class="fa-solid fa-users text-durham-purple" aria-hidden="true"></i>
-                            <span class="text-sm text-slate-600">No technical background needed</span>
-                        </div>
-                        <a href="/programs/#intro-seminars" class="inline-block px-6 py-2 bg-durham-purple text-white font-medium text-sm rounded-lg transition-colors duration-300 hover:bg-[#7a2d80]">
-                            Learn More
-                        </a>
-                    </div>
-                
-                    <div class="program-card rounded-2xl p-8 text-center">
-                        <div class="mb-6">
-                            <i class="fas fa-book-open text-5xl text-durham-purple mb-4"></i>
-                            <h4 class="text-2xl font-bold">In-Depth Reading Groups</h4>
-                            <div class="w-16 h-1 bg-durham-purple mx-auto rounded-full mt-3"></div>
-                        </div>
-                        <p class="mb-6 leading-relaxed text-slate-600">
-                            Deeper discussion on AI safety papers with PhD students specialising in the areas. 
-                            Open to anyone - aimed at those wanting to get into the nitty-gritty technical details of alignment or policy.
-                        </p>
-                        <div class="flex items-center justify-center gap-2 mb-6">
-                            <i class="fa-solid fa-laptop-code text-durham-purple" aria-hidden="true"></i>
-                            <span class="text-sm text-slate-600">Some prior knowledge useful</span>
-                        </div>
-                        <a href="/programs/#reading-groups" class="inline-block px-6 py-2 bg-durham-purple text-white font-medium text-sm rounded-lg transition-colors duration-300 hover:bg-[#7a2d80]">
-                            Learn More
-                        </a>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+                <div class="text-center p-8 bg-white/5 backdrop-blur rounded-2xl border border-bright-purple/20 hover:border-bright-purple/50 transition-all">
+                    <h4 class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-wide">Idea<br/>Fellowship</h4>
+                    <p class="text-base leading-relaxed">
+                        An 8-week continuation from the Arete Fellowship. Dive deeper into problems that you find interesting!
+                    </p>
                 </div>
                 
-                <!-- Second row: 3 cards -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="program-card rounded-2xl p-8 text-center">
-                        <div class="mb-6">
-                            <i class="fas fa-terminal text-5xl text-durham-purple mb-4"></i>
-                            <h4 class="text-2xl font-bold">Research Project Support</h4>
-                            <div class="w-16 h-1 bg-durham-purple mx-auto rounded-full mt-3"></div>
-                        </div>
-                        <p class="mb-6 leading-relaxed text-slate-600">
-                            We support you to pursue AI safety research. 
-                            We can support applications for fellowships and funding,
-                            and advise students on dissertation and independent study projects.
-                        </p>
-                        <div class="flex items-center justify-center gap-2 mb-6">
-                            <i class="fa-solid fa-graduation-cap text-durham-purple" aria-hidden="true"></i>
-                            <span class="text-sm text-slate-600">Faculty &amp; Students</span>
-                        </div>
-                        <a href="/programs/#research-projects" class="inline-block px-6 py-2 bg-durham-purple text-white font-medium text-sm rounded-lg transition-colors duration-300 hover:bg-[#7a2d80]">
-                            Learn More
-                        </a>
-                    </div>
-                    
-                    <div class="program-card rounded-2xl p-8 text-center">
-                        <div class="mb-6">
-                            <i class="fas fa-microphone text-5xl text-durham-purple mb-4"></i>
-                            <h4 class="text-2xl font-bold">Speaker Events</h4>
-                            <div class="w-16 h-1 bg-durham-purple mx-auto rounded-full mt-3"></div>
-                        </div>
-                        <p class="mb-6 leading-relaxed text-slate-600">
-                           Insightful talks by leading researchers and industry professionals who share their insights on AI safety and showcase their latest research.
-                        </p>
-                        <a href="/programs/#speaker-series" class="inline-block px-6 py-2 bg-durham-purple text-white font-medium text-sm rounded-lg transition-colors duration-300 hover:bg-[#7a2d80]">
-                            Learn More
-                        </a>
-                    </div>
-                    
-                    <div class="program-card rounded-2xl p-8 text-center">
-                        <div class="mb-6">
-                            <i class="fas fa-users text-5xl text-durham-purple mb-4"></i>
-                            <h4 class="text-2xl font-bold">Social Events</h4>
-                            <div class="w-16 h-1 bg-durham-purple mx-auto rounded-full mt-3"></div>
-                        </div>
-                        <p class="mb-6 leading-relaxed text-slate-600">
-                            Relaxed socials to connect and build community.
-                        </p>
-                        <div class="flex items-center justify-center gap-2 mb-6">
-                            <i class="fa-solid fa-heart text-durham-purple" aria-hidden="true"></i>
-                            <span class="text-sm text-slate-600">Everyone welcome</span>
-                        </div>
-                        <a href="/programs/#socials" class="inline-block px-6 py-2 bg-durham-purple text-white font-medium text-sm rounded-lg transition-colors duration-300 hover:bg-[#7a2d80]">
-                            Learn More
-                        </a>
-                    </div>
+                <div class="text-center p-8 bg-white/5 backdrop-blur rounded-2xl border border-bright-purple/20 hover:border-bright-purple/50 transition-all">
+                    <h4 class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-wide">Speaker<br/>Events</h4>
+                    <p class="text-base leading-relaxed">
+                        We regularly invite external guest speakers in to talk about a wide range of topics!
+                    </p>
+                </div>
+                
+                <div class="text-center p-8 bg-white/5 backdrop-blur rounded-2xl border border-bright-purple/20 hover:border-bright-purple/50 transition-all">
+                    <h4 class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-wide">Career<br/>Planning</h4>
+                    <p class="text-base leading-relaxed">
+                        Explore career path, network with professionals, and feel prepared to pursue an impactful career!
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Research Section -->
-    <section id="research" class="py-16 section-neutral">
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
         <div class="site-container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6">Research</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-bright-purple to-light-purple mx-auto rounded-full mb-8"></div>
-            </div>
-
-            <ResearchCarousel 
-                papers={research} 
-                title="Latest Publications & Projects" 
-                id="home-research-carousel" 
-            />
-            <div class="text-center mb-16">
-                <a href="/research" class="btn btn-secondary mb-12">View All Research</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Proudly Supported By Section -->
-    <section id="supported-by" class="py-16 section-neutral">
-        <div class="site-container mx-auto px-6">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">Proudly Supported By</h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-bright-purple to-light-purple mx-auto rounded-full"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                {supporters.map((supporter) => (
-                    <a href={supporter.link} target="_blank" rel="noopener noreferrer" class="flex flex-col items-center group">
-                        <div class="involvement-card rounded-xl p-4 mb-3 transition-transform group-hover:scale-105 h-24 w-24 flex items-center justify-center">
-                            <img src={`/images/supporters/${supporter.logo}`} alt={`${supporter.name} logo`} class="max-h-16 max-w-16 object-contain" />
+            <div class="max-w-2xl mx-auto">
+                <h3 class="text-3xl md:text-4xl font-bold mb-8 text-center">Contact us</h3>
+                
+                <form class="space-y-6" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium mb-2">First name *</label>
+                            <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-2 rounded-lg bg-white/10 border border-bright-purple/30 focus:border-bright-purple focus:outline-none focus:ring-2 focus:ring-bright-purple/50 text-white">
                         </div>
-                        <div class="text-center min-h-[3rem] flex flex-col justify-start">
-                            <span class="text-base md:text-lg font-semibold">{supporter.name}</span>
-                            {supporter.subtitle && <span class="text-sm text-slate-500">{supporter.subtitle}</span>}
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium mb-2">Last name *</label>
+                            <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-2 rounded-lg bg-white/10 border border-bright-purple/30 focus:border-bright-purple focus:outline-none focus:ring-2 focus:ring-bright-purple/50 text-white">
                         </div>
-                    </a>
-                ))}
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-2">Email *</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-2 rounded-lg bg-white/10 border border-bright-purple/30 focus:border-bright-purple focus:outline-none focus:ring-2 focus:ring-bright-purple/50 text-white">
+                    </div>
+                    
+                    <div>
+                        <label for="subject" class="block text-sm font-medium mb-2">Subject *</label>
+                        <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 rounded-lg bg-white/10 border border-bright-purple/30 focus:border-bright-purple focus:outline-none focus:ring-2 focus:ring-bright-purple/50 text-white">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium mb-2">Message *</label>
+                        <textarea id="message" name="message" required rows="6" class="w-full px-4 py-2 rounded-lg bg-white/10 border border-bright-purple/30 focus:border-bright-purple focus:outline-none focus:ring-2 focus:ring-bright-purple/50 text-white resize-vertical"></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="inline-block px-10 py-3 bg-durham-purple hover:bg-[#7a2d80] text-white font-bold text-lg rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="mt-12 text-center text-sm text-slate-400">
+                    <p>
+                        Effective Altruism Durham is a Durham SU student group whose details are: Durham Students' Union (also known as Durham SU or DSU) is a charity registered in England and Wales (1145400) and a company limited by guarantee (07689815), and its principal address is Dunelm House, New Elvet, DURHAM, County Durham, DH1 3AN.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 </Layout>
-
-<script>
-    // Parallax effect for hero image
-    const parallaxContainer = document.querySelector('.hero-parallax-container');
-    const heroSection = document.querySelector('.hero-section');
-    
-    if (parallaxContainer && heroSection) {
-        // Only enable on desktop with fine pointer (mouse)
-        const isDesktop = window.matchMedia('(min-width: 768px) and (hover: hover) and (pointer: fine)').matches;
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        
-        if (isDesktop && !prefersReducedMotion) {
-            let ticking = false;
-            
-            const updateParallax = () => {
-                const scrolled = window.scrollY;
-                const heroHeight = heroSection.offsetHeight;
-                
-                // Only apply parallax while hero is visible
-                if (scrolled < heroHeight * 1.5) {
-                    // Move at 40% of scroll speed for subtle effect
-                    const yPos = scrolled * 0.4;
-                    parallaxContainer.style.transform = `translate3d(0, ${yPos}px, 0)`;
-                }
-                ticking = false;
-            };
-            
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    requestAnimationFrame(updateParallax);
-                    ticking = true;
-                }
-            }, { passive: true });
-        }
-    }
-
-
-    
-    // Calendar loading state
-    const calendarIframe = document.getElementById('calendar-iframe');
-    const calendarLoading = document.getElementById('calendar-loading');
-    
-    // Hide loading state when calendar is loaded
-    if (calendarIframe && calendarLoading) {
-        calendarIframe.addEventListener('load', () => {
-            calendarLoading.style.display = 'none';
-            calendarIframe.classList.add('loaded');
-        });
-    }
-    
-    // Fallback to hide loading state after 5 seconds if load event doesn't fire
-    setTimeout(() => {
-        if (calendarIframe && calendarLoading && !calendarIframe.classList.contains('loaded')) {
-            calendarLoading.style.display = 'none';
-            calendarIframe.classList.add('loaded');
-        }
-    }, 5000);
-</script>
-
-<style>
-/* Calendar loading styles */
-.calendar-loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 400px;
-}
-
-.calendar-iframe {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.calendar-iframe.loaded {
-    opacity: 1;
-}
-
-/* Spinner animation */
-.spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(235, 128, 253, 0.2);
-    border-top-color: var(--color-bright-purple);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-.calendar-container {
-    position: relative;
-}
-</style>
 
