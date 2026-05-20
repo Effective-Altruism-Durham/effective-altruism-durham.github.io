@@ -1,4 +1,6 @@
 ---
+import { useStoryblokApi } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import HeroSection from "../components/HeroSection.astro";
@@ -8,20 +10,48 @@ import WhatWeDo from "../components/WhatWeDo.astro";
 import SocialLinks from "../components/SocialLinks.astro";
 import ContactSection from "../components/ContactSection.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import { homepageDefaults } from "../data/homepageDefaults";
+import { storyblokHomeComponents } from "../data/storyblokHomeComponents";
+
+let story;
+
+if (import.meta.env.STORYBLOK_DELIVERY_API_TOKEN) {
+  try {
+    const storyblokApi = useStoryblokApi();
+    const { data } = await storyblokApi.get("cdn/stories/home", {
+      version: import.meta.env.DEV ? "draft" : "published",
+    });
+
+    story = data.story;
+  } catch (error) {
+    console.warn("Storyblok homepage unavailable; rendering static fallback.", error);
+  }
+}
+
+const storyContent = story?.content;
+const hasHomepageBlocks =
+  storyContent?.component === "page" &&
+  storyContent.body?.some((blok) => storyblokHomeComponents.has(blok.component));
+const title = storyContent?.meta_title || homepageDefaults.title;
+const description = storyContent?.meta_description || homepageDefaults.description;
 ---
 
 <Layout
-  title="Effective Altruism Durham"
-  description="We represent the Effective Altruism movement in Durham University. We empower students who want to make a change through our programmes, events, and community."
+  title={title}
+  description={description}
 >
   <SiteHeader />
-  <main>
-    <HeroSection />
-    <WhatIsEA />
-    <AreteFellowship />
-    <WhatWeDo />
-    <SocialLinks />
-    <ContactSection />
-  </main>
+  {hasHomepageBlocks ? (
+    <StoryblokComponent blok={storyContent} allowedComponents={storyblokHomeComponents} />
+  ) : (
+    <main>
+      <HeroSection />
+      <WhatIsEA />
+      <AreteFellowship />
+      <WhatWeDo />
+      <SocialLinks />
+      <ContactSection />
+    </main>
+  )}
   <SiteFooter />
 </Layout>

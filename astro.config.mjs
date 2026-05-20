@@ -13,7 +13,6 @@ const env = loadEnv(import.meta.env.MODE, process.cwd(), '');
 const {
 	NETLIFY,
 	STORYBLOK_DELIVERY_API_TOKEN,
-	STORYBLOK_API_BASE_URL,
 	STORYBLOK_REGION,
 } = env;
 
@@ -34,11 +33,22 @@ export default defineConfig({
   integrations: [
     sitemap(),
     storyblok({
-      accessToken: env.STORYBLOK_DELIVERY_API_TOKEN,
+      accessToken: STORYBLOK_DELIVERY_API_TOKEN,
       apiOptions: {
-        region: 'eu',
+        region: STORYBLOK_REGION || 'eu',
       },
       components: {
+        page: 'storyblok/Page',
+        home_hero: 'storyblok/HomeHero',
+        home_what_is_ea: 'storyblok/HomeWhatIsEa',
+        home_arete_fellowship: 'storyblok/HomeAreteFellowship',
+        home_what_we_do: 'storyblok/HomeWhatWeDo',
+        home_programme_card: 'storyblok/HomeProgrammeCard',
+        home_social_links: 'storyblok/HomeSocialLinks',
+        home_contact: 'storyblok/HomeContact',
+        teaser: 'storyblok/Teaser',
+        grid: 'storyblok/Grid',
+        feature: 'storyblok/Feature',
 			},
     }),
   ],

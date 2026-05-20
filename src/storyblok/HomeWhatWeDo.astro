@@ -1,0 +1,17 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import WhatWeDo from "../components/WhatWeDo.astro";
+import { homepageDefaults } from "../data/homepageDefaults";
+
+const { blok } = Astro.props;
+const cards = blok.cards?.length
+  ? blok.cards.map((card) => ({
+      label: card.label || "",
+      text: card.text || "",
+    }))
+  : homepageDefaults.whatWeDo.cards;
+---
+
+<div {...storyblokEditable(blok)}>
+  <WhatWeDo heading={blok.heading || homepageDefaults.whatWeDo.heading} cards={cards} />
+</div>

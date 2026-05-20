@@ -6,6 +6,10 @@
  *   - "Contact us" heading, Roboto Slab 20px, centered, cream (color_46 = #F4EFE9)
  *   - Form: first name, last name, email, subject, message, submit button
  */
+
+import { homepageDefaults } from "../data/homepageDefaults";
+
+const { heading = homepageDefaults.contact.heading } = Astro.props;
 ---
 
 <section
@@ -18,7 +22,7 @@
       class="mb-[10px] text-center font-ea-heading text-[20px] font-normal"
       style="color: #f4efe9;"
     >
-      Contact us
+      {heading}
     </h5>
 
     <form class="mx-auto grid max-w-[797px] md:grid-cols-[304px_471px]" style="column-gap: 21px;" id="contact-form">

@@ -7,6 +7,15 @@
  *   - Description: Raleway 16px, 1.8em line-height, centered, black
  *   - Button: purple "Learn more" with chevron
  */
+
+import { homepageDefaults } from "../data/homepageDefaults";
+
+const {
+  heading = homepageDefaults.arete.heading,
+  body = homepageDefaults.arete.body,
+  ctaLabel = homepageDefaults.arete.ctaLabel,
+  ctaUrl = homepageDefaults.arete.ctaUrl,
+} = Astro.props;
 ---
 
 <section
@@ -19,22 +28,21 @@
       class="mb-[30px] font-ea-heading text-[56px] font-normal leading-[1.4]"
       style="color: #054d5a;"
     >
-      Arete Fellowship
+      {heading}
     </h2>
     <p
       class="mx-auto mb-[40px] max-w-[629px] font-ea-body text-[16px] leading-[1.8] text-black"
     >
-      An 8-week seminar programme aimed to introduce you to ideas from various
-      disciplines for making a positive impact on the world.
+      {body}
     </p>
     <a
-      href="/arete-fellowship"
+      href={ctaUrl}
       class="group inline-flex h-[54px] w-[268px] items-center justify-center gap-3 rounded-[5px] px-7 text-[16px] font-bold text-white transition-colors"
       style="background-color: #68246d;"
       onmouseover="this.style.backgroundColor='#541d58'"
       onmouseout="this.style.backgroundColor='#68246d'"
     >
-      <span>Learn more</span>
+      <span>{ctaLabel}</span>
       <svg
         viewBox="0 0 60 60"
         class="h-4 w-4 fill-current"

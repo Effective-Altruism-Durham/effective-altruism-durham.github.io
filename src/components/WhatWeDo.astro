@@ -8,20 +8,12 @@
  *   - Each with uppercase label, horizontal line, description
  */
 
-const cards = [
-  {
-    label: "IDEA\nFELLOWSHIP",
-    text: "An 8-week continuation from the Arete Fellowship. Dive deeper into problems that you find interesting!",
-  },
-  {
-    label: "SPEAKER\nEVENTS",
-    text: "We regularly invite external guest speakers in to talk about a wide range of topics!",
-  },
-  {
-    label: "CAREER\nPLANNING",
-    text: "Explore career path, network with professionals, and feel prepared to pursue an impactful career!",
-  },
-];
+import { homepageDefaults } from "../data/homepageDefaults";
+
+const {
+  heading = homepageDefaults.whatWeDo.heading,
+  cards = homepageDefaults.whatWeDo.cards,
+} = Astro.props;
 ---
 
 <section
@@ -34,7 +26,7 @@ const cards = [
       class="mb-[39px] text-center font-ea-heading text-[36px] font-normal"
       style="color: #ffffff;"
     >
-      What we do
+      {heading}
     </h1>
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-[254px_254px_254px]" style="column-gap: 40px; padding-left: 47px;">

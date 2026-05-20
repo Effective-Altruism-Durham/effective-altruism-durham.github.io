@@ -9,6 +9,14 @@
  *   - Buttons: 255px wide, purple #68246D
  *   - Bottom divider: organic wave in dark teal #054D5A, 50px
  */
+
+import { homepageDefaults } from "../data/homepageDefaults";
+
+const {
+  headline = homepageDefaults.hero.headline,
+  bodyHtml = homepageDefaults.hero.bodyHtml,
+  ctas = homepageDefaults.hero.ctas,
+} = Astro.props;
 ---
 
 <section
@@ -55,56 +63,34 @@
       class="font-ea-heading text-[40px] leading-[1.4]"
       style="color: #054d5a; padding-left: 74px; margin-bottom: 78px;"
     >
-      We aspire to do the most good we can
+      {headline}
     </h3>
 
     <!-- Two-column layout matching Wix: text at left:182px (410px wide), buttons at left:596px (255px wide) -->
     <div class="grid items-start gap-y-4 md:grid-cols-[441px_268px]" style="padding-left: 74px; column-gap: 122px;">
       <!-- Left: body text -->
       <div class="font-ea-body text-[18px] leading-[1.4] text-black" style="width: 441px; max-width: 100%;">
-        <p class="mb-5">
-          We represent the <a
-            href="https://www.effectivealtruism.org/"
-            target="_blank"
-            rel="noreferrer noopener"
-            class="underline">Effective Altruism</a
-          > movement in Durham University. By reasoning carefully and considering
-          evidence, we can maximise our positive impact on the world.
-        </p>
-        <p>
-          We empower students who want to make a change through our programmes,
-          events, and community.
-        </p>
+        <Fragment set:html={bodyHtml} />
       </div>
 
       <!-- Right: CTA buttons (255px wide, positioned at right side) -->
       <div class="flex flex-col gap-[22px]" style="width: 268px;">
+        {ctas.map((cta) => (
         <a
-          href="/#get-involved"
+          href={cta.url}
+          target={cta.url?.startsWith("http") ? "_blank" : undefined}
+          rel={cta.url?.startsWith("http") ? "noreferrer noopener" : undefined}
           class="group flex h-[70px] w-full items-center justify-center gap-3 rounded-[5px] px-6 text-center text-[16px] font-bold text-white transition-colors"
           style="background-color: #68246d;"
           onmouseover="this.style.backgroundColor='#541d58'"
           onmouseout="this.style.backgroundColor='#68246d'"
         >
-          <span>Get involved</span>
+          <span>{cta.label}</span>
           <svg viewBox="0 0 60 60" class="h-4 w-4 fill-current" aria-hidden="true">
             <path d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"></path>
           </svg>
         </a>
-        <a
-          href="https://outlook.office365.com/owa/effectivealtruismdurham@durhamuniversity.onmicrosoft.com/groupsubscription.ashx?action=join&source=MSExchange/LokiServer&guid=e5909571-b397-42c5-99bc-b362c640ca29"
-          target="_blank"
-          rel="noreferrer noopener"
-          class="group flex h-[70px] w-full items-center justify-center gap-3 rounded-[5px] px-6 text-center text-[16px] font-bold text-white transition-colors"
-          style="background-color: #68246d;"
-          onmouseover="this.style.backgroundColor='#541d58'"
-          onmouseout="this.style.backgroundColor='#68246d'"
-        >
-          <span>Join the mailing list</span>
-          <svg viewBox="0 0 60 60" class="h-4 w-4 fill-current" aria-hidden="true">
-            <path d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"></path>
-          </svg>
-        </a>
+        ))}
       </div>
     </div>
   </div>

@@ -1,0 +1,17 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import AreteFellowship from "../components/AreteFellowship.astro";
+import { homepageDefaults } from "../data/homepageDefaults";
+import { resolveStoryblokLink } from "../data/storyblokLinks";
+
+const { blok } = Astro.props;
+---
+
+<div {...storyblokEditable(blok)}>
+  <AreteFellowship
+    heading={blok.heading || homepageDefaults.arete.heading}
+    body={blok.body || homepageDefaults.arete.body}
+    ctaLabel={blok.cta_label || homepageDefaults.arete.ctaLabel}
+    ctaUrl={resolveStoryblokLink(blok.cta_link, homepageDefaults.arete.ctaUrl)}
+  />
+</div>

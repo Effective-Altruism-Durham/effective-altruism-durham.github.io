@@ -1,0 +1,11 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import ContactSection from "../components/ContactSection.astro";
+import { homepageDefaults } from "../data/homepageDefaults";
+
+const { blok } = Astro.props;
+---
+
+<div {...storyblokEditable(blok)}>
+  <ContactSection heading={blok.heading || homepageDefaults.contact.heading} />
+</div>

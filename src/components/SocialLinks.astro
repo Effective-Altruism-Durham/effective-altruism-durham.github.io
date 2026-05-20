@@ -5,6 +5,12 @@
  *   - bg: color_43 = #054D5A
  *   - Three white SVG icons centered
  */
+
+import { homepageDefaults } from "../data/homepageDefaults";
+
+const { links = homepageDefaults.socialLinks } = Astro.props;
+
+const [instagram, email, facebook] = links;
 ---
 
 <section
@@ -15,10 +21,10 @@
   <div class="mx-auto flex w-full max-w-[980px] items-center justify-center px-5" style="height: 81px; gap: 38px;">
     <!-- Instagram -->
     <a
-      href="https://www.instagram.com/effectivealtruismdurham/"
+      href={instagram?.url}
       target="_blank"
       rel="noreferrer noopener"
-      aria-label="Instagram"
+      aria-label={instagram?.label ?? "Instagram"}
       class="transition-opacity hover:opacity-70"
       style="color: #ffffff;"
     >
@@ -37,8 +43,8 @@
 
     <!-- Email -->
     <a
-      href="mailto:effective.altruism@durham.ac.uk"
-      aria-label="Email"
+      href={email?.url}
+      aria-label={email?.label ?? "Email"}
       class="transition-opacity hover:opacity-70"
       style="color: #ffffff;"
     >
@@ -51,10 +57,10 @@
 
     <!-- Facebook -->
     <a
-      href="https://www.facebook.com/EffectiveAltruismDurham"
+      href={facebook?.url}
       target="_blank"
       rel="noreferrer noopener"
-      aria-label="Facebook"
+      aria-label={facebook?.label ?? "Facebook"}
       class="transition-opacity hover:opacity-70"
       style="color: #ffffff;"
     >
