@@ -1,0 +1,324 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Structured opportunities data array in the Astro frontmatter for easy Storyblok integration later
+const opportunities = [
+  // SECTION: Free 1-1 Careers Advice (Advising and Mentoring)
+  {
+    id: 'careers-advice-80k',
+    category: 'careers-advice',
+    title: '80,000 Hours Careers Advice',
+    subtitle: 'Free 1-1 Advice',
+    description: [
+      "80,000 hours do a bunch of research into the world's most pressing problems, and how to find the best career to tackle them, so they offer free online 1-1 career advice focused on helping you to improve the world as much as possible.",
+      "Josh and Amber have learnt lots about 80k and their advice for having a high-impact career and they can help with any questions you have!",
+      "We've written more about what EA Durham people have to say here:"
+    ],
+    image: '/assets/opportunities/80000hours.png',
+    imageAlt: '80,000 Hours Logo',
+    buttons: [
+      {
+        label: 'What Our Members Say',
+        href: 'https://www.eadurham.org/free-careers-advice',
+        isPrimary: false
+      },
+      {
+        label: 'Apply Now!',
+        href: 'https://80000hours.org/speak-with-us/',
+        isPrimary: true
+      }
+    ]
+  },
+  {
+    id: 'careers-advice-magnify',
+    category: 'careers-advice',
+    title: 'Magnify Mentoring',
+    subtitle: 'Mentoring Community',
+    description: [
+      "Magnify Mentoring has a wholesome and inclusive community of 500 people across 50 countries.",
+      "While they typically focus on women, non-binary and transgender people, they have recently opened an unrestricted round for people of all minorities.",
+      "Through Magnify Mentoring, I was paired with a mentor who is very kind, knowledgeable and experienced in a variety of fields. I would personally strongly recommend them!"
+    ],
+    image: '/assets/opportunities/Magnify.png',
+    imageAlt: 'Magnify Mentoring Logo',
+    buttons: [
+      {
+        label: 'Learn More',
+        href: 'https://www.magnifymentoring.org/',
+        isPrimary: false
+      },
+      {
+        label: 'Apply Now!',
+        href: 'https://forms.zohopublic.com/eamentorshipprogram/form/MagnifyMenteePilotRoundApplicationForm/formperma/rRMrKjLA1-L0T3N_IhdqEuCNR-1ks_z5ot9SkD1EgpQ',
+        isPrimary: true
+      }
+    ]
+  },
+  {
+    id: 'careers-advice-chat',
+    category: 'careers-advice',
+    title: 'Chat with Arthur Field',
+    subtitle: 'Publicity Officer, EA Durham',
+    description: [
+      "There's a lot of stuff here, so if you're still not sure I, (Arthur Field, Publicity Officer of EA Durham), would love to chat! There is no application form and no preparation needed.",
+      "I can talk you through what events EA Durham are running that might help as well as signposting you to useful places."
+    ],
+    image: '/assets/opportunities/IMG_1647_edited.jpg',
+    imageAlt: 'Arthur Field Profile',
+    buttons: [
+      {
+        label: "Let's Chat!",
+        href: 'https://calendly.com/arthur-field04',
+        isPrimary: true
+      },
+      {
+        label: 'Or Email Me!',
+        href: 'mailto:kwjc75@durham.ac.uk',
+        isPrimary: false
+      }
+    ]
+  },
+  
+  // SECTION: Current Opportunities (Online Courses and Recommendations)
+  {
+    id: 'online-course-ai-safety',
+    category: 'current-opportunities',
+    title: 'AI Safety Fundamentals',
+    subtitle: 'BlueDot Impact Alignment Course',
+    description: [
+      "These 12 week online courses, by BlueDot Impact, are open now, with application deadlines in May and June.",
+      "They involve learning alongside others with an experienced facilitator; and help you in your next steps by sharing opportunities within their large network and potentially connecting you with recruiters."
+    ],
+    image: '/assets/opportunities/AISF.png',
+    imageAlt: 'AI Safety Fundamentals Alignment Course',
+    buttons: [
+      {
+        label: 'AI Safety Fundamentals',
+        href: 'https://aisafetyfundamentals.com/alignment-course-details/',
+        isPrimary: true
+      }
+    ]
+  },
+  {
+    id: 'online-course-pandemics',
+    category: 'current-opportunities',
+    title: 'Pandemics Course',
+    subtitle: 'BlueDot Impact Biosecurity Course',
+    description: [
+      "These 12 week online courses, by BlueDot Impact, are open now, with application deadlines in May and June.",
+      "They involve learning alongside others with an experienced facilitator; and help you in your next steps by sharing opportunities within their large network and potentially connecting you with recruiters."
+    ],
+    image: '/assets/opportunities/Pandemics.jpg',
+    imageAlt: 'Pandemics Course',
+    buttons: [
+      {
+        label: 'Pandemics Course',
+        href: 'https://biosecurityfundamentals.com/pandemics-course-details/',
+        isPrimary: true
+      }
+    ]
+  },
+  {
+    id: 'our-recommendations',
+    category: 'current-opportunities',
+    title: 'Our Recommendations',
+    subtitle: 'Curated Resource List',
+    description: [
+      "If that wasn't enough, we've compiled some recommendations that we're excited about in a shared resources list. It contains:",
+      "• Regularly updated time sensitive opportunities,",
+      "• Motivating and mental health resources that we think more Effective Altruists should read, and",
+      "• Cause area specific resources, including job boards and newsletters."
+    ],
+    image: '/assets/opportunities/bc8c3b_950b321e22be4634985297456cbdd180~mv2.jpg',
+    imageAlt: 'Compiled Recommendations Image',
+    buttons: [
+      {
+        label: 'View Opportunities',
+        href: 'https://www.eadurham.org/current-opportunities',
+        isPrimary: true
+      }
+    ]
+  }
+];
+
+const careersAdviceItems = opportunities.filter(item => item.category === 'careers-advice');
+const currentOpportunitiesItems = opportunities.filter(item => item.category === 'current-opportunities');
+---
+
+<Layout title="OPPORTUNITIES">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    
+    <!-- Header Section with Solid Borders -->
+    <div class="py-12 border-b-2 border-ea-dark-teal/15 text-center max-w-4xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ea-dark-teal/5 border border-ea-dark-teal/10 mb-4">
+        <span class="w-2 h-2 rounded-full bg-ea-active-teal"></span>
+        <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase font-ea-body text-ea-dark-teal/80">
+          Get Involved
+        </span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-ea-dark-teal mb-6 font-ea-heading uppercase">
+        Opportunities
+      </h1>
+      <p class="text-base sm:text-lg text-ea-text-secondary leading-relaxed font-ea-body font-medium max-w-2xl mx-auto">
+        There are so many exciting opportunities within the Effective Altruism community as a whole, and within Effective Altruism Durham. Explore our top recommendations below!
+      </p>
+    </div>
+
+    <!-- Section 1: Advising & Mentoring (Careers Advice) -->
+    <section id="careers-advice" class="space-y-12 mb-24 scroll-mt-24">
+      <div class="border-b-2 border-ea-dark-teal/10 pb-4">
+        <h2 class="text-3xl font-extrabold text-ea-dark-teal font-ea-heading tracking-tight uppercase">
+          Advising & Mentoring
+        </h2>
+        <p class="text-sm sm:text-base text-ea-text-secondary font-ea-body font-semibold mt-2">
+          Get personalized guidance on how to make a meaningful difference with your career.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {careersAdviceItems.map((item) => (
+          <div class="flex flex-col bg-white border-2 border-ea-dark-teal/15 hover:border-ea-active-teal hover:-translate-y-1 hover:shadow-lg rounded-2xl overflow-hidden transition-all duration-300 group">
+            {/* Card Image */}
+            <div class="aspect-video w-full overflow-hidden border-b border-ea-dark-teal/10 bg-white">
+              <img
+                src={item.image}
+                alt={item.imageAlt}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Card Body */}
+            <div class="flex flex-col flex-grow p-6 sm:p-8 space-y-6">
+              <div class="space-y-2">
+                <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-ea-active-teal font-ea-body block">
+                  {item.subtitle}
+                </span>
+                <h3 class="text-xl sm:text-2xl font-extrabold text-ea-dark-teal font-ea-heading leading-tight">
+                  {item.title}
+                </h3>
+              </div>
+
+              <div class="flex-grow space-y-4">
+                {item.description.map((paragraph) => {
+                  if (paragraph.startsWith('•')) {
+                    return (
+                      <div class="flex items-start gap-2 pl-2">
+                        <span class="text-ea-active-teal mt-1 font-bold">•</span>
+                        <p class="text-sm text-ea-text-secondary font-ea-body font-medium leading-relaxed">
+                          {paragraph.substring(1).trim()}
+                        </p>
+                      </div>
+                    );
+                  }
+                  return (
+                    <p class="text-sm text-ea-text-secondary font-ea-body font-medium leading-relaxed">
+                      {paragraph}
+                    </p>
+                  );
+                })}
+              </div>
+
+              {/* Action Buttons */}
+              <div class="flex flex-col gap-3 pt-4 border-t border-ea-dark-teal/10">
+                {item.buttons.map((btn) => (
+                  <a
+                    href={btn.href}
+                    target={btn.href.startsWith('http') ? '_blank' : '_self'}
+                    rel={btn.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    class={`inline-flex items-center justify-center px-5 py-3 rounded-xl font-bold text-[11px] uppercase tracking-widest transition-all duration-300 text-center focus:outline-none focus:ring-2 focus:ring-ea-active-teal focus:ring-offset-2 ${
+                      btn.isPrimary
+                        ? 'bg-ea-dark-teal hover:bg-ea-active-teal text-white border-2 border-ea-dark-teal hover:border-ea-active-teal'
+                        : 'bg-white hover:bg-ea-dark-teal/5 text-ea-dark-teal border-2 border-ea-dark-teal/15 hover:border-ea-dark-teal'
+                    }`}
+                  >
+                    {btn.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 2: Current Opportunities (Online Courses & Our Recommendations) -->
+    <section id="current-opportunities" class="space-y-12 scroll-mt-24">
+      <div class="border-b-2 border-ea-dark-teal/10 pb-4">
+        <h2 class="text-3xl font-extrabold text-ea-dark-teal font-ea-heading tracking-tight uppercase">
+          Current Opportunities & Courses
+        </h2>
+        <p class="text-sm sm:text-base text-ea-text-secondary font-ea-body font-semibold mt-2">
+          Participate in highly regarded courses or browse our curated collections of resources.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {currentOpportunitiesItems.map((item) => (
+          <div class="flex flex-col bg-white border-2 border-ea-dark-teal/15 hover:border-ea-active-teal hover:-translate-y-1 hover:shadow-lg rounded-2xl overflow-hidden transition-all duration-300 group">
+            {/* Card Image */}
+            <div class="aspect-video w-full overflow-hidden border-b border-ea-dark-teal/10 bg-white">
+              <img
+                src={item.image}
+                alt={item.imageAlt}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Card Body */}
+            <div class="flex flex-col flex-grow p-6 sm:p-8 space-y-6">
+              <div class="space-y-2">
+                <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase text-ea-active-teal font-ea-body block">
+                  {item.subtitle}
+                </span>
+                <h3 class="text-xl sm:text-2xl font-extrabold text-ea-dark-teal font-ea-heading leading-tight">
+                  {item.title}
+                </h3>
+              </div>
+
+              <div class="flex-grow space-y-4">
+                {item.description.map((paragraph) => {
+                  if (paragraph.startsWith('•')) {
+                    return (
+                      <div class="flex items-start gap-2 pl-2">
+                        <span class="text-ea-active-teal mt-1 font-bold">•</span>
+                        <p class="text-sm text-ea-text-secondary font-ea-body font-medium leading-relaxed">
+                          {paragraph.substring(1).trim()}
+                        </p>
+                      </div>
+                    );
+                  }
+                  return (
+                    <p class="text-sm text-ea-text-secondary font-ea-body font-medium leading-relaxed">
+                      {paragraph}
+                    </p>
+                  );
+                })}
+              </div>
+
+              {/* Action Buttons */}
+              <div class="flex flex-col gap-3 pt-4 border-t border-ea-dark-teal/10">
+                {item.buttons.map((btn) => (
+                  <a
+                    href={btn.href}
+                    target={btn.href.startsWith('http') ? '_blank' : '_self'}
+                    rel={btn.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    class={`inline-flex items-center justify-center px-5 py-3 rounded-xl font-bold text-[11px] uppercase tracking-widest transition-all duration-300 text-center focus:outline-none focus:ring-2 focus:ring-ea-active-teal focus:ring-offset-2 ${
+                      btn.isPrimary
+                        ? 'bg-ea-dark-teal hover:bg-ea-active-teal text-white border-2 border-ea-dark-teal hover:border-ea-active-teal'
+                        : 'bg-white hover:bg-ea-dark-teal/5 text-ea-dark-teal border-2 border-ea-dark-teal/15 hover:border-ea-dark-teal'
+                    }`}
+                  >
+                    {btn.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+  </div>
+</Layout>
