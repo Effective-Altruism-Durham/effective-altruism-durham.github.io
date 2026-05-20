@@ -35,6 +35,7 @@ export default defineConfig({
       apiOptions: {
         region: STORYBLOK_REGION || 'eu',
       },
+      livePreview: true,
       enableFallbackComponent: true,
       customFallbackComponent: 'storyblok/MissingBlock',
       components: {

@@ -1,5 +1,5 @@
 ---
-import { useStoryblokApi } from "@storyblok/astro";
+import { getPayload, useStoryblokApi } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
@@ -14,8 +14,10 @@ import { homepageDefaults } from "../data/homepageDefaults";
 import { storyblokHomeComponents } from "../data/storyblokHomeComponents";
 
 let story;
+const previewPayload = await getPayload({ locals: Astro.locals });
+story = previewPayload.story;
 
-if (import.meta.env.STORYBLOK_DELIVERY_API_TOKEN) {
+if (!story && import.meta.env.STORYBLOK_DELIVERY_API_TOKEN) {
   try {
     const storyblokApi = useStoryblokApi();
     const { data } = await storyblokApi.get("cdn/stories/home", {
