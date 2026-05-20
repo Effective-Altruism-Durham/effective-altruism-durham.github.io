@@ -1,9 +1,10 @@
 # Notes
 
+- Start w/ https://claude.ai/chat/67dcdec7-b8b6-4702-9bec-68c7880a2c2a
 - Last snapshot of reference site in ./reference_site/
 - tools: pnpm, astro, tailwind, storyblok cms, netlify
 
-storyblok todo:
+**storyblok todo:**
 import { defineConfig } from 'astro/config';
 import { storyblok } from '@storyblok/astro';
 import { loadEnv } from 'vite';
