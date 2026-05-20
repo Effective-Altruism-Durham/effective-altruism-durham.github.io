@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// CMS PREPARATION RULE: Define all team member profiles as a structured JavaScript array in the Astro frontmatter.
+// This will make it extremely easy to hook up to Storyblok later.
+const team = [
+  {
+    name: "Amir Kenevissi",
+    role: "Co-lead",
+    email: "amir.kenevissi@durham.ac.uk",
+    bio: "Hey! I'm Amir, one of the co-leads at EA Durham. I'm currently in my second year of studying Philosophy as an undergraduate, and I'm interested in global health as a cause area. Feel free to reach out if you have any questions about EA!",
+    img: "/assets/contact-us/ead_white_square.png"
+  },
+  {
+    name: "Amber Young",
+    role: "1-1 Advisor, Vice President, Social Secretary",
+    email: "amber.l.young@durham.ac.uk",
+    bio: "My name is Amber and I’m a third year from Sydney, Australia studying PPE. This year, I’m Vice President and Social Sec for EA Durham - as well as having facilitated both the Arete and IDEA fellowships for the past year and a bit. I’m most interested in Global Health and Development, and would like to move into the development NGO sector at some point later in my career.",
+    img: "/assets/contact-us/ead_white_square(1).png"
+  },
+  {
+    name: "Josh Loan-Clarke",
+    role: "Co-lead, 1-1 Advisor",
+    email: "joshua.loan-clarke@durham.ac.uk",
+    bio: "Hey! I’m Josh, current final year NatSci student doing Physics and Philosophy, and co-lead of EA Durham. I think EA has the highest concentration of cool people out of any group I've been involved with. I'm interested in basically everything across the EA spectrum. Outside EA you’ll find me playing Dodgeball (it's a real sport, promise!), singing acapella, or (sometimes) doing my degree. :-)",
+    img: "/assets/contact-us/ead_white_square(2).png"
+  },
+  {
+    name: "Arthur Field",
+    role: "Opportunities Lead",
+    email: "arthur.field@durham.ac.uk",
+    bio: "I’m Arthur, Natural Sciences Student at Durham studying Physics and Philosophy! I enjoy running, and really don’t want to be convinced of longtermism! Come to me for any advice on where to look for career or upskilling opportunities!",
+    img: "/assets/contact-us/ead_white_square(3).png"
+  }
+];
+---
+
+<Layout title="CONTACT US">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    
+    <!-- Header Section with Solid Borders (Consistent with causes.astro) -->
+    <div class="py-12 border-b-2 border-ea-dark-teal/15 text-center max-w-4xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ea-dark-teal/5 border border-ea-dark-teal/10 mb-4">
+        <span class="w-2 h-2 rounded-full bg-ea-active-teal"></span>
+        <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase font-ea-body text-ea-dark-teal/80">
+          Get in Touch
+        </span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-ea-dark-teal mb-6 font-ea-heading uppercase">
+        Contact Us
+      </h1>
+      <p class="text-base sm:text-lg text-ea-text-secondary leading-relaxed font-ea-body font-medium max-w-2xl mx-auto">
+        Have questions about Effective Altruism, our fellowships, or how to plan a high-impact career? Meet our executive committee and advisory team, and feel free to reach out directly to any of us.
+      </p>
+    </div>
+
+    <!-- Team Repeater Section -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-6xl mx-auto">
+      {team.map((member) => (
+        <div class="bg-white border-2 border-ea-dark-teal/15 hover:border-ea-active-teal hover:-translate-y-0.5 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-6 items-start transition-all duration-300 group">
+          <!-- Circular image with solid border -->
+          <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-ea-dark-teal/15 bg-ea-beige shrink-0 mx-auto sm:mx-0">
+            <img 
+              src={member.img} 
+              alt={member.name} 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+          
+          <!-- Member Info -->
+          <div class="flex-grow flex flex-col justify-between h-full text-center sm:text-left">
+            <div>
+              <h3 class="text-xl font-extrabold text-ea-dark-teal font-ea-heading">
+                {member.name}
+              </h3>
+              <span class="text-[11px] font-bold text-ea-active-teal uppercase tracking-wider block mt-1">
+                {member.role}
+              </span>
+              <p class="text-sm text-ea-text-secondary leading-relaxed font-ea-body font-medium mt-4">
+                {member.bio}
+              </p>
+            </div>
+            
+            <!-- Mailto Button (Solid styled button, no gradients) -->
+            <div class="mt-6 pt-4 border-t border-ea-dark-teal/10 flex justify-center sm:justify-start">
+              <a 
+                href={`mailto:${member.email}`}
+                class="inline-flex items-center gap-2 px-5 py-2.5 bg-ea-dark-teal hover:bg-ea-active-teal text-white font-bold text-[11px] uppercase tracking-widest rounded-xl transition-all duration-300 border-2 border-ea-dark-teal hover:border-ea-active-teal focus:outline-none focus:ring-2 focus:ring-ea-active-teal focus:ring-offset-2 font-ea-body"
+              >
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                Email {member.name.split(' ')[0]}
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- General Inquiries / Other Ways to Connect section -->
+    <div class="max-w-4xl mx-auto mt-12 bg-white border-2 border-ea-dark-teal/15 rounded-2xl p-8 sm:p-12 text-center">
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-ea-dark-teal font-ea-heading mb-4 uppercase">
+        Other Ways to Connect
+      </h2>
+      <p class="text-sm sm:text-base text-ea-text-secondary font-ea-body font-medium leading-relaxed max-w-2xl mx-auto mb-8">
+        If you have a general inquiry, want to join our mailing list for weekly announcements, or would like to keep up to date with our social activities, please use the links below.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+        <a 
+          href="https://outlook.office365.com/owa/effectivealtruismdurham@durhamuniversity.onmicrosoft.com/groupsubscription.ashx?action=join&source=MSExchange/LokiServer&guid=d19d28fc-165b-4f90-ae3c-7cc8ec3697c6" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-ea-dark-teal text-ea-dark-teal hover:bg-ea-dark-teal hover:text-white font-bold text-[12px] uppercase tracking-widest rounded-xl transition-all duration-300 font-ea-body"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+          </svg>
+          Join Our Mailing List
+        </a>
+        
+        <a 
+          href="https://www.instagram.com/effectivealtruismdurham/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-ea-dark-teal text-ea-dark-teal hover:bg-ea-dark-teal hover:text-white font-bold text-[12px] uppercase tracking-widest rounded-xl transition-all duration-300 font-ea-body"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke-width="2"></rect>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+          </svg>
+          Follow on Instagram
+        </a>
+      </div>
+    </div>
+
+  </div>
+</Layout>
