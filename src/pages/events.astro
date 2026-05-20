@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// CMS PREPARATION RULE: Define all events as a structured JavaScript array in the Astro frontmatter.
+// This will make it extremely easy to hook up to Storyblok later.
+const events = [
+  {
+    date: "Oct 2026",
+    title: "Arete Fellowship Seminars Begin",
+    description: "Weekly seminar sessions start across Durham colleges. Dive deep into cost-effective priorities, systemic reforms, and global charity evaluations.",
+    type: "Academic"
+  },
+  {
+    date: "Nov 2026",
+    title: "Global Risks Speaker Night",
+    description: "Guest lecture on extreme pandemics, bio-containment strategies, and policy options with international biosecurity researchers.",
+    type: "Guest Lecture"
+  },
+  {
+    date: "Dec 2026",
+    title: "Fellowship Celebration & Social",
+    description: "End of term networking drinks and group dinner. Celebrate fellowship achievements and discuss future career plans with the senior committee.",
+    type: "Social"
+  }
+];
+---
+
+<Layout title="EVENTS">
+  <!-- Main Content Wrapper -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    
+    <!-- Header Section with Solid Borders -->
+    <div class="py-12 border-b-2 border-ea-dark-teal/15 text-center max-w-4xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ea-dark-teal/5 border border-ea-dark-teal/10 mb-4">
+        <span class="w-2 h-2 rounded-full bg-ea-active-teal"></span>
+        <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase font-ea-body text-ea-dark-teal/80">
+          Calendar of Activities
+        </span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-ea-dark-teal mb-6 font-ea-heading uppercase">
+        Events
+      </h1>
+      <p class="text-base sm:text-lg text-ea-text-secondary leading-relaxed font-ea-body font-medium max-w-2xl mx-auto">
+        Join our discussions, guest speaker nights, and regular networking sessions. We run a variety of events throughout each term.
+      </p>
+    </div>
+
+    <!-- Description Block from Reference Site -->
+    <div class="max-w-3xl mx-auto mb-12 p-6 bg-white/40 border-2 border-ea-dark-teal/15 rounded-2xl text-center">
+      <p class="text-sm sm:text-base text-ea-text-secondary leading-relaxed font-ea-body font-medium">
+        We have a variety of external speakers come in and give talks. These talks are completely free of charge, so please do come along! In addition, we have members of EA Durham lead talks and workshops on various topics and skills.
+      </p>
+    </div>
+
+    <!-- TIMELINE CONTAINER -->
+    <div class="py-8 max-w-3xl mx-auto">
+      <div class="relative border-l-2 border-ea-dark-teal/15 pl-8 ml-4 sm:ml-6 flex flex-col gap-12">
+        {events.map((event) => (
+          <div class="relative group">
+            <!-- Bullet node -->
+            <div class="absolute -left-[42px] top-1.5 w-6 h-6 rounded-full bg-ea-beige border-2 border-ea-active-teal flex items-center justify-center transition-all duration-300 group-hover:bg-ea-active-teal">
+              <div class="w-2.5 h-2.5 rounded-full bg-ea-active-teal transition-all duration-300 group-hover:bg-ea-beige"></div>
+            </div>
+            
+            <!-- Timeline Item Card -->
+            <div class="bg-white/60 p-6 sm:p-8 rounded-2xl border-2 border-ea-dark-teal/15 hover:border-ea-active-teal transition-all duration-300 hover:shadow-md">
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="px-2.5 py-1 rounded bg-ea-dark-teal/5 border border-ea-dark-teal/10 text-[10px] font-bold text-ea-active-teal uppercase tracking-widest font-ea-body">
+                  {event.type}
+                </span>
+                <span class="text-xs font-bold text-ea-text-secondary/70 uppercase tracking-wider font-ea-body">
+                  {event.date}
+                </span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-bold text-ea-dark-teal mb-3 font-ea-heading">
+                {event.title}
+              </h3>
+              <p class="text-sm sm:text-base text-ea-text-secondary leading-relaxed font-ea-body font-medium">
+                {event.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</Layout>
