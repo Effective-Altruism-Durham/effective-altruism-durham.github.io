@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Structured causes data array in the Astro frontmatter for easy Storyblok integration later
+const causes = [
+  {
+    id: 'ai-safety',
+    title: 'AI Safety',
+    image: '/assets/causes/67772eaaa8174950975992b1e23d8c02.jpg',
+    imageAlt: 'Abstract electronic circuit board representing artificial intelligence and advanced networks.',
+    description: [
+      "As artificial intelligence systems grow rapidly in capability and autonomy, ensuring they remain safe and aligned with human values is one of the most critical challenges of our generation.",
+      "We focus on understanding and mitigating technical risks from artificial general intelligence (AGI), fostering research in machine learning alignment, and supporting robust AI governance and policy frameworks."
+    ],
+    link: 'https://www.eadurham.org/ai-safety'
+  },
+  {
+    id: 'animal-advocacy',
+    title: 'Animal Advocacy',
+    image: '/assets/causes/Cow.jpg',
+    imageAlt: 'A close-up portrait of a cow in a green field, representing animal welfare and advocacy.',
+    description: [
+      "Industrial factory farming subjects tens of billions of land animals and fish to extreme confinement and suffering every year. Promoting animal welfare is one of the most direct ways to reduce global misery.",
+      "We support high-impact campaigns, the development of alternative proteins, corporate reforms, and legislative efforts to end industrial animal agriculture and expand our moral circle to all sentient beings."
+    ],
+    link: 'https://www.eadurham.org/animal-advocacy'
+  },
+  {
+    id: 'biosecurity',
+    title: 'Biosecurity & Pandemics',
+    image: '/assets/causes/Vaccine Production Line.jpg',
+    imageAlt: 'Industrial scientific vaccine manufacturing line representing pandemic prevention and biosecurity protocols.',
+    description: [
+      "The threat of natural pandemics, accidental research leaks, or engineered biological agents poses a severe risk to global stability and human survival. Strengthening biosecurity is a highly neglected priority.",
+      "We advocate for early warning pathogen detection networks, rapid vaccine development, enhanced laboratory safety standards, and international governance to prevent catastrophic biological disasters."
+    ],
+    link: 'https://www.eadurham.org/biosecurity'
+  }
+];
+---
+
+<Layout title="CAUSES">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    
+    <!-- Header Section with Solid Borders -->
+    <div class="py-12 border-b-2 border-ea-dark-teal/15 text-center max-w-4xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ea-dark-teal/5 border border-ea-dark-teal/10 mb-4">
+        <span class="w-2 h-2 rounded-full bg-ea-active-teal"></span>
+        <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase font-ea-body text-ea-dark-teal/80">
+          Global Priorities
+        </span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-ea-dark-teal mb-6 font-ea-heading uppercase">
+        Causes
+      </h1>
+      <p class="text-base sm:text-lg text-ea-text-secondary leading-relaxed font-ea-body font-medium max-w-2xl mx-auto">
+        Effective Altruism encourages focusing on global problems that are exceptionally high-impact, neglected by society, and highly tractable. Here are the three main causes we prioritise in our community.
+      </p>
+    </div>
+
+    <!-- Causes Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {causes.map((cause) => (
+        <article 
+          id={cause.id} 
+          class="flex flex-col bg-white border-2 border-ea-dark-teal/15 hover:border-ea-active-teal hover:-translate-y-1 hover:shadow-lg rounded-2xl overflow-hidden transition-all duration-300 group scroll-mt-24"
+        >
+          {/* Card Image */}
+          <div class="aspect-[16/10] w-full overflow-hidden border-b border-ea-dark-teal/10 bg-white">
+            <img 
+              src={cause.image} 
+              alt={cause.imageAlt} 
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+
+          {/* Card Body */}
+          <div class="flex flex-col flex-grow p-6 sm:p-8 space-y-6">
+            <div class="space-y-2">
+              <h2 class="text-2xl font-extrabold text-ea-dark-teal font-ea-heading leading-tight">
+                {cause.title}
+              </h2>
+            </div>
+            
+            <div class="flex-grow space-y-4">
+              {cause.description.map((paragraph) => (
+                <p class="text-sm text-ea-text-secondary leading-relaxed font-ea-body font-medium">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+
+            {/* Action Buttons */}
+            <div class="pt-4 border-t border-ea-dark-teal/10">
+              <a 
+                href={cause.link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="w-full inline-flex items-center justify-center px-5 py-3 bg-ea-dark-teal hover:bg-ea-active-teal text-white font-bold text-[11px] uppercase tracking-widest rounded-xl transition-all duration-300 border-2 border-ea-dark-teal hover:border-ea-active-teal text-center focus:outline-none focus:ring-2 focus:ring-ea-active-teal focus:ring-offset-2 font-ea-body"
+              >
+                Learn More
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+</Layout>
