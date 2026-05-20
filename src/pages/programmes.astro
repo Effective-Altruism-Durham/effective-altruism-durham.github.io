@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Structured fellowship data array in the Astro frontmatter for easy Storyblok integration later
+const fellowships = [
+  {
+    id: 'arete',
+    tag: 'Seminars',
+    title: 'Arete Fellowship',
+    description: 'The Arete Fellowship is an 8-week seminar programme exploring the foundational questions of effective altruism. Together with a cohort of peers, you will examine moral philosophy, global health, animal suffering, biosecurity, and long-term priority areas.',
+    link: 'https://www.eadurham.org/arete-fellowship',
+    image: '/assets/programmes/ead_white_square.png',
+    imageAlt: 'Arete Fellowship cohort logo',
+  },
+  {
+    id: 'idea',
+    tag: 'Career Planning',
+    title: 'IDEA Fellowship',
+    description: 'Focus on practical application. The IDEA Fellowship is centered around strategic planning, helping you evaluate your strengths, research high-impact career profiles, and formulate concrete steps to achieve an outstanding, impactful career.',
+    link: 'https://www.eadurham.org/idea-fellowship',
+    image: '/assets/programmes/ead_white_square(1).png',
+    imageAlt: 'IDEA Fellowship planning logo',
+  }
+];
+---
+
+<Layout title="PROGRAMMES">
+  <!-- Main Content Wrapper -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    
+    <!-- Header Section with Solid Borders -->
+    <div class="py-12 border-b-2 border-ea-dark-teal/15 text-center max-w-4xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ea-dark-teal/5 border border-ea-dark-teal/10 mb-4">
+        <span class="w-2 h-2 rounded-full bg-ea-active-teal"></span>
+        <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase font-ea-body text-ea-dark-teal/80">
+          Our Cohorts
+        </span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-ea-dark-teal mb-6 font-ea-heading">
+        PROGRAMMES
+      </h1>
+      <p class="text-base sm:text-lg text-ea-text-secondary leading-relaxed font-ea-body font-medium max-w-2xl mx-auto">
+        Learn how you can use your time, careers, and resources to do the most good. We run two main fellowship cohorts each term.
+      </p>
+    </div>
+
+    <!-- Alternating Fellowship Sections -->
+    <div class="space-y-24">
+      {fellowships.map((fellowship, index) => {
+        const isEven = index % 2 === 0;
+        return (
+          <section 
+            id={fellowship.id} 
+            class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center py-8"
+          >
+            {/* Text Content Column */}
+            <div 
+              class={`md:col-span-7 flex flex-col justify-center space-y-6 ${
+                isEven ? 'order-1 md:order-1' : 'order-1 md:order-2'
+              }`}
+            >
+              <div class="space-y-2">
+                <span class="text-xs sm:text-sm font-bold tracking-widest uppercase text-ea-active-teal font-ea-body block">
+                  {fellowship.tag}
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-ea-dark-teal font-ea-heading">
+                  {fellowship.title}
+                </h2>
+              </div>
+              
+              <div class="p-6 bg-white/40 border-2 border-ea-dark-teal/15 rounded-2xl">
+                <p class="text-base text-ea-text-secondary leading-relaxed font-ea-body font-medium">
+                  {fellowship.description}
+                </p>
+              </div>
+
+              <div>
+                <a 
+                  href={fellowship.link} 
+                  class="inline-flex items-center justify-center px-8 py-4 bg-ea-dark-teal hover:bg-ea-active-teal text-white font-bold text-xs uppercase tracking-widest rounded-xl transition-all duration-300 border-2 border-ea-dark-teal hover:border-ea-active-teal text-center focus:outline-none focus:ring-2 focus:ring-ea-active-teal focus:ring-offset-2"
+                >
+                  Learn More
+                </a>
+              </div>
+            </div>
+
+            {/* Image Column */}
+            <div 
+              class={`md:col-span-5 ${
+                isEven ? 'order-2 md:order-2' : 'order-2 md:order-1'
+              }`}
+            >
+              <div class="p-4 bg-white/30 border-2 border-ea-dark-teal/15 rounded-2xl shadow-sm">
+                <img 
+                  src={fellowship.image} 
+                  alt={fellowship.imageAlt} 
+                  class="w-full h-auto aspect-square object-cover rounded-xl border border-ea-dark-teal/15 bg-white"
+                />
+              </div>
+            </div>
+          </section>
+        );
+      })}
+    </div>
+
+  </div>
+</Layout>
