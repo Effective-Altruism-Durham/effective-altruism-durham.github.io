@@ -26,3 +26,7 @@ export default defineConfig({
   ],
   output: 'server',
 });
+
+
+## possible extensions
+- replace events page with luma calendar or instagram embed
