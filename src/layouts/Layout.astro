@@ -1,13 +1,32 @@
 ---
 import '../styles/global.css';
+import NavigationDropdown from '../components/NavigationDropdown.astro';
+
 interface Props {
   title: string;
 }
+
 const { title } = Astro.props;
+
+const programmesItems = [
+  { label: 'Arete Fellowship', href: '/programmes#arete' },
+  { label: 'IDEA Fellowship', href: '/programmes#idea' },
+];
+
+const opportunitiesItems = [
+  { label: 'Free 1-1 Careers Advice', href: '/opportunities#careers-advice' },
+  { label: 'Current Opportunities', href: '/opportunities#current-opportunities' },
+];
+
+const causesItems = [
+  { label: 'AI Safety', href: '/causes#ai-safety' },
+  { label: 'Animal Advocacy', href: '/causes#animal-advocacy' },
+  { label: 'Biosecurity', href: '/causes#biosecurity' },
+];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,8 +39,269 @@ const { title } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Roboto+Slab:wght@400;600;700&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-ea-beige font-ea-body text-ea-text-primary flex flex-col min-h-screen">
-    <!-- Layout wrapper will contain slot -->
-    <slot />
+  <body class="bg-ea-beige font-ea-body text-ea-text-primary flex flex-col min-h-screen selection:bg-ea-active-teal/20 selection:text-ea-dark-teal">
+    <!-- Sticky Responsive Header -->
+    <header class="sticky top-0 z-50 bg-ea-beige/90 backdrop-blur-md border-b border-ea-dark-teal/10 shadow-sm transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          
+          <!-- Logo & Title Link -->
+          <a href="/" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-ea-active-teal focus-visible:ring-offset-2 rounded-lg p-1.5 transition-all">
+            <img
+              src="/favicon.svg"
+              alt="EA Durham Logo"
+              class="w-10 h-10 group-hover:scale-105 transition-transform duration-300 rounded-full"
+            />
+            <div class="flex flex-col">
+              <span class="font-ea-heading font-bold text-lg sm:text-xl text-ea-dark-teal tracking-wide leading-tight group-hover:text-ea-active-teal transition-colors duration-300">
+                Effective Altruism
+              </span>
+              <span class="font-ea-body text-[10px] sm:text-[11px] font-bold tracking-widest text-ea-text-secondary/70 uppercase">
+                Durham University
+              </span>
+            </div>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex items-center gap-2 h-full">
+            <NavigationDropdown
+              title="Programmes"
+              href="/programmes"
+              items={programmesItems}
+            />
+            <NavigationDropdown
+              title="Opportunities"
+              href="/opportunities"
+              items={opportunitiesItems}
+            />
+            <NavigationDropdown
+              title="Causes"
+              href="/causes"
+              items={causesItems}
+            />
+            
+            <a
+              href="/events"
+              class="px-4 py-2 text-[13px] font-semibold tracking-widest text-ea-text-secondary hover:text-ea-active-teal focus:text-ea-active-teal transition-all duration-300 uppercase font-ea-body outline-none"
+            >
+              Events
+            </a>
+            <a
+              href="/contact-us"
+              class="px-4 py-2 text-[13px] font-semibold tracking-widest text-ea-text-secondary hover:text-ea-active-teal focus:text-ea-active-teal transition-all duration-300 uppercase font-ea-body outline-none"
+            >
+              Contact Us
+            </a>
+          </nav>
+
+          <!-- Mobile Hamburger Button -->
+          <div class="flex items-center md:hidden">
+            <button
+              id="mobile-menu-button"
+              type="button"
+              class="inline-flex items-center justify-center p-2.5 rounded-xl text-ea-text-secondary hover:text-ea-active-teal hover:bg-ea-dark-teal/5 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ea-active-teal/30"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span class="sr-only font-ea-body">Open main menu</span>
+              <!-- Hamburger Menu SVG Icon -->
+              <svg
+                id="hamburger-icon"
+                class="block w-6 h-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <!-- Close Menu SVG Icon -->
+              <svg
+                id="close-icon"
+                class="hidden w-6 h-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden fixed inset-x-0 top-20 bg-ea-beige/95 backdrop-blur-xl border-b border-ea-dark-teal/10 shadow-xl z-40 max-h-[calc(100vh-5rem)] overflow-y-auto"
+      >
+        <div class="px-4 py-6 space-y-6">
+          
+          <!-- PROGRAMMES Section -->
+          <div class="space-y-1">
+            <div class="px-3 py-1 text-xs font-semibold text-ea-dark-teal/65 uppercase tracking-widest font-ea-body">
+              Programmes
+            </div>
+            <div class="mt-1 space-y-1 pl-3 border-l-2 border-ea-active-teal/20">
+              <a href="/programmes" class="block px-3 py-2 rounded-lg text-sm text-ea-text-secondary hover:text-ea-active-teal font-semibold font-ea-body">
+                Overview
+              </a>
+              <a href="/programmes#arete" class="block px-3 py-2 rounded-lg text-sm text-ea-text-secondary/80 hover:text-ea-active-teal pl-4 font-medium font-ea-body">
+                Arete Fellowship
+              </a>
+              <a href="/programmes#idea" class="block px-3 py-2 rounded-lg text-sm text-ea-text-secondary/80 hover:text-ea-active-teal pl-4 font-medium font-ea-body">
+                IDEA Fellowship
+              </a>
+            </div>
+          </div>
+
+          <!-- OPPORTUNITIES Section -->
+          <div class="space-y-1">
+            <div class="px-3 py-1 text-xs font-semibold text-ea-dark-teal/65 uppercase tracking-widest font-ea-body">
+              Opportunities
+            </div>
+            <div class="mt-1 space-y-1 pl-3 border-l-2 border-ea-active-teal/20">
+              <a href="/opportunities" class="block px-3 py-2 rounded-lg text-sm text-ea-text-secondary hover:text-ea-active-teal font-semibold font-ea-body">
+                Overview
+              </a>
+              <a href="/opportunities#careers-advice" class="block px-3 py-2 rounded-lg text-sm text-ea-text-secondary/80 hover:text-ea-active-teal pl-4 font-medium font-ea-body">
+                Free 1-1 Careers Advice
+              </a>
+              <a href="/opportunities#current-opportunities" class="block px-3 py-2 rounded-lg text-sm text-ea-text-secondary/80 hover:text-ea-active-teal pl-4 font-medium font-ea-body">
+                Current Opportunities
+              </a>
+            </div>
+          </div>
+
+          <!-- CAUSES Section -->
+          <div class="space-y-1">
+            <div class="px-3 py-1 text-xs font-semibold text-ea-dark-teal/65 uppercase tracking-widest font-ea-body">
+              Causes
+            </div>
+            <div class="mt-1 space-y-1 pl-3 border-l-2 border-ea-active-teal/20">
+              <a href="/causes" class="block px-3 py-2 rounded-lg text-sm text-ea-text-secondary hover:text-ea-active-teal font-semibold font-ea-body">
+                Overview
+              </a>
+              <a href="/causes#ai-safety" class="block px-3 py-2 rounded-lg text-sm text-ea-text-secondary/80 hover:text-ea-active-teal pl-4 font-medium font-ea-body">
+                AI Safety
+              </a>
+              <a href="/causes#animal-advocacy" class="block px-3 py-2 rounded-lg text-sm text-ea-text-secondary/80 hover:text-ea-active-teal pl-4 font-medium font-ea-body">
+                Animal Advocacy
+              </a>
+              <a href="/causes#biosecurity" class="block px-3 py-2 rounded-lg text-sm text-ea-text-secondary/80 hover:text-ea-active-teal pl-4 font-medium font-ea-body">
+                Biosecurity
+              </a>
+            </div>
+          </div>
+
+          <!-- Simple Items -->
+          <div class="pt-2 border-t border-ea-dark-teal/5 space-y-2">
+            <a
+              href="/events"
+              class="block px-3 py-2 text-[13px] font-bold tracking-widest text-ea-text-secondary hover:text-ea-active-teal uppercase font-ea-body"
+            >
+              Events
+            </a>
+            <a
+              href="/contact-us"
+              class="block px-3 py-2 text-[13px] font-bold tracking-widest text-ea-text-secondary hover:text-ea-active-teal uppercase font-ea-body"
+            >
+              Contact Us
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Slot -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Persistent Durham SU Footer -->
+    <footer class="bg-ea-dark-teal text-ea-beige/90 py-16 mt-auto border-t border-ea-active-teal/20 font-ea-body">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          
+          <!-- Legal info & DSU affiliation -->
+          <div class="max-w-xl space-y-4">
+            <h3 class="font-ea-heading text-2xl font-bold text-white tracking-wide">
+              Effective Altruism Durham
+            </h3>
+            <p class="text-xs sm:text-sm text-ea-beige/80 leading-relaxed font-ea-body font-medium">
+              Effective Altruism Durham is a Durham SU student group whose details are: Durham Students’ Union (also known as Durham SU or DSU) is a charity registered in England and Wales (1145400) and a company limited by guarantee (07689815), and its principal address is Dunelm House, New Elvet, DURHAM, County Durham, DH1 3AN.
+            </p>
+          </div>
+
+          <!-- Quick Navigation Links -->
+          <div class="flex flex-col md:items-end gap-6">
+            <div class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-bold tracking-wider font-ea-body">
+              <a href="/" class="hover:text-white transition-colors duration-250">Home</a>
+              <a href="/programmes" class="hover:text-white transition-colors duration-250">Programmes</a>
+              <a href="/opportunities" class="hover:text-white transition-colors duration-250">Opportunities</a>
+              <a href="/causes" class="hover:text-white transition-colors duration-250">Causes</a>
+              <a href="/events" class="hover:text-white transition-colors duration-250">Events</a>
+              <a href="/contact-us" class="hover:text-white transition-colors duration-250">Contact</a>
+            </div>
+            
+            <p class="text-xs text-ea-beige/60 font-semibold md:text-right mt-2 flex items-center gap-2">
+              <span>Affiliated with Durham University & Students' Union</span>
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Horizontal Divider -->
+        <div class="border-t border-ea-beige/10 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-ea-beige/60 gap-4 font-medium">
+          <div>
+            &copy; {new Date().getFullYear()} Effective Altruism Durham. All rights reserved.
+          </div>
+          <div class="flex items-center gap-4">
+            <a href="https://www.durhamsu.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200">
+              Durham SU
+            </a>
+            <span>&bull;</span>
+            <a href="https://www.effectivealtruism.org" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors duration-200">
+              Effective Altruism
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- Client-side Interactive Scripts -->
+    <script>
+      const button = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      button?.addEventListener('click', () => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', !isExpanded ? 'true' : 'false');
+        
+        menu?.classList.toggle('hidden');
+        hamburgerIcon?.classList.toggle('hidden');
+        closeIcon?.classList.toggle('hidden');
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', (event) => {
+        const target = event.target as HTMLElement;
+        if (menu && button && !menu.contains(target) && !button.contains(target)) {
+          menu.classList.add('hidden');
+          button.setAttribute('aria-expanded', 'false');
+          hamburgerIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+        }
+      });
+    </script>
   </body>
 </html>
