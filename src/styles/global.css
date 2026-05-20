@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+@theme {
+  --color-ea-beige: #f4efe9;
+  --color-ea-dark-teal: #054d5a;
+  --color-ea-active-teal: #0c869b;
+  --color-ea-text-primary: #1a1a1a;
+  --color-ea-text-secondary: #404040;
+  --font-ea-heading: "Roboto Slab", serif;
+  --font-ea-body: "Raleway", sans-serif;
+}
+
+html,
+body {
+  background-color: var(--color-ea-beige);
+  color: var(--color-ea-text-primary);
+  font-family: var(--font-ea-body);
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-ea-heading);
+  color: var(--color-ea-dark-teal);
+}
