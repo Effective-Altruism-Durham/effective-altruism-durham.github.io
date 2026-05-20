@@ -2,13 +2,13 @@
   "name": "eadurham-site",
   "type": "module",
   "version": "0.0.1",
+  "private": true,
   "packageManager": "pnpm@11.1.3",
   "engines": {
     "node": ">=22.12.0",
     "pnpm": ">=11"
   },
   "scripts": {
-    "preinstall": "node -e \"const ua = process.env.npm_config_user_agent || ''; if (!ua.startsWith('pnpm/')) { console.error('Use pnpm in this workspace. Do not install with npm, yarn, or bun.'); process.exit(1); }\"",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -20,9 +20,13 @@
     "@storyblok/astro": "^9.0.9",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.3.6",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.0",
+    "@astrojs/vercel": "^10.0.2"
   },
   "devDependencies": {
-    "vite": "^7.3.3"
+    "vite": "^7.3.3",
+    "@storyblok/astro": "^9.0.0",
+		"astro": "^6.0.8",
+		"vite-plugin-mkcert": "^1.17.10"
   }
 }

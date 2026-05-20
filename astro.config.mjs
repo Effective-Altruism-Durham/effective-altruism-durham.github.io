@@ -5,20 +5,30 @@ import sitemap from '@astrojs/sitemap';
 import netlify from '@astrojs/netlify';
 import { storyblok } from '@storyblok/astro';
 import { loadEnv } from 'vite';
+import mkcert from 'vite-plugin-mkcert';
+import vercel from '@astrojs/vercel';
 
-const env = loadEnv('', process.cwd(), 'STORYBLOK');
-const { STORYBLOK_DELIVERY_API_TOKEN } = loadEnv(
-  import.meta.env.MODE,
-  process.cwd(),
-  '',
-);
+
+const env = loadEnv(import.meta.env.MODE, process.cwd(), '');
+const {
+	NETLIFY,
+	STORYBLOK_DELIVERY_API_TOKEN,
+	STORYBLOK_API_BASE_URL,
+	STORYBLOK_REGION,
+} = env;
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.eadurham.org',
+  devToolbar: {
+		enabled: false,
+	},
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [
+      tailwindcss(),
+      mkcert(),
+    ]
   },
 
   integrations: [
@@ -28,8 +38,10 @@ export default defineConfig({
       apiOptions: {
         region: 'eu',
       },
+      components: {
+			},
     }),
   ],
-  adapter: netlify(),
+  adapter: NETLIFY ? netlify() : vercel(),
   output: 'server',
 });
