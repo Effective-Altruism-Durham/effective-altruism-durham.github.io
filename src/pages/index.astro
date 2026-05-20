@@ -1,439 +1,146 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const homepageHero = {
+  title: 'We aspire to do the most good we can',
+  paragraphs: [
+    'We represent the Effective Altruism movement in Durham University. By reasoning carefully and considering evidence, we can maximise our positive impact on the world.',
+    'We empower students who want to make a change through our programmes, events, and community.',
+  ],
+  actions: [
+    { label: 'Get involved', href: '/opportunities' },
+    {
+      label: 'Join the mailing list',
+      href: 'https://outlook.office365.com/owa/effectivealtruismdurham@durhamuniversity.onmicrosoft.com/groupsubscription.ashx?action=join&source=MSExchange/LokiServer&guid=d19d28fc-165b-4f90-ae3c-7cc8ec3697c6',
+    },
+  ],
+};
+
+const arete = {
+  title: 'Arete Fellowship',
+  body: 'An 8-week seminar programme aimed to introduce you to ideas from various disciplines for making a positive impact on the world.',
+  href: '/programmes#arete',
+};
+
+const activityItems = [
+  {
+    title: 'IDEA FELLOWSHIP',
+    body: 'An 8-week continuation from the Arete Fellowship. Dive deeper into problems that you find interesting!',
+  },
+  {
+    title: 'SPEAKER EVENTS',
+    body: 'We regularly invite external guest speakers in to talk about a wide range of topics!',
+  },
+  {
+    title: 'CAREER PLANNING',
+    body: 'Explore career path, network with professionals, and feel prepared to pursue an impactful career!',
+  },
+];
 ---
 
 <Layout title="HOME">
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden pt-24 pb-20 sm:pt-32 sm:pb-28">
-    <!-- Geometric Background Decorative Elements -->
-    <div class="absolute inset-0 -z-10 pointer-events-none opacity-40">
-      <div class="absolute top-10 left-10 w-72 h-72 rounded-full bg-ea-active-teal/5 blur-3xl"></div>
-      <div class="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-ea-dark-teal/5 blur-3xl"></div>
-      <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-radial from-ea-active-teal/10 to-transparent blur-2xl"></div>
-      <!-- Thin Elegant Grid Lines -->
-      <svg class="absolute inset-0 w-full h-full stroke-ea-dark-teal/5 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true">
-        <defs>
-          <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse" x="-1" y="-1">
-            <path d="M.5 40V.5H40" fill="none" stroke-width="0.5" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid-pattern)" />
-      </svg>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-4xl mx-auto space-y-8">
-        <!-- Floating Batch Badge -->
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-ea-dark-teal/5 border border-ea-dark-teal/10 animate-fade-in">
-          <span class="w-2 h-2 rounded-full bg-ea-active-teal animate-pulse"></span>
-          <span class="text-[10px] sm:text-xs font-bold tracking-widest uppercase font-ea-body text-ea-dark-teal/80">
-            Effective Altruism Durham University
-          </span>
-        </div>
-
-        <!-- Big Editorial Headline -->
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-ea-dark-teal leading-[1.1] font-ea-heading">
-          We aspire to do the <span class="text-transparent bg-clip-text bg-gradient-to-r from-ea-dark-teal via-ea-active-teal to-ea-dark-teal font-ea-heading font-black italic">most good</span> we can.
+  <section class="px-5 py-16 sm:px-8 sm:py-24">
+    <div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-[1.05fr_0.95fr] md:items-center">
+      <div>
+        <h1 class="max-w-2xl text-5xl font-bold leading-[1.08] text-ea-dark-teal sm:text-6xl">
+          {homepageHero.title}
         </h1>
+      </div>
+      <div class="space-y-6 text-lg leading-8 text-ea-text-secondary">
+        {homepageHero.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <div class="flex flex-wrap gap-4 pt-2">
+          {homepageHero.actions.map((action) => (
+            <a
+              href={action.href}
+              class="border border-ea-dark-teal px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-ea-dark-teal transition-colors hover:bg-ea-dark-teal hover:text-white focus:bg-ea-dark-teal focus:text-white focus:outline-none"
+            >
+              {action.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- High-Impact Description (RALWAY Font) -->
-        <p class="text-base sm:text-lg md:text-xl text-ea-text-secondary max-w-2xl mx-auto font-ea-body font-medium leading-relaxed">
-          Effective Altruism is a framework for applying evidence-based reasoning to the world's most pressing problems. We are a practical community sharing diverse views on which problems to prioritise and how to tackle them.
-        </p>
+  <section class="border-y border-ea-dark-teal/15 bg-white px-5 py-16 sm:px-8">
+    <div class="mx-auto grid max-w-6xl gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-start">
+      <h2 class="text-4xl font-bold leading-tight text-ea-dark-teal sm:text-5xl">
+        What is<br />Effective<br />Altruism?
+      </h2>
+      <p class="max-w-3xl text-lg leading-8 text-ea-text-secondary">
+        <strong class="font-semibold text-ea-dark-teal">Effective Altruism</strong> is a framework for applying evidence-based reasoning to <strong class="font-semibold text-ea-dark-teal">the world's most pressing problems</strong>. It's also a practical community sharing diverse views on which problems to prioritise and how to tackle them.
+      </p>
+    </div>
+  </section>
 
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+  <section class="px-5 py-16 sm:px-8">
+    <div class="mx-auto max-w-6xl border-y border-ea-dark-teal/20 py-12">
+      <div class="grid gap-8 md:grid-cols-[0.8fr_1.2fr] md:items-center">
+        <h2 class="text-4xl font-bold text-ea-dark-teal">{arete.title}</h2>
+        <div class="space-y-6">
+          <p class="text-lg leading-8 text-ea-text-secondary">{arete.body}</p>
           <a
-            href="#arete"
-            class="w-full sm:w-auto px-8 py-4 bg-ea-dark-teal hover:bg-ea-active-teal text-white font-bold text-sm uppercase tracking-widest rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 text-center focus:outline-none focus:ring-2 focus:ring-ea-active-teal focus:ring-offset-2"
+            href={arete.href}
+            class="inline-block border border-ea-dark-teal px-6 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-ea-dark-teal transition-colors hover:bg-ea-dark-teal hover:text-white focus:bg-ea-dark-teal focus:text-white focus:outline-none"
           >
-            Explore Fellowships
-          </a>
-          <a
-            href="#contact"
-            class="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-ea-dark-teal/30 hover:border-ea-dark-teal text-ea-dark-teal font-bold text-sm uppercase tracking-widest rounded-xl transition-all duration-300 hover:bg-ea-dark-teal/5 text-center focus:outline-none focus:ring-2 focus:ring-ea-dark-teal/30"
-          >
-            Get In Touch
+            Learn more
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- What is EA & Video Section -->
-  <section class="py-16 sm:py-24 bg-white/40 border-y border-ea-dark-teal/5 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        <!-- Content Side (Lg: 5 columns) -->
-        <div class="lg:col-span-5 space-y-6">
-          <div class="space-y-2">
-            <span class="text-xs sm:text-sm font-bold tracking-widest uppercase text-ea-active-teal font-ea-body">
-              Core Framework
-            </span>
-            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ea-dark-teal font-ea-heading">
-              What is Effective Altruism?
-            </h2>
-          </div>
-
-          <div class="space-y-4 text-ea-text-secondary leading-relaxed font-ea-body text-sm sm:text-base font-medium">
-            <p>
-              It is easy to want to make a difference, but hard to know how. Many of the most common ways to help others are not as effective as they could be, and some even do harm.
-            </p>
-            <p>
-              Effective Altruism uses scientific analysis, philosophy, and rational evidence to answer a single, vital question: <strong class="text-ea-dark-teal font-bold font-ea-heading italic">How can we use our limited resources to help others as much as possible?</strong>
-            </p>
-            <p>
-              We look for cause areas that are high-impact, neglected, and highly tractable, focusing on global health, animal welfare, and safeguarding the long-term future.
-            </p>
-          </div>
-        </div>
-
-        <!-- Video Mimic Side (Lg: 7 columns) -->
-        <div class="lg:col-span-7">
-          <div class="relative group rounded-2xl overflow-hidden bg-ea-dark-teal shadow-2xl transition-all duration-500 hover:shadow-ea-active-teal/20 hover:scale-[1.01]">
-            <!-- Thumbnail Image -->
-            <img
-              src="https://static.wixstatic.com/media/dc8458_7c43e005cb3f43e39f5ba1f6d2a8b501~mv2.png/v1/fill/w_1280,h_720,al_c/dc8458_7c43e005cb3f43e39f5ba1f6d2a8b501~mv2.png"
-              alt="What is Effective Altruism? Video Thumbnail"
-              class="w-full aspect-video object-cover opacity-85 group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-            
-            <!-- Video Overlay & Play Button -->
-            <a
-              href="https://www.youtube.com/watch?v=Diuv3XZQXyc"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="absolute inset-0 flex flex-col items-center justify-center bg-ea-dark-teal/40 group-hover:bg-ea-dark-teal/55 transition-all duration-300 text-white"
-              aria-label="Play YouTube Video - What is Effective Altruism?"
-            >
-              <!-- Pulsating Play Icon -->
-              <div class="relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-white hover:bg-ea-active-teal hover:scale-110 text-ea-dark-teal hover:text-white rounded-full shadow-lg transition-all duration-300">
-                <!-- Inner play symbol -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 sm:w-8 sm:h-8 translate-x-0.5">
-                  <path d="M8 5.14v14l11-7-11-7z" />
-                </svg>
-                
-                <!-- Pulsating Outer rings -->
-                <span class="absolute inset-0 rounded-full border-4 border-white/30 animate-ping"></span>
-              </div>
-              
-              <!-- Video Info Card underneath play button inside overlay -->
-              <div class="mt-4 sm:mt-6 text-center px-4">
-                <span class="text-xs sm:text-sm font-bold tracking-widest uppercase font-ea-body text-white/90 group-hover:text-white transition-colors">
-                  Watch Introductory Video
-                </span>
-                <span class="block text-[10px] sm:text-xs text-white/60 mt-1 italic font-ea-body">
-                  Featuring William MacAskill &middot; 4 minutes
-                </span>
-              </div>
-            </a>
-          </div>
-        </div>
+  <section class="bg-white px-5 py-16 sm:px-8">
+    <div class="mx-auto max-w-6xl">
+      <h2 class="mb-10 text-4xl font-bold text-ea-dark-teal">What we do</h2>
+      <div class="grid gap-8 md:grid-cols-3">
+        {activityItems.map((item) => (
+          <article class="border-t-2 border-ea-dark-teal pt-6">
+            <h3 class="mb-5 text-2xl font-bold leading-tight text-ea-dark-teal">{item.title}</h3>
+            <p class="text-base leading-7 text-ea-text-secondary">{item.body}</p>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Core Fellowship Highlight: Arete Fellowship -->
-  <section id="arete" class="py-20 sm:py-28 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="relative rounded-3xl overflow-hidden bg-ea-dark-teal text-white p-8 sm:p-12 lg:p-16 shadow-2xl border border-ea-active-teal/20">
-        <!-- Abstract background pattern inside callout -->
-        <div class="absolute inset-0 opacity-15 pointer-events-none">
-          <div class="absolute -top-12 -left-12 w-64 h-64 bg-ea-active-teal rounded-full blur-2xl"></div>
-          <div class="absolute -bottom-24 -right-24 w-80 h-80 bg-ea-active-teal rounded-full blur-3xl"></div>
+  <section id="contact" class="px-5 py-16 sm:px-8">
+    <div class="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.7fr_1.3fr]">
+      <h2 class="text-4xl font-bold text-ea-dark-teal">Contact us</h2>
+
+      <form name="contact" method="POST" data-netlify="true" action="/success" class="grid gap-5">
+        <input type="hidden" name="form-name" value="contact" />
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          <label class="grid gap-2 text-sm font-semibold text-ea-dark-teal">
+            <span>First name</span>
+            <input name="firstName" type="text" required class="border border-ea-dark-teal/30 bg-white px-4 py-3 text-ea-text-primary outline-none focus:border-ea-dark-teal" />
+          </label>
+          <label class="grid gap-2 text-sm font-semibold text-ea-dark-teal">
+            <span>Last name</span>
+            <input name="lastName" type="text" required class="border border-ea-dark-teal/30 bg-white px-4 py-3 text-ea-text-primary outline-none focus:border-ea-dark-teal" />
+          </label>
         </div>
 
-        <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          <div class="lg:col-span-8 space-y-6">
-            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ea-active-teal/30 border border-ea-active-teal/30 text-xs font-bold tracking-wider uppercase text-ea-beige font-ea-body">
-              Flagship Programme
-            </span>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight font-ea-heading text-white">
-              Arete Fellowship
-            </h2>
-            <p class="text-base sm:text-lg text-ea-beige/85 font-ea-body leading-relaxed max-w-3xl">
-              An 8-week seminar programme aimed to introduce you to ideas from various disciplines for making a positive impact on the world. Meet weekly with a small cohort of motivated peers to discuss high-impact career planning, critical global cause areas, and practical ethical reasoning.
-            </p>
-          </div>
-          <div class="lg:col-span-4 flex justify-start lg:justify-end">
-            <a
-              href="/programmes#arete"
-              class="inline-flex items-center justify-center px-8 py-4 bg-white text-ea-dark-teal hover:bg-ea-beige font-bold text-sm uppercase tracking-widest rounded-xl transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ea-dark-teal group"
-            >
-              <span>Learn More</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <label class="grid gap-2 text-sm font-semibold text-ea-dark-teal">
+          <span>Email</span>
+          <input name="email" type="email" required class="border border-ea-dark-teal/30 bg-white px-4 py-3 text-ea-text-primary outline-none focus:border-ea-dark-teal" />
+        </label>
 
-  <!-- What We Do Grid -->
-  <section class="py-16 sm:py-24 bg-white/40 border-y border-ea-dark-teal/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
-        <span class="text-xs sm:text-sm font-bold tracking-widest uppercase text-ea-active-teal font-ea-body">
-          Our Activities
-        </span>
-        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ea-dark-teal font-ea-heading">
-          What we do
-        </h2>
-        <div class="w-16 h-1 bg-ea-active-teal mx-auto rounded-full"></div>
-      </div>
+        <label class="grid gap-2 text-sm font-semibold text-ea-dark-teal">
+          <span>Subject</span>
+          <input name="subject" type="text" required class="border border-ea-dark-teal/30 bg-white px-4 py-3 text-ea-text-primary outline-none focus:border-ea-dark-teal" />
+        </label>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
-        <!-- Seminars Card -->
-        <div class="group relative rounded-2xl bg-ea-beige/40 hover:bg-white p-8 sm:p-10 border border-ea-dark-teal/5 hover:border-ea-active-teal/20 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between">
-          <div class="space-y-6">
-            <!-- Icon -->
-            <div class="w-12 h-12 rounded-xl bg-ea-dark-teal/5 text-ea-dark-teal group-hover:bg-ea-active-teal group-hover:text-white flex items-center justify-center transition-colors duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-              </svg>
-            </div>
-            
-            <h3 class="text-xl font-bold text-ea-dark-teal font-ea-heading">Seminars</h3>
-            
-            <div class="space-y-3 text-ea-text-secondary font-ea-body text-sm leading-relaxed">
-              <p class="font-bold text-ea-dark-teal/80">IDEA Fellowship</p>
-              <p>
-                An 8-week continuation from the Arete Fellowship. Dive deeper into problems that you find interesting with advanced readings and expert-led discussions.
-              </p>
-            </div>
-          </div>
-          
-          <div class="pt-6">
-            <a href="/programmes" class="inline-flex items-center text-xs font-bold tracking-wider uppercase text-ea-active-teal hover:text-ea-dark-teal transition-colors">
-              <span>Seminars Overview</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1 transition-transform">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-              </svg>
-            </a>
-          </div>
-        </div>
+        <label class="grid gap-2 text-sm font-semibold text-ea-dark-teal">
+          <span>Message</span>
+          <textarea name="message" rows="5" required class="border border-ea-dark-teal/30 bg-white px-4 py-3 text-ea-text-primary outline-none focus:border-ea-dark-teal"></textarea>
+        </label>
 
-        <!-- Careers Card -->
-        <div class="group relative rounded-2xl bg-ea-beige/40 hover:bg-white p-8 sm:p-10 border border-ea-dark-teal/5 hover:border-ea-active-teal/20 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between">
-          <div class="space-y-6">
-            <!-- Icon -->
-            <div class="w-12 h-12 rounded-xl bg-ea-dark-teal/5 text-ea-dark-teal group-hover:bg-ea-active-teal group-hover:text-white flex items-center justify-center transition-colors duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 .621-.504 1.125-1.125 1.125H4.875A1.125 1.125 0 013.75 18.4v-4.25m16.5 0a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25m16.5 0V7.5A2.25 2.25 0 0018 5.25H6A2.25 2.25 0 003.75 7.5v6.65m16.5 0a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25M10.5 8.25h3" />
-              </svg>
-            </div>
-            
-            <h3 class="text-xl font-bold text-ea-dark-teal font-ea-heading">Careers</h3>
-            
-            <div class="space-y-3 text-ea-text-secondary font-ea-body text-sm leading-relaxed">
-              <p class="font-bold text-ea-dark-teal/80">Career Planning</p>
-              <p>
-                Explore career paths, network with industry professionals, and feel fully prepared to pursue an impactful, high-impact career that changes the world.
-              </p>
-            </div>
-          </div>
-          
-          <div class="pt-6">
-            <a href="/opportunities" class="inline-flex items-center text-xs font-bold tracking-wider uppercase text-ea-active-teal hover:text-ea-dark-teal transition-colors">
-              <span>Careers Advice</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1 transition-transform">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Community Card -->
-        <div class="group relative rounded-2xl bg-ea-beige/40 hover:bg-white p-8 sm:p-10 border border-ea-dark-teal/5 hover:border-ea-active-teal/20 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between">
-          <div class="space-y-6">
-            <!-- Icon -->
-            <div class="w-12 h-12 rounded-xl bg-ea-dark-teal/5 text-ea-dark-teal group-hover:bg-ea-active-teal group-hover:text-white flex items-center justify-center transition-colors duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
-              </svg>
-            </div>
-            
-            <h3 class="text-xl font-bold text-ea-dark-teal font-ea-heading">Community</h3>
-            
-            <div class="space-y-3 text-ea-text-secondary font-ea-body text-sm leading-relaxed">
-              <p class="font-bold text-ea-dark-teal/80">Speaker Events</p>
-              <p>
-                We regularly invite external guest speakers to talk about a wide range of topics, host social events, and support a vibrant network of high-impact students.
-              </p>
-            </div>
-          </div>
-          
-          <div class="pt-6">
-            <a href="/events" class="inline-flex items-center text-xs font-bold tracking-wider uppercase text-ea-active-teal hover:text-ea-dark-teal transition-colors">
-              <span>View Events</span>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1 transition-transform">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Us Section with Netlify Form -->
-  <section id="contact" class="py-20 sm:py-28 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        <!-- Contact Text Side -->
-        <div class="lg:col-span-5 space-y-8">
-          <div class="space-y-2">
-            <span class="text-xs sm:text-sm font-bold tracking-widest uppercase text-ea-active-teal font-ea-body">
-              Connect With Us
-            </span>
-            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ea-dark-teal font-ea-heading">
-              Contact us
-            </h2>
-            <div class="w-12 h-1 bg-ea-active-teal rounded-full mt-2"></div>
-          </div>
-
-          <p class="text-ea-text-secondary text-sm sm:text-base font-ea-body leading-relaxed font-medium">
-            Have questions about our fellowships? Want to collaborate on a cause? Or simply want to chat about effective altruism and career paths? Drop us a message—we'd love to hear from you!
-          </p>
-
-          <!-- Contact details block -->
-          <div class="space-y-4 pt-4 border-t border-ea-dark-teal/10">
-            <!-- Email -->
-            <a
-              href="mailto:effective.altruism@durham.ac.uk"
-              class="flex items-center gap-3.5 group text-ea-text-secondary hover:text-ea-active-teal transition-colors font-ea-body text-sm font-semibold"
-            >
-              <div class="w-10 h-10 rounded-lg bg-ea-dark-teal/5 text-ea-dark-teal group-hover:bg-ea-active-teal group-hover:text-white flex items-center justify-center transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                </svg>
-              </div>
-              <span>effective.altruism@durham.ac.uk</span>
-            </a>
-
-            <!-- Instagram -->
-            <a
-              href="https://www.instagram.com/effectivealtruismdurham/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center gap-3.5 group text-ea-text-secondary hover:text-ea-active-teal transition-colors font-ea-body text-sm font-semibold"
-            >
-              <div class="w-10 h-10 rounded-lg bg-ea-dark-teal/5 text-ea-dark-teal group-hover:bg-ea-active-teal group-hover:text-white flex items-center justify-center transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 105.186 7.23c.38.054.757.112 1.134.175C6.799 7.007 6.81 6.584 6.827 6.175zM17.173 6.175a2.31 2.31 0 111.64 1.055c-.377.063-.754.121-1.134.175a2.288 2.288 0 01-.506-1.23z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 15.75a3 3 0 100-6 3 3 0 000 6z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.15 8.784a9.123 9.123 0 00-.518-2.915 5.25 5.25 0 00-3.003-3.003 9.123 9.123 0 00-2.915-.518C13.684 2.3 13.238 2.25 12 2.25s-1.684.05-2.714.098a9.123 9.123 0 00-2.915.518 5.25 5.25 0 00-3.003 3.003 9.123 9.123 0 00-.518 2.915C2.3 9.816 2.25 10.262 2.25 11.5s.05 1.684.098 2.714a9.123 9.123 0 00.518 2.915 5.25 5.25 0 003.003 3.003 9.123 9.123 0 002.915.518c1.03.048 1.476.098 2.714.098s1.684-.05 2.714-.098a9.123 9.123 0 002.915-.518 5.25 5.25 0 003.003-3.003 9.123 9.123 0 00.518-2.915c.048-1.03.098-1.476.098-2.714s-.05-1.684-.098-2.714z" />
-                </svg>
-              </div>
-              <span>@effectivealtruismdurham</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Form Side -->
-        <div class="lg:col-span-7">
-          <div class="bg-white rounded-3xl p-8 sm:p-10 border border-ea-dark-teal/5 shadow-xl">
-            <!-- Native HTML Netlify Form -->
-            <form
-              data-netlify="true"
-              name="contact"
-              method="POST"
-              action="/success"
-              class="space-y-6"
-            >
-              <!-- Hidden input required for Netlify forms -->
-              <input type="hidden" name="form-name" value="contact" />
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <!-- First Name -->
-                <div class="space-y-2">
-                  <label for="firstName" class="block text-xs font-bold tracking-wider uppercase text-ea-dark-teal/80 font-ea-body">
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    id="firstName"
-                    required
-                    placeholder="John"
-                    class="w-full px-4 py-3 bg-ea-beige/25 border border-ea-dark-teal/15 focus:border-ea-active-teal rounded-xl text-sm font-ea-body text-ea-text-primary focus:outline-none focus:ring-4 focus:ring-ea-active-teal/10 transition-all placeholder:text-ea-text-secondary/40"
-                  />
-                </div>
-
-                <!-- Last Name -->
-                <div class="space-y-2">
-                  <label for="lastName" class="block text-xs font-bold tracking-wider uppercase text-ea-dark-teal/80 font-ea-body">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    id="lastName"
-                    required
-                    placeholder="Doe"
-                    class="w-full px-4 py-3 bg-ea-beige/25 border border-ea-dark-teal/15 focus:border-ea-active-teal rounded-xl text-sm font-ea-body text-ea-text-primary focus:outline-none focus:ring-4 focus:ring-ea-active-teal/10 transition-all placeholder:text-ea-text-secondary/40"
-                  />
-                </div>
-              </div>
-
-              <!-- Email -->
-              <div class="space-y-2">
-                <label for="email" class="block text-xs font-bold tracking-wider uppercase text-ea-dark-teal/80 font-ea-body">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  required
-                  placeholder="john.doe@example.com"
-                  class="w-full px-4 py-3 bg-ea-beige/25 border border-ea-dark-teal/15 focus:border-ea-active-teal rounded-xl text-sm font-ea-body text-ea-text-primary focus:outline-none focus:ring-4 focus:ring-ea-active-teal/10 transition-all placeholder:text-ea-text-secondary/40"
-                />
-              </div>
-
-              <!-- Subject -->
-              <div class="space-y-2">
-                <label for="subject" class="block text-xs font-bold tracking-wider uppercase text-ea-dark-teal/80 font-ea-body">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  id="subject"
-                  required
-                  placeholder="Inquiry about Arete Fellowship"
-                  class="w-full px-4 py-3 bg-ea-beige/25 border border-ea-dark-teal/15 focus:border-ea-active-teal rounded-xl text-sm font-ea-body text-ea-text-primary focus:outline-none focus:ring-4 focus:ring-ea-active-teal/10 transition-all placeholder:text-ea-text-secondary/40"
-                />
-              </div>
-
-              <!-- Message -->
-              <div class="space-y-2">
-                <label for="message" class="block text-xs font-bold tracking-wider uppercase text-ea-dark-teal/80 font-ea-body">
-                  Your Message
-                </label>
-                <textarea
-                  name="message"
-                  id="message"
-                  rows="5"
-                  required
-                  placeholder="Type your message here..."
-                  class="w-full px-4 py-3 bg-ea-beige/25 border border-ea-dark-teal/15 focus:border-ea-active-teal rounded-xl text-sm font-ea-body text-ea-text-primary focus:outline-none focus:ring-4 focus:ring-ea-active-teal/10 transition-all placeholder:text-ea-text-secondary/40 resize-none"
-                ></textarea>
-              </div>
-
-              <!-- Submit button -->
-              <button
-                type="submit"
-                class="w-full py-4 bg-ea-dark-teal hover:bg-ea-active-teal text-white font-bold text-sm uppercase tracking-widest rounded-xl transition-all duration-300 transform hover:-translate-y-0.5 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-ea-active-teal focus:ring-offset-2"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+        <button type="submit" class="justify-self-start border border-ea-dark-teal bg-ea-dark-teal px-8 py-3 text-sm font-semibold uppercase tracking-[0.14em] text-white transition-colors hover:bg-ea-active-teal focus:bg-ea-active-teal focus:outline-none">
+          Submit
+        </button>
+      </form>
     </div>
   </section>
 </Layout>
