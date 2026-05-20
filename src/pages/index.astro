@@ -32,6 +32,8 @@ const storyContent = story?.content;
 const hasHomepageBlocks =
   storyContent?.component === "page" &&
   storyContent.body?.some((blok) => storyblokHomeComponents.has(blok.component));
+const isStoryblokPreview = Astro.url.searchParams.has("_storyblok");
+const shouldRenderStoryblok = storyContent && (hasHomepageBlocks || isStoryblokPreview);
 const title = storyContent?.meta_title || homepageDefaults.title;
 const description = storyContent?.meta_description || homepageDefaults.description;
 ---
@@ -41,8 +43,11 @@ const description = storyContent?.meta_description || homepageDefaults.descripti
   description={description}
 >
   <SiteHeader />
-  {hasHomepageBlocks ? (
-    <StoryblokComponent blok={storyContent} allowedComponents={storyblokHomeComponents} />
+  {shouldRenderStoryblok ? (
+    <StoryblokComponent
+      blok={storyContent}
+      allowedComponents={isStoryblokPreview ? undefined : storyblokHomeComponents}
+    />
   ) : (
     <main>
       <HeroSection />
