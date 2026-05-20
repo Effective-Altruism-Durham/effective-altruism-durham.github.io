@@ -40,22 +40,22 @@ STORYBLOK_DELIVERY_API_TOKEN=<YOUR_TOKEN>
 ```
 
 The homepage fetches the Storyblok story at `home`. Until that story contains
-the EA Durham homepage blocks below, `/` falls back to the current static Astro
-homepage so the starter blueprint `teaser` block does not blank or replace the
-site by accident.
+the reusable section blocks below, `/` falls back to the current static Astro
+homepage so incomplete Storyblok setup does not blank or replace the site by
+accident.
 
 Create a `page` content type with a `body` blocks field. For the homepage body,
 use these nestable blocks:
 
 | Storyblok component       | Fields                                                                 |
 | :------------------------ | :--------------------------------------------------------------------- |
-| `home_hero`               | `headline`, `body` rich text, `primary_label`, `primary_link`, `secondary_label`, `secondary_link` |
-| `home_what_is_ea`         | `heading`, `body` rich text, `video_url`                               |
-| `home_arete_fellowship`   | `heading`, `body`, `cta_label`, `cta_link`                             |
-| `home_what_we_do`         | `heading`, `cards` blocks using `home_programme_card`                  |
-| `home_programme_card`     | `label`, `text`                                                        |
-| `home_social_links`       | `links` blocks or entries with `label` and `link`                      |
-| `home_contact`            | `heading`                                                              |
+| `hero_section`            | `headline`, `body` rich text, `primary_label`, `primary_link`, `secondary_label`, `secondary_link` |
+| `rich_text_video_section` | `heading`, `body` rich text, `video_url`                               |
+| `cta_section`             | `heading`, `body`, `cta_label`, `cta_link`                             |
+| `card_grid_section`       | `heading`, `cards` blocks using `text_card`                            |
+| `text_card`               | `label`, `text`                                                        |
+| `social_links_section`    | `links` blocks or entries with `label` and `link`                      |
+| `contact_section`         | `heading`                                                              |
 
 New non-home stories are served by `src/pages/[...slug].astro`. Add new
 Storyblok components in `src/storyblok/` and register them in
