@@ -1,4 +1,6 @@
 .antigravitycli/
+.pnpm-store/*
+.rtk/
 
 # build output
 dist/
