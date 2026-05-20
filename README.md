@@ -57,6 +57,6 @@ use these nestable blocks:
 | `home_social_links`       | `links` blocks or entries with `label` and `link`                      |
 | `home_contact`            | `heading`                                                              |
 
-The blueprint-style `teaser`, `grid`, and `feature` blocks are also registered
-for future Storyblok pages. New non-home stories are served by
-`src/pages/[...slug].astro`.
+New non-home stories are served by `src/pages/[...slug].astro`. Add new
+Storyblok components in `src/storyblok/` and register them in
+`astro.config.mjs` before using them in Storyblok.
