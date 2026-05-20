@@ -35,6 +35,8 @@ export default defineConfig({
       apiOptions: {
         region: STORYBLOK_REGION || 'eu',
       },
+      enableFallbackComponent: true,
+      customFallbackComponent: 'storyblok/MissingBlock',
       components: {
         page: 'storyblok/Page',
         hero_section: 'storyblok/HeroSection',

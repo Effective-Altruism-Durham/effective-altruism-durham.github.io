@@ -1,0 +1,15 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<section
+  class="mx-auto max-w-[980px] px-5 py-10 font-ea-body text-[15px] text-[#054d5a]"
+  {...storyblokEditable(blok)}
+>
+  <div class="rounded-[5px] border border-dashed border-[#0c869b] bg-white p-5">
+    Storyblok block <strong>{blok.component}</strong> is not registered in this site.
+    Replace it with one of the EA Durham section blocks.
+  </div>
+</section>
