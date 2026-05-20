@@ -1,53 +1,68 @@
 @import "tailwindcss";
 
 @theme {
+  /* EA Durham brand colors — extracted from Wix CSS variables */
   --color-ea-cream: #f4efe9;
-  --color-ea-beige: #f4efe9;
   --color-ea-white: #ffffff;
   --color-ea-dark-teal: #054d5a;
   --color-ea-active-teal: #0c869b;
-  --color-ea-text-primary: #1f2a2d;
+  --color-ea-purple: #68246d;
+  --color-ea-purple-hover: #541d58;
+  --color-ea-text-primary: #000000;
   --color-ea-text-secondary: #404040;
+
+  /* Fonts matching the Wix site */
   --font-ea-heading: "Roboto Slab", Georgia, serif;
   --font-ea-body: "Raleway", Arial, sans-serif;
 }
 
-html,
-body {
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  background: var(--color-ea-cream);
-  color: var(--color-ea-text-primary);
-  font-family: var(--font-ea-body);
-}
+@layer base {
+  html,
+  body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--color-ea-white);
+    color: var(--color-ea-text-primary);
+    font-family: var(--font-ea-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  html {
+    scroll-behavior: smooth;
+  }
 
-body {
-  width: 100%;
-}
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  a:not([class]) {
+    color: inherit;
+    text-decoration: none;
+  }
 
-button,
-input,
-textarea {
-  font: inherit;
-}
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  color: var(--color-ea-dark-teal);
-  font-family: var(--font-ea-heading);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-family: var(--font-ea-heading);
+    font-weight: normal;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 }

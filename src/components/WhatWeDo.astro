@@ -1,0 +1,62 @@
+---
+/**
+ * WhatWeDo — "What we do" three-column section
+ * Wix reference: section comp-loker22z
+ *   - bg: color_44 = rgb(12,134,155) = #0C869B
+ *   - Heading: "What we do" in Roboto Slab 36px, white, centered
+ *   - Three cards: IDEA FELLOWSHIP, SPEAKER EVENTS, CAREER PLANNING
+ *   - Each with uppercase label, horizontal line, description
+ */
+
+const cards = [
+  {
+    label: "IDEA\nFELLOWSHIP",
+    text: "An 8-week continuation from the Arete Fellowship. Dive deeper into problems that you find interesting!",
+  },
+  {
+    label: "SPEAKER\nEVENTS",
+    text: "We regularly invite external guest speakers in to talk about a wide range of topics!",
+  },
+  {
+    label: "CAREER\nPLANNING",
+    text: "Explore career path, network with professionals, and feel prepared to pursue an impactful career!",
+  },
+];
+---
+
+<section
+  id="what-we-do"
+  class="relative"
+  style="background-color: #0c869b;"
+>
+  <div class="mx-auto w-full max-w-[980px] px-5" style="padding-top: 32px; padding-bottom: 66px;">
+    <h1
+      class="mb-[39px] text-center font-ea-heading text-[36px] font-normal"
+      style="color: #ffffff;"
+    >
+      What we do
+    </h1>
+
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-[254px_254px_254px]" style="column-gap: 40px; padding-left: 47px;">
+      {cards.map((card) => (
+        <div class="text-center" style="color: #ffffff;">
+          <h3
+            class="mb-[18px] font-ea-body text-[14px] font-bold uppercase leading-normal"
+            style="letter-spacing: 0.4em; color: #ffffff;"
+          >
+            {card.label.split("\n").map((line, i) => (
+              <>
+                {i > 0 && <br />}
+                {line}
+              </>
+            ))}
+          </h3>
+          <hr class="mx-auto mb-[18px] h-[5px] w-[254px] border-0 border-t border-white" />
+          <p class="font-ea-body text-[16px] leading-[1.4]" style="color: #ffffff;">
+            {card.text}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

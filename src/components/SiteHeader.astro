@@ -1,0 +1,161 @@
+---
+/**
+ * SiteHeader — sticky teal header with logo, title, nav, and V-wave divider.
+ * Matches the Wix reference site exactly:
+ *   - bg: #0C869B (--color_44)
+ *   - 980px content area, logo 100x100 at left:35px, title at left:156px
+ *   - Nav: Raleway 700 15px uppercase white
+ *   - V-wave SVG hangs below header into the hero section
+ */
+
+interface NavItem {
+  label: string;
+  href: string;
+  children?: { label: string; href: string }[];
+}
+
+const navItems: NavItem[] = [
+  {
+    label: "PROGRAMMES",
+    href: "/programmes",
+    children: [
+      { label: "Arete Fellowship", href: "/arete-fellowship" },
+      { label: "IDEA Fellowship", href: "/idea-fellowship" },
+    ],
+  },
+  {
+    label: "OPPORTUNITIES",
+    href: "/opportunities",
+    children: [
+      { label: "Free 1-1 Careers Advice: 80,000 Hours", href: "/free-careers-advice" },
+      { label: "Current Opportunities", href: "/current-opportunities" },
+    ],
+  },
+  {
+    label: "CAUSES",
+    href: "/causes",
+    children: [
+      { label: "AI Safety", href: "/ai-safety" },
+      { label: "Animal Advocacy", href: "/animal-advocacy" },
+      { label: "Biosecurity", href: "/biosecurity" },
+    ],
+  },
+  { label: "EVENTS", href: "/events" },
+  { label: "CONTACT US", href: "/contact-us" },
+];
+---
+
+<header id="site-header" class="sticky top-0 z-50 w-full bg-[#0c869b]">
+  <div class="relative">
+    <!-- Content area: 980px centered -->
+    <div class="mx-auto w-full max-w-[980px] px-5">
+      <!-- Logo row -->
+      <div class="flex items-center gap-5 pt-5 pb-3">
+        <!-- Logo circle -->
+        <a href="/" class="flex-shrink-0" aria-label="EA Durham Home">
+          <img
+            src="/favicon.svg"
+            alt="EA Durham"
+            class="h-[100px] w-[100px]"
+          />
+        </a>
+
+        <!-- Title + Nav stacked vertically -->
+        <div class="flex min-w-0 flex-1 flex-col gap-2">
+          <!-- Title -->
+          <a href="/" class="block text-white">
+            <h1
+              class="font-ea-heading text-[30px] leading-tight"
+              style="font-weight: normal;"
+            >
+              <span class="font-bold">Effective</span> Altruism Durham
+            </h1>
+          </a>
+
+          <!-- Navigation -->
+          <nav aria-label="Site" class="hidden md:block">
+            <ul class="flex items-center gap-5">
+              {navItems.map((item) => (
+                <li class="group relative">
+                  <a
+                    href={item.href}
+                    class="inline-block py-1 text-[15px] font-bold leading-[30px] tracking-[0.05em] text-white transition-opacity hover:opacity-80"
+                  >
+                    {item.label}
+                  </a>
+                  {item.children && (
+                    <ul class="invisible absolute left-0 top-full z-[99999] min-w-[220px] rounded-[5px] bg-[#0c869b] p-4 pt-3 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                      {item.children.map((child) => (
+                        <li>
+                          <a
+                            href={child.href}
+                            class="block border-t border-white/20 px-2 py-2 text-sm text-white transition-opacity first:border-0 hover:opacity-80"
+                          >
+                            {child.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+
+        <details class="group relative ml-auto md:hidden">
+          <summary
+            class="flex h-12 w-12 cursor-pointer list-none items-center justify-center rounded-[5px] text-white transition-colors hover:bg-white/10 [&::-webkit-details-marker]:hidden"
+            aria-label="Open navigation menu"
+          >
+            <span class="sr-only">Open navigation menu</span>
+            <svg
+              viewBox="0 0 24 24"
+              class="h-8 w-8"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.25"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16"></path>
+              <path d="M4 12h16"></path>
+              <path d="M4 17h16"></path>
+            </svg>
+          </summary>
+          <nav
+            aria-label="Mobile site"
+            class="absolute right-0 top-full z-[99999] mt-3 w-[250px] rounded-[5px] bg-[#0c869b] p-4 shadow-lg"
+          >
+            <ul class="space-y-2">
+              {navItems.map((item) => (
+                <li>
+                  <a
+                    href={item.href}
+                    class="block px-2 py-2 text-[14px] font-bold tracking-[0.05em] text-white hover:bg-white/10"
+                  >
+                    {item.label}
+                  </a>
+                  {item.children && (
+                    <ul class="ml-3 border-l border-white/25 pl-3">
+                      {item.children.map((child) => (
+                        <li>
+                          <a
+                            href={child.href}
+                            class="block px-2 py-1.5 text-[13px] text-white hover:bg-white/10"
+                          >
+                            {child.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </details>
+      </div>
+    </div>
+  </div>
+</header>

@@ -34,3 +34,13 @@
 - Keep navigation changes in sync between the desktop dropdowns and mobile drawer in `src/layouts/Layout.astro`.
 - Use root-relative links for site routes, matching the existing `/programmes`, `/opportunities`, `/causes`, `/events`, and `/contact-us` pattern.
 - Before calling work complete, run `pnpm run build` unless the change is documentation-only.
+
+## Wix Reference Migration Notes
+
+- The exported Wix pages are fixed-width, visually positioned layouts. When porting another page, first inspect the reference page at a wide viewport and at 50% browser zoom, then map major sections to a centered `980px` canvas before tuning responsive behavior.
+- Use Playwright/browser screenshots for visual work. Compare against `reference_site/*.html` through a local static server if direct `file://` access is blocked.
+- Tailwind v4 layers matter: keep global resets in `@layer base` in `src/styles/global.css`. Unlayered heading, anchor, or paragraph resets after `@import "tailwindcss"` can override Tailwind utilities such as `mb-*`, `text-white`, and spacing classes.
+- The homepage reference match succeeded by using small, page-specific Astro components for each section, with Tailwind for ordinary styling and a few inline numeric values where Wix-style exact positioning was needed.
+- For header/logo work, use the actual `public/favicon.svg` mark directly for the header icon rather than nesting it inside another white circle; the SVG already contains the white circular background.
+- Keep desktop navigation and mobile navigation in sync. The Wix reference is not mobile-friendly, so Astro pages should add a small-screen burger menu while preserving the desktop reference layout.
+- Many Wix dividers are SVG shapes, not simple borders. Reuse the extracted divider SVG/path when matching top notches or sloped section transitions.

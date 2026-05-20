@@ -1,0 +1,58 @@
+---
+/**
+ * WhatIsEA — "What is Effective Altruism?" section
+ * Wix reference: section comp-loker22v
+ *   - bg: color_43 = #054D5A
+ *   - Heading: "What is / Effective Altruism?" at left:35px, Roboto Slab 40px, white
+ *   - Description text at left:492px, width:407px, Raleway 18px, white
+ *   - Video player at left:0px, 449x253, below heading
+ *
+ * The video is below the heading on the left, with the description to its right.
+ */
+---
+
+<section
+  id="what-is-ea"
+  class="relative overflow-hidden"
+  style="background-color: #054d5a;"
+>
+  <div class="mx-auto grid w-full max-w-[980px] px-5" style="min-height: 525px; grid-template-columns: 554px 319px; grid-template-rows: min-content min-content; column-gap: 44px;">
+    <div style="grid-column: 1; grid-row: 1; margin-left: 74px; margin-top: 49px; width: 441px;">
+        <h3 class="font-ea-heading text-[40px] leading-[1.4] font-normal text-white">
+          What is<br />
+          <span class="font-bold">Effective&nbsp;</span>Altruism?
+        </h3>
+    </div>
+    <div class="font-ea-body text-[18px] leading-[1.4] text-white" style="grid-column: 2; grid-row: 2; margin-top: 58px; width: 319px;">
+        <p>
+          <a
+            href="https://www.effectivealtruism.org/"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="text-white underline">Effective Altruism</a
+          > is a framework for applying evidence-based reasoning to
+          <a
+            href="https://80000hours.org/problem-profiles/"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="text-white underline"
+            >the world's most pressing problems</a
+          >. It's also a practical community sharing diverse views on which
+          problems to prioritise and how to tackle them.
+        </p>
+    </div>
+    <div style="grid-column: 1; grid-row: 2; margin-left: 74px; margin-top: 48px; width: 480px; height: 270px;">
+      <iframe
+        class="h-full w-full"
+        width="560"
+        height="315"
+        src="https://www.youtube-nocookie.com/embed/Diuv3XZQXyc?si=p6XQuSQe5CiJ9SsC"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+  </div>
+</section>

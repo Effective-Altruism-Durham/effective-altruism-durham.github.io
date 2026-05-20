@@ -1,0 +1,124 @@
+---
+/**
+ * HeroSection — the white hero on the homepage.
+ * Wix reference: section comp-lssw2v5b
+ *   - bg: white (#FFFFFF)
+ *   - Lightbulb SVG: 393x591px, at calc((100%-980px)/2 - 102px) from left, 10% opacity
+ *   - Content starts at ~182px from the 980px content area left edge
+ *   - Body text width: ~410px, Raleway 18px, black
+ *   - Buttons: 255px wide, purple #68246D
+ *   - Bottom divider: organic wave in dark teal #054D5A, 50px
+ */
+---
+
+<section
+  id="hero-section"
+  class="relative overflow-hidden"
+  style="background-color: #ffffff;"
+>
+  <div
+    class="pointer-events-none absolute left-0 top-0 z-[3] w-full"
+    style="height: 100px; background-image: url(&quot;data:image/svg+xml,%3Csvg preserveAspectRatio='xMidYMax slice' viewBox='0 235.771 1920 64.229' width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%230C869B' d='M970.29 244.628 960 235.771l-10.289 8.857a167.374 167.374 0 0 1-109.19 40.521H0V300h1920v-14.852h-840.521a167.373 167.373 0 0 1-109.189-40.52z'/%3E%3C/svg%3E&quot;); background-size: 2990px 100%; background-position: left calc(50% + 485px) bottom; background-repeat: repeat-x; transform: scaleY(-1); transform-origin: center center;"
+  ></div>
+  <!-- Background lightbulb SVG — positioned via calc to match Wix:
+       Wix: margin-left: calc((100% - 980px) * 0.5), then left: -102px
+       Combined: left: calc(50% - 490px - 102px) = calc(50% - 592px)
+       This positions it so ~75% is visible, clipped by overflow-hidden -->
+  <svg
+    class="pointer-events-none absolute z-[1]"
+    style="left: calc(50% - 675px); top: 18px; width: 393px; height: 591px; opacity: 0.1;"
+    viewBox="0 0 700 1050"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-miterlimit="2"
+    aria-hidden="true"
+  >
+    <g>
+      <path
+        d="M299.209 567.046s-90.551-77.029-90.551-156.983c0-51.159 28.577-84.104 73.09-84.104 39.859 0 79.164 52.584 79.164 82.748 0 13.029-5.058 19.635-12.076 19.635s-11.9-7.923-11.9-19.444c0-30.558 44.904-82.3 85.373-82.3 43.455 0 68.622 38.133 68.622 74.645 0 69.71-41.409 137.769-97.446 213.228-60.275 81.165-82.303 74.003-116.496 74.003s-56.095-5.167-71.951-17.871c-32.774-26.26-21.856-63.119-60.95-124.346s-75.663-81.403-81.231-199.244c-5.825-123.285 91.337-294.92 286.71-294.92 222.813 0 297.538 207.78 287.912 300.885 0 0 2.966 91.763-68.396 181.679s-55.696 160.952-62.624 197.577c-13.012 68.787-175.551 82.329-265.949 82.253 89.986 0 253.219-4.421 253.896 60.537.674 64.679-144.839 53-251.185 52.114 105.578 1.269 208.518-3.463 252.835 70.209"
+        fill="none"
+        stroke="#68246d"
+        stroke-width="52"
+      ></path>
+    </g>
+  </svg>
+
+  <!-- Hero content -->
+  <div
+    class="relative z-[2] mx-auto w-full max-w-[980px] px-5"
+    style="min-height: 590px; padding-top: 75px; padding-bottom: 190px;"
+  >
+    <!-- Heading — offset right to clear the lightbulb (Wix: left:182px) -->
+    <h3
+      class="font-ea-heading text-[40px] leading-[1.4]"
+      style="color: #054d5a; padding-left: 74px; margin-bottom: 78px;"
+    >
+      We aspire to do the most good we can
+    </h3>
+
+    <!-- Two-column layout matching Wix: text at left:182px (410px wide), buttons at left:596px (255px wide) -->
+    <div class="grid items-start gap-y-4 md:grid-cols-[441px_268px]" style="padding-left: 74px; column-gap: 122px;">
+      <!-- Left: body text -->
+      <div class="font-ea-body text-[18px] leading-[1.4] text-black" style="width: 441px; max-width: 100%;">
+        <p class="mb-5">
+          We represent the <a
+            href="https://www.effectivealtruism.org/"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="underline">Effective Altruism</a
+          > movement in Durham University. By reasoning carefully and considering
+          evidence, we can maximise our positive impact on the world.
+        </p>
+        <p>
+          We empower students who want to make a change through our programmes,
+          events, and community.
+        </p>
+      </div>
+
+      <!-- Right: CTA buttons (255px wide, positioned at right side) -->
+      <div class="flex flex-col gap-[22px]" style="width: 268px;">
+        <a
+          href="/#get-involved"
+          class="group flex h-[70px] w-full items-center justify-center gap-3 rounded-[5px] px-6 text-center text-[16px] font-bold text-white transition-colors"
+          style="background-color: #68246d;"
+          onmouseover="this.style.backgroundColor='#541d58'"
+          onmouseout="this.style.backgroundColor='#68246d'"
+        >
+          <span>Get involved</span>
+          <svg viewBox="0 0 60 60" class="h-4 w-4 fill-current" aria-hidden="true">
+            <path d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"></path>
+          </svg>
+        </a>
+        <a
+          href="https://outlook.office365.com/owa/effectivealtruismdurham@durhamuniversity.onmicrosoft.com/groupsubscription.ashx?action=join&source=MSExchange/LokiServer&guid=e5909571-b397-42c5-99bc-b362c640ca29"
+          target="_blank"
+          rel="noreferrer noopener"
+          class="group flex h-[70px] w-full items-center justify-center gap-3 rounded-[5px] px-6 text-center text-[16px] font-bold text-white transition-colors"
+          style="background-color: #68246d;"
+          onmouseover="this.style.backgroundColor='#541d58'"
+          onmouseout="this.style.backgroundColor='#68246d'"
+        >
+          <span>Join the mailing list</span>
+          <svg viewBox="0 0 60 60" class="h-4 w-4 fill-current" aria-hidden="true">
+            <path d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom wave divider: organic wave, dark teal #054D5A, 50px -->
+  <svg
+    class="pointer-events-none absolute bottom-0 left-0 w-full"
+    style="height: 50px;"
+    viewBox="0 100 1920 200"
+    preserveAspectRatio="none"
+    fill="#054d5a"
+  >
+    <path
+      d="M1920 300v-4.067c-455.162 0-690.876-51.203-1082.65-129.288C490.044 97.423 0 100.013 0 100.013V300h1920z"
+    ></path>
+  </svg>
+</section>

@@ -1,6 +1,8 @@
 .antigravitycli/
 .pnpm-store/*
 .rtk/
+.superpowers/
+.playwright-mcp/
 
 # build output
 dist/
