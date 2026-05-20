@@ -113,6 +113,7 @@ Use `apply_patch` to replace the file with:
 
 @theme {
   --color-ea-cream: #f4efe9;
+  --color-ea-beige: #f4efe9;
   --color-ea-white: #ffffff;
   --color-ea-dark-teal: #054d5a;
   --color-ea-active-teal: #0c869b;
@@ -163,14 +164,14 @@ h6 {
 }
 ```
 
-Expected: The old `ea-beige` token is replaced by `ea-cream`. Later file changes must use `bg-ea-cream` rather than `bg-ea-beige`.
+Expected: New files can use `ea-cream`, while the existing `ea-beige` alias keeps untouched pages compiling until their separate styling pass.
 
 - [ ] **Step 2: Run a fast style token sanity check**
 
 Run:
 
 ```bash
-rg -n "ea-beige|gradient|blur-3xl|rounded-3xl|animate-ping|animate-pulse" src/styles/global.css src/layouts/Layout.astro src/components/NavigationDropdown.astro src/pages/index.astro
+rg -n "gradient|blur-3xl|rounded-3xl|animate-ping|animate-pulse" src/styles/global.css src/layouts/Layout.astro src/components/NavigationDropdown.astro src/pages/index.astro
 ```
 
 Expected: Matches may still exist in the files not yet updated. `src/styles/global.css` should have no matches.
@@ -441,11 +442,6 @@ const homepageHero = {
   ],
 };
 
-const effectiveAltruism = {
-  title: 'What is Effective Altruism?',
-  body: "Effective Altruism is a framework for applying evidence-based reasoning to the world's most pressing problems. It's also a practical community sharing diverse views on which problems to prioritise and how to tackle them.",
-};
-
 const arete = {
   title: 'Arete Fellowship',
   body: 'An 8-week seminar programme aimed to introduce you to ideas from various disciplines for making a positive impact on the world.',
@@ -636,23 +632,7 @@ Run:
 rg -n "ea-beige" src
 ```
 
-Expected: Output may show existing non-homepage pages still using `ea-beige`. If pages fail to build because `ea-beige` is undefined, add a compatibility alias in `src/styles/global.css`:
-
-```css
-@theme {
-  --color-ea-beige: #f4efe9;
-}
-```
-
-If the alias is needed, add it inside the existing `@theme` block rather than creating a second block, then run:
-
-```bash
-pnpm run build
-rtk git add src/styles/global.css
-rtk git commit -m "style: preserve legacy cream token alias"
-```
-
-Expected: Build succeeds before committing the alias.
+Expected: Output may show existing non-homepage pages still using `ea-beige`. This is acceptable because Task 2 preserved the `ea-beige` compatibility alias.
 
 - [ ] **Step 2: Run full production build**
 
