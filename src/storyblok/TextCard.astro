@@ -1,5 +1,25 @@
 ---
+import { storyblokEditable } from "@storyblok/astro";
+
 const { blok } = Astro.props;
+const label = blok.label || "";
+const text = blok.text || "";
 ---
 
-<span>{blok.label}</span>
+<div {...storyblokEditable(blok)} class="text-center" style="color: #ffffff;">
+  <h3
+    class="mb-[18px] font-ea-body text-[14px] font-bold uppercase leading-normal"
+    style="letter-spacing: 0.4em; color: #ffffff;"
+  >
+    {label.split("\n").map((line, i) => (
+      <>
+        {i > 0 && <br />}
+        {line}
+      </>
+    ))}
+  </h3>
+  <hr class="mx-auto mb-[18px] h-[5px] w-[254px] border-0 border-t border-white" />
+  <p class="font-ea-body text-[16px] leading-[1.4]" style="color: #ffffff;">
+    {text}
+  </p>
+</div>

@@ -1,17 +1,20 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import WhatWeDo from "../components/WhatWeDo.astro";
 import { homepageDefaults } from "../data/homepageDefaults";
 
 const { blok } = Astro.props;
-const cards = blok.cards?.length
-  ? blok.cards.map((card) => ({
-      label: card.label || "",
-      text: card.text || "",
-    }))
-  : homepageDefaults.whatWeDo.cards;
+const hasCardsField = Array.isArray(blok.cards);
+const cards = hasCardsField ? blok.cards : [];
 ---
 
 <div {...storyblokEditable(blok)}>
-  <WhatWeDo heading={blok.heading || homepageDefaults.whatWeDo.heading} cards={cards} />
+  <WhatWeDo heading={blok.heading || homepageDefaults.whatWeDo.heading}>
+    {hasCardsField && (
+      <Fragment slot="cards">
+        {cards.map((card) => <StoryblokComponent blok={card} />)}
+      </Fragment>
+    )}
+  </WhatWeDo>
 </div>

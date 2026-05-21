@@ -1,5 +1,7 @@
 # Notes
 
+netlify cms - https://developers.netlify.com/guides/add-visual-editor-to-astro-website/
+
 1) make site identical to reference but with updated backend (astro / tailwind / storyblok)
 2) THEN update frontend sections as desired
    1) match styles of home, events and contact us pages (newer)
