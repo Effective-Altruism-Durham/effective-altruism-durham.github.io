@@ -7,9 +7,10 @@ import { homepageDefaults } from "../data/homepageDefaults";
 import { normalizeAnchorId, resolveBackgroundClass } from "./storyblok-utils";
 
 const { blok } = Astro.props;
-const buttons = Array.isArray(blok.buttons) ? blok.buttons : [];
+const hasButtonsField = Array.isArray(blok.buttons);
+const buttons = hasButtonsField ? blok.buttons : [];
 const sectionId = normalizeAnchorId(blok.anchor_id);
-const backgroundClass = resolveBackgroundClass(blok.background_style);
+const backgroundClass = blok.background_style ? resolveBackgroundClass(blok.background_style) : undefined;
 ---
 
 <div {...storyblokEditable(blok)}>
@@ -20,7 +21,7 @@ const backgroundClass = resolveBackgroundClass(blok.background_style);
     sectionId={sectionId}
     backgroundClass={backgroundClass}
   >
-    {buttons.length > 0 && (
+    {hasButtonsField && (
       <Fragment slot="buttons">
         {buttons.map((button) => <StoryblokComponent blok={button} />)}
       </Fragment>

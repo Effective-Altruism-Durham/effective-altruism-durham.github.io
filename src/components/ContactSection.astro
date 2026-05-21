@@ -12,6 +12,17 @@ import { homepageDefaults } from "../data/homepageDefaults";
 const { 
   heading = homepageDefaults.contact.heading,
   bodyHtml,
+  firstNameLabel = "First name",
+  firstNamePlaceholder = "Will",
+  lastNameLabel = "Last name",
+  lastNamePlaceholder = "MacAskill",
+  emailLabel = "Email",
+  emailPlaceholder = "william@example.com",
+  subjectLabel = "Subject",
+  subjectPlaceholder = "Subject",
+  messageLabel = "Message",
+  messagePlaceholder = "Write your message here...",
+  submitLabel = "Submit",
   sectionId = "contact-section",
   backgroundClass,
 } = Astro.props;
@@ -44,20 +55,45 @@ const hasButtonsSlot = Astro.slots.has("buttons");
       </div>
     )}
 
-    <form class="mx-auto grid max-w-[797px] md:grid-cols-[304px_471px]" style="column-gap: 21px;" id="contact-form">
+    <div id="contact-success-message" class="hidden mx-auto max-w-[629px] text-center font-ea-body text-white p-8 rounded-[5px] border border-emerald-500/30 bg-emerald-950/40" style="margin-top: 20px; margin-bottom: 20px;">
+      <svg class="mx-auto mb-4 h-12 w-12 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <h4 class="text-xl font-bold mb-2">Thank You!</h4>
+      <p>Your message has been sent successfully. We will get back to you as soon as possible.</p>
+    </div>
+
+    <div id="contact-error-message" class="hidden mx-auto mb-6 max-w-[629px] text-center font-ea-body text-[14px] text-red-200 p-4 rounded-[5px] border border-red-500/30 bg-red-950/40">
+      <p>Something went wrong. Please check your connection and try again.</p>
+    </div>
+
+    <form
+      class="mx-auto grid max-w-[797px] md:grid-cols-[304px_471px]"
+      style="column-gap: 21px;"
+      id="contact-form"
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      netlify
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="hidden">
+        <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+      </p>
       <div class="grid grid-cols-1">
         <div>
           <label
             for="first-name"
             class="mb-[9px] block font-ea-body text-[12px] text-white"
           >
-            First name
+            {firstNameLabel}
           </label>
           <input
             type="text"
             id="first-name"
             name="first-name"
-            placeholder="Will"
+            placeholder={firstNamePlaceholder}
             required
             class="h-8 w-full rounded-[5px] border-0 bg-white px-[7px] py-[3px] font-ea-body text-[16px] text-black outline-none"
           />
@@ -67,13 +103,13 @@ const hasButtonsSlot = Astro.slots.has("buttons");
             for="last-name"
             class="mb-[9px] block font-ea-body text-[12px] text-white"
           >
-            Last name
+            {lastNameLabel}
           </label>
           <input
             type="text"
             id="last-name"
             name="last-name"
-            placeholder="MacAskill"
+            placeholder={lastNamePlaceholder}
             required
             class="h-8 w-full rounded-[5px] border-0 bg-white px-[7px] py-[3px] font-ea-body text-[16px] text-black outline-none"
           />
@@ -84,13 +120,13 @@ const hasButtonsSlot = Astro.slots.has("buttons");
           for="email"
           class="mb-[9px] block font-ea-body text-[12px] text-white"
         >
-          Email
+          {emailLabel}
         </label>
         <input
           type="email"
           id="email"
           name="email"
-          placeholder="william@example.com"
+          placeholder={emailPlaceholder}
           required
           class="h-[34px] w-full rounded-[5px] border-0 bg-white px-[7px] py-[3px] font-ea-body text-[16px] text-black outline-none"
         />
@@ -101,13 +137,13 @@ const hasButtonsSlot = Astro.slots.has("buttons");
           for="subject"
           class="mb-[9px] block font-ea-body text-[12px] text-white"
         >
-          Subject
+          {subjectLabel}
         </label>
         <input
           type="text"
           id="subject"
           name="subject"
-          placeholder="Subject"
+          placeholder={subjectPlaceholder}
           required
           class="h-9 w-full rounded-[5px] border-0 bg-white px-[7px] py-[3px] font-ea-body text-[16px] text-black outline-none"
         />
@@ -119,12 +155,12 @@ const hasButtonsSlot = Astro.slots.has("buttons");
           for="message"
           class="mb-[9px] block font-ea-body text-[12px] text-white"
         >
-          Message
+          {messageLabel}
         </label>
         <textarea
           id="message"
           name="message"
-          placeholder="Write your message here..."
+          placeholder={messagePlaceholder}
           required
           rows="8"
           class="h-[244px] w-full resize-none rounded-[5px] border-0 bg-white px-[7px] py-[3px] font-ea-body text-[12px] text-black outline-none"
@@ -139,9 +175,63 @@ const hasButtonsSlot = Astro.slots.has("buttons");
           onmouseover="this.style.backgroundColor='#054d5a'"
           onmouseout="this.style.backgroundColor='#0c869b'"
         >
-          Submit
+          {submitLabel}
         </button>
       </div>
     </form>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const successMessage = document.getElementById("contact-success-message");
+  const errorMessage = document.getElementById("contact-error-message");
+  const submitButton = form?.querySelector("button[type='submit']") as HTMLButtonElement | null;
+
+  if (form && successMessage && errorMessage && submitButton) {
+    const originalBtnText = submitButton.textContent;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // Hide error message if previously shown
+      errorMessage.classList.add("hidden");
+
+      // Set submitting state
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+      const originalBg = submitButton.style.backgroundColor;
+      submitButton.style.backgroundColor = "#054d5a";
+
+      const formData = new FormData(form);
+      const searchParams = new URLSearchParams();
+
+      for (const [key, value] of formData.entries()) {
+        searchParams.append(key, value as string);
+      }
+
+      try {
+        const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: searchParams.toString(),
+        });
+
+        if (response.ok) {
+          // Hide form and show success message
+          form.classList.add("hidden");
+          successMessage.classList.remove("hidden");
+          successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+          throw new Error("Failed to submit form");
+        }
+      } catch (err) {
+        console.error(err);
+        errorMessage.classList.remove("hidden");
+        submitButton.disabled = false;
+        if (originalBtnText) submitButton.textContent = originalBtnText;
+        submitButton.style.backgroundColor = originalBg;
+      }
+    });
+  }
+</script>

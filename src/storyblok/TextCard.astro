@@ -1,9 +1,12 @@
 ---
 import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import { resolveStoryblokUrl } from "./storyblok-utils";
 
 const { blok } = Astro.props;
 const label = blok.label || "";
 const textHtml = blok.text && typeof blok.text === "object" ? renderRichText(blok.text) : "";
+const href = resolveStoryblokUrl(blok.link);
+const linkLabel = blok.link_label || "Learn more";
 ---
 
 <div {...storyblokEditable(blok)} class="text-center" style="color: #ffffff;">
@@ -27,5 +30,15 @@ const textHtml = blok.text && typeof blok.text === "object" ? renderRichText(blo
     <p class="font-ea-body text-[16px] leading-[1.4]" style="color: #ffffff;">
       {blok.text || ""}
     </p>
+  )}
+  {href && (
+    <a
+      href={href}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel={href.startsWith("http") ? "noreferrer noopener" : undefined}
+      class="mt-4 inline-block font-ea-body text-[14px] font-bold underline"
+    >
+      {linkLabel}
+    </a>
   )}
 </div>

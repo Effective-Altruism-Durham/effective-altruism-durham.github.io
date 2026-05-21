@@ -16,20 +16,27 @@ const {
   headline = homepageDefaults.hero.headline,
   bodyHtml = homepageDefaults.hero.bodyHtml,
   ctas = homepageDefaults.hero.ctas,
+  sectionId = "hero-section",
+  backgroundClass,
+  dividerStyle,
 } = Astro.props;
 
 const hasCtaSlot = Astro.slots.has("ctas");
+const showTopDivider = !dividerStyle || dividerStyle === "top_notch";
+const showBottomDivider = !dividerStyle || dividerStyle === "bottom_wave";
 ---
 
 <section
-  id="hero-section"
-  class="relative overflow-hidden"
-  style="background-color: #ffffff;"
+  id={sectionId}
+  class={`relative overflow-hidden ${backgroundClass || ""}`}
+  style={backgroundClass ? undefined : "background-color: #ffffff;"}
 >
-  <div
-    class="pointer-events-none absolute left-0 top-0 z-[3] w-full"
-    style="height: 100px; background-image: url(&quot;data:image/svg+xml,%3Csvg preserveAspectRatio='xMidYMax slice' viewBox='0 235.771 1920 64.229' width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%230C869B' d='M970.29 244.628 960 235.771l-10.289 8.857a167.374 167.374 0 0 1-109.19 40.521H0V300h1920v-14.852h-840.521a167.373 167.373 0 0 1-109.189-40.52z'/%3E%3C/svg%3E&quot;); background-size: 2990px 100%; background-position: left calc(50% + 485px) bottom; background-repeat: repeat-x; transform: scaleY(-1); transform-origin: center center;"
-  ></div>
+  {showTopDivider && (
+    <div
+      class="pointer-events-none absolute left-0 top-0 z-[3] w-full"
+      style="height: 100px; background-image: url(&quot;data:image/svg+xml,%3Csvg preserveAspectRatio='xMidYMax slice' viewBox='0 235.771 1920 64.229' width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%230C869B' d='M970.29 244.628 960 235.771l-10.289 8.857a167.374 167.374 0 0 1-109.19 40.521H0V300h1920v-14.852h-840.521a167.373 167.373 0 0 1-109.189-40.52z'/%3E%3C/svg%3E&quot;); background-size: 2990px 100%; background-position: left calc(50% + 485px) bottom; background-repeat: repeat-x; transform: scaleY(-1); transform-origin: center center;"
+    ></div>
+  )}
   <!-- Background lightbulb SVG — positioned via calc to match Wix:
        Wix: margin-left: calc((100% - 980px) * 0.5), then left: -102px
        Combined: left: calc(50% - 490px - 102px) = calc(50% - 592px)
@@ -102,15 +109,17 @@ const hasCtaSlot = Astro.slots.has("ctas");
   </div>
 
   <!-- Bottom wave divider: organic wave, dark teal #054D5A, 50px -->
-  <svg
-    class="pointer-events-none absolute bottom-0 left-0 w-full"
-    style="height: 50px;"
-    viewBox="0 100 1920 200"
-    preserveAspectRatio="none"
-    fill="#054d5a"
-  >
-    <path
-      d="M1920 300v-4.067c-455.162 0-690.876-51.203-1082.65-129.288C490.044 97.423 0 100.013 0 100.013V300h1920z"
-    ></path>
-  </svg>
+  {showBottomDivider && (
+    <svg
+      class="pointer-events-none absolute bottom-0 left-0 w-full"
+      style="height: 50px;"
+      viewBox="0 100 1920 200"
+      preserveAspectRatio="none"
+      fill="#054d5a"
+    >
+      <path
+        d="M1920 300v-4.067c-455.162 0-690.876-51.203-1082.65-129.288C490.044 97.423 0 100.013 0 100.013V300h1920z"
+      ></path>
+    </svg>
+  )}
 </section>

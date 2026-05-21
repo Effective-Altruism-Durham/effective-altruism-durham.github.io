@@ -14,12 +14,14 @@ export async function getStoryblokSiteSettings() {
     if (!content) return undefined;
 
     return {
+      blok: content,
       siteName: content.site_name || "Effective Altruism Durham",
       logo: content.logo?.filename || undefined,
       navigation: Array.isArray(content.navigation)
         ? content.navigation.map((item: any) => ({
             label: item.label || "",
             url: resolveStoryblokUrl(item.link),
+            blok: item,
           })).filter((item: any) => item.label && item.url)
         : undefined,
       footerHtml: content.footer_text ? renderRichText(content.footer_text) : undefined,
@@ -27,6 +29,7 @@ export async function getStoryblokSiteSettings() {
         ? content.footer_links.map((item: any) => ({
             label: item.label || "",
             url: resolveStoryblokUrl(item.link),
+            blok: item,
           })).filter((item: any) => item.label && item.url)
         : undefined,
     };

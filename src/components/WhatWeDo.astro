@@ -13,10 +13,18 @@ import { homepageDefaults } from "../data/homepageDefaults";
 const {
   heading = homepageDefaults.whatWeDo.heading,
   cards = homepageDefaults.whatWeDo.cards,
+  introHtml,
+  columns = "3",
   sectionId = "what-we-do",
   backgroundClass,
 } = Astro.props;
 const hasCardSlot = Astro.slots.has("cards");
+const columnsClass =
+  columns === "2"
+    ? "md:grid-cols-2"
+    : columns === "4"
+      ? "md:grid-cols-4"
+      : "md:grid-cols-[254px_254px_254px]";
 ---
 
 <section
@@ -31,8 +39,13 @@ const hasCardSlot = Astro.slots.has("cards");
     >
       {heading}
     </h1>
+    {introHtml && (
+      <div class="mx-auto mb-[39px] max-w-[700px] text-center font-ea-body text-[16px] leading-[1.5] text-white">
+        <Fragment set:html={introHtml} />
+      </div>
+    )}
 
-    <div class="grid grid-cols-1 gap-10 md:grid-cols-[254px_254px_254px]" style="column-gap: 40px; padding-left: 47px;">
+    <div class={`grid grid-cols-1 gap-10 ${columnsClass}`} style="column-gap: 40px; padding-left: 47px;">
       {hasCardSlot ? (
         <slot name="cards" />
       ) : (

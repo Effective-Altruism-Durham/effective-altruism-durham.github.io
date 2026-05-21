@@ -9,6 +9,7 @@
 import { homepageDefaults } from "../data/homepageDefaults";
 
 const {
+  heading,
   links = homepageDefaults.socialLinks,
   sectionId = "social-links",
   backgroundClass,
@@ -23,7 +24,11 @@ const hasLinksSlot = Astro.slots.has("links");
   class={`relative ${backgroundClass || ""}`}
   style={backgroundClass ? undefined : "background-color: #054d5a;"}
 >
-  <div class="mx-auto flex w-full max-w-[980px] items-center justify-center px-5" style="height: 81px; gap: 38px;">
+  <div class="mx-auto w-full max-w-[980px] px-5 py-5 text-center">
+    {heading && (
+      <h2 class="mb-5 font-ea-heading text-[28px] font-normal text-white">{heading}</h2>
+    )}
+    <div class="flex items-center justify-center" style="gap: 38px;">
     {hasLinksSlot ? (
       <slot name="links" />
     ) : (
@@ -81,5 +86,6 @@ const hasLinksSlot = Astro.slots.has("links");
         </a>
       </>
     )}
+    </div>
   </div>
 </section>

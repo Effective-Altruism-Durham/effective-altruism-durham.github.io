@@ -60,3 +60,34 @@ test("repeatable visual items render nested Storyblok blocks", async () => {
     assert.match(content, /StoryblokComponent/, `${path} must render nested blocks`);
   }
 });
+
+test("empty Storyblok repeatable fields suppress hardcoded fallback items", async () => {
+  for (const path of [files.hero, files.cta, files.cardGrid, files.socialLinks, files.contact]) {
+    const content = await source(path);
+    assert.doesNotMatch(content, /\w+\.length\s*>\s*0/, `${path} must render the slot even when the CMS array is empty`);
+  }
+});
+
+test("documented homepage schema fields are consumed by renderers", async () => {
+  const hero = await source(files.hero);
+  assert.match(hero, /blok\.background_style/);
+  assert.match(hero, /blok\.divider_style/);
+  assert.match(hero, /blok\.anchor_id/);
+
+  const video = await source("src/storyblok/RichTextVideoSection.astro");
+  assert.match(video, /blok\.layout/);
+
+  const cardGrid = await source(files.cardGrid);
+  assert.match(cardGrid, /blok\.intro/);
+  assert.match(cardGrid, /blok\.columns/);
+
+  const textCard = await source(files.textCard);
+  assert.match(textCard, /blok\.link/);
+
+  const socialLinks = await source(files.socialLinks);
+  assert.match(socialLinks, /blok\.heading/);
+
+  const contact = await source(files.contact);
+  assert.match(contact, /blok\.first_name_label/);
+  assert.match(contact, /blok\.submit_label/);
+});

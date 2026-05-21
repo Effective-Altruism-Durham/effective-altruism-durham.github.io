@@ -5,17 +5,19 @@ import SocialLinks from "../components/SocialLinks.astro";
 import { normalizeAnchorId, resolveBackgroundClass } from "./storyblok-utils";
 
 const { blok } = Astro.props;
-const links = Array.isArray(blok.links) ? blok.links : [];
+const hasLinksField = Array.isArray(blok.links);
+const links = hasLinksField ? blok.links : [];
 const sectionId = normalizeAnchorId(blok.anchor_id);
-const backgroundClass = resolveBackgroundClass(blok.background_style);
+const backgroundClass = blok.background_style ? resolveBackgroundClass(blok.background_style) : undefined;
 ---
 
 <div {...storyblokEditable(blok)}>
   <SocialLinks
+    heading={blok.heading}
     sectionId={sectionId}
     backgroundClass={backgroundClass}
   >
-    {links.length > 0 && (
+    {hasLinksField && (
       <Fragment slot="links">
         {links.map((link) => <StoryblokComponent blok={link} />)}
       </Fragment>

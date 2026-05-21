@@ -3,17 +3,24 @@ import { renderRichText, storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import HeroSection from "../components/HeroSection.astro";
 import { homepageDefaults } from "../data/homepageDefaults";
+import { normalizeAnchorId, resolveBackgroundClass } from "./storyblok-utils";
 
 const { blok } = Astro.props;
-const buttons = Array.isArray(blok.buttons) ? blok.buttons : [];
+const hasButtonsField = Array.isArray(blok.buttons);
+const buttons = hasButtonsField ? blok.buttons : [];
+const sectionId = normalizeAnchorId(blok.anchor_id);
+const backgroundClass = blok.background_style ? resolveBackgroundClass(blok.background_style) : undefined;
 ---
 
 <div {...storyblokEditable(blok)}>
   <HeroSection
     headline={blok.headline || homepageDefaults.hero.headline}
     bodyHtml={blok.body ? renderRichText(blok.body) : homepageDefaults.hero.bodyHtml}
+    sectionId={sectionId}
+    backgroundClass={backgroundClass}
+    dividerStyle={blok.divider_style}
   >
-    {buttons.length > 0 && (
+    {hasButtonsField && (
       <Fragment slot="ctas">
         {buttons.map((button) => <StoryblokComponent blok={button} />)}
       </Fragment>

@@ -15,3 +15,12 @@ test("layout passes site settings to header and footer", async () => {
   assert.match(source, /SiteFooter/);
   assert.match(source, /siteSettings/);
 });
+
+test("site settings surfaces expose visual editor boundaries", async () => {
+  const header = await readFile(new URL("../src/components/SiteHeader.astro", import.meta.url), "utf8");
+  const footer = await readFile(new URL("../src/components/SiteFooter.astro", import.meta.url), "utf8");
+  assert.match(header, /storyblokEditable/);
+  assert.match(header, /item\.blok/);
+  assert.match(footer, /storyblokEditable/);
+  assert.match(footer, /link\.blok/);
+});

@@ -16,9 +16,31 @@ const {
   headingHtml = homepageDefaults.whatIsEa.headingHtml,
   bodyHtml = homepageDefaults.whatIsEa.bodyHtml,
   videoUrl = homepageDefaults.whatIsEa.videoUrl,
+  layout = "text_right",
   sectionId = "what-is-ea",
   backgroundClass,
 } = Astro.props;
+
+const isStacked = layout === "stacked";
+const textFirst = layout === "text_left";
+const gridStyle = isStacked
+  ? "min-height: 525px; grid-template-columns: 1fr; grid-template-rows: auto auto auto;"
+  : "min-height: 525px; grid-template-columns: 554px 319px; grid-template-rows: min-content min-content; column-gap: 44px;";
+const headingStyle = isStacked
+  ? "grid-column: 1; grid-row: 1; margin: 49px auto 0; width: min(700px, 100%);"
+  : textFirst
+    ? "grid-column: 1; grid-row: 1; margin-left: 74px; margin-top: 49px; width: 441px;"
+    : "grid-column: 1; grid-row: 1; margin-left: 74px; margin-top: 49px; width: 441px;";
+const bodyStyle = isStacked
+  ? "grid-column: 1; grid-row: 2; margin: 24px auto 0; width: min(700px, 100%);"
+  : textFirst
+    ? "grid-column: 1; grid-row: 2; margin-left: 74px; margin-top: 58px; width: 319px;"
+    : "grid-column: 2; grid-row: 2; margin-top: 58px; width: 319px;";
+const videoStyle = isStacked
+  ? "grid-column: 1; grid-row: 3; margin: 48px auto 0; width: min(480px, 100%); height: 270px;"
+  : textFirst
+    ? "grid-column: 2; grid-row: 2; margin-top: 48px; width: 480px; height: 270px;"
+    : "grid-column: 1; grid-row: 2; margin-left: 74px; margin-top: 48px; width: 480px; height: 270px;";
 ---
 
 <section
@@ -26,16 +48,16 @@ const {
   class={`relative overflow-hidden ${backgroundClass || ""}`}
   style={backgroundClass ? undefined : "background-color: #054d5a;"}
 >
-  <div class="mx-auto grid w-full max-w-[980px] px-5" style="min-height: 525px; grid-template-columns: 554px 319px; grid-template-rows: min-content min-content; column-gap: 44px;">
-    <div style="grid-column: 1; grid-row: 1; margin-left: 74px; margin-top: 49px; width: 441px;">
+  <div class="mx-auto grid w-full max-w-[980px] px-5" style={gridStyle}>
+    <div style={headingStyle}>
       <h3 class="font-ea-heading text-[40px] leading-[1.4] font-normal text-white">
           <Fragment set:html={headingHtml} />
         </h3>
     </div>
-    <div class="font-ea-body text-[18px] leading-[1.4] text-white" style="grid-column: 2; grid-row: 2; margin-top: 58px; width: 319px;">
+    <div class="font-ea-body text-[18px] leading-[1.4] text-white" style={bodyStyle}>
         <Fragment set:html={bodyHtml} />
     </div>
-    <div style="grid-column: 1; grid-row: 2; margin-left: 74px; margin-top: 48px; width: 480px; height: 270px;">
+    <div style={videoStyle}>
       <iframe
         class="h-full w-full"
         width="560"

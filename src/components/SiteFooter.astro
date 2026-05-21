@@ -6,19 +6,24 @@
  *   - Text: Raleway 14px, white, the Durham SU disclaimer
  */
 
+import { storyblokEditable } from "@storyblok/astro";
+
 interface Props {
   siteSettings?: {
+    blok?: any;
     footerHtml?: string;
-    footerLinks?: { label: string; url: string }[];
+    footerLinks?: { label: string; url: string; blok?: any }[];
   };
 }
 
 const { siteSettings } = Astro.props;
 const footerHtml = siteSettings?.footerHtml;
 const footerLinks = siteSettings?.footerLinks ?? [];
+const footerEditable = siteSettings?.blok ? storyblokEditable(siteSettings.blok) : {};
 ---
 
 <footer
+  {...footerEditable}
   id="site-footer"
   class="relative"
   style="background-color: #054d5a;"
@@ -38,6 +43,7 @@ const footerLinks = siteSettings?.footerLinks ?? [];
       <div class="mt-4 flex flex-wrap gap-4 border-t border-white/20 pt-4">
         {footerLinks.map((link) => (
           <a
+            {...(link.blok ? storyblokEditable(link.blok) : {})}
             href={link.url}
             class="text-[13px] font-bold text-white/80 hover:text-white underline transition-colors"
           >

@@ -56,6 +56,7 @@ Fields:
 - `label` (Text)
 - `text` (Richtext)
 - `link` (Link)
+- `link_label` (Text): Optional label for the card link; defaults to `Learn more` when `link` is set
 
 ### Nestable Block: `social_links_section`
 Fields:
@@ -75,6 +76,17 @@ Fields:
 - `heading` (Text)
 - `body` (Richtext)
 - `buttons` (Blocks): Restrict to `button_link`; allow 0-3 items
+- `first_name_label` (Text): Defaults to `First name`
+- `first_name_placeholder` (Text): Defaults to `Will`
+- `last_name_label` (Text): Defaults to `Last name`
+- `last_name_placeholder` (Text): Defaults to `MacAskill`
+- `email_label` (Text): Defaults to `Email`
+- `email_placeholder` (Text): Defaults to `william@example.com`
+- `subject_label` (Text): Defaults to `Subject`
+- `subject_placeholder` (Text): Defaults to `Subject`
+- `message_label` (Text): Defaults to `Message`
+- `message_placeholder` (Text): Defaults to `Write your message here...`
+- `submit_label` (Text): Defaults to `Submit`
 - `background_style` (Single-option): `white`, `cream`, `teal`, `purple`
 - `anchor_id` (Text): Optional section id without `#`
 
@@ -94,3 +106,5 @@ Fields:
 ## Editor Usage
 
 Open the `home` story in Storyblok Visual Editor. The page is built from the `body` blocks field. To edit visible content, click a section or nested item in the preview, then edit the fields in the right panel. To change order, reorder blocks in `body` or the nested block field. To add another card/button/link, add another nested block of the allowed type.
+
+Header and footer content comes from the `site-settings` singleton story. The homepage preview adds editable boundaries to the header, footer, navigation links, and footer links when `site-settings` is available, but the actual fields live on that singleton story.
