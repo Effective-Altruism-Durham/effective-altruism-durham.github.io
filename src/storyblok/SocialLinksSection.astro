@@ -1,25 +1,24 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import SocialLinks from "../components/SocialLinks.astro";
-import { homepageDefaults } from "../data/homepageDefaults";
-import { normalizeAnchorId, resolveBackgroundClass, resolveStoryblokUrl } from "./storyblok-utils";
+import { normalizeAnchorId, resolveBackgroundClass } from "./storyblok-utils";
 
 const { blok } = Astro.props;
-const links = blok.links?.length
-  ? blok.links.map((item) => ({
-      label: item.label || "",
-      url: resolveStoryblokUrl(item.link),
-    }))
-  : homepageDefaults.socialLinks;
-
+const links = Array.isArray(blok.links) ? blok.links : [];
 const sectionId = normalizeAnchorId(blok.anchor_id);
 const backgroundClass = resolveBackgroundClass(blok.background_style);
 ---
 
 <div {...storyblokEditable(blok)}>
   <SocialLinks
-    links={links}
     sectionId={sectionId}
     backgroundClass={backgroundClass}
-  />
+  >
+    {links.length > 0 && (
+      <Fragment slot="links">
+        {links.map((link) => <StoryblokComponent blok={link} />)}
+      </Fragment>
+    )}
+  </SocialLinks>
 </div>
