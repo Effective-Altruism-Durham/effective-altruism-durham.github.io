@@ -13,14 +13,16 @@ import { homepageDefaults } from "../data/homepageDefaults";
 const {
   heading = homepageDefaults.whatWeDo.heading,
   cards = homepageDefaults.whatWeDo.cards,
+  sectionId = "what-we-do",
+  backgroundClass,
 } = Astro.props;
 const hasCardSlot = Astro.slots.has("cards");
 ---
 
 <section
-  id="what-we-do"
-  class="relative"
-  style="background-color: #0c869b;"
+  id={sectionId}
+  class={`relative ${backgroundClass || ""}`}
+  style={backgroundClass ? undefined : "background-color: #0c869b;"}
 >
   <div class="mx-auto w-full max-w-[980px] px-5" style="padding-top: 32px; padding-bottom: 66px;">
     <h1

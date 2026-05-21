@@ -8,15 +8,19 @@
 
 import { homepageDefaults } from "../data/homepageDefaults";
 
-const { links = homepageDefaults.socialLinks } = Astro.props;
+const {
+  links = homepageDefaults.socialLinks,
+  sectionId = "social-links",
+  backgroundClass,
+} = Astro.props;
 
 const [instagram, email, facebook] = links;
 ---
 
 <section
-  id="social-links"
-  class="relative"
-  style="background-color: #054d5a;"
+  id={sectionId}
+  class={`relative ${backgroundClass || ""}`}
+  style={backgroundClass ? undefined : "background-color: #054d5a;"}
 >
   <div class="mx-auto flex w-full max-w-[980px] items-center justify-center px-5" style="height: 81px; gap: 38px;">
     <!-- Instagram -->

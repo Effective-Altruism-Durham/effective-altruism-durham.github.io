@@ -4,14 +4,21 @@ import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import WhatWeDo from "../components/WhatWeDo.astro";
 import { homepageDefaults } from "../data/homepageDefaults";
 
+import { normalizeAnchorId, resolveBackgroundClass } from "./storyblok-utils";
+
 const { blok } = Astro.props;
-const hasCardsField = Array.isArray(blok.cards);
-const cards = hasCardsField ? blok.cards : [];
+const cards = Array.isArray(blok.cards) ? blok.cards : [];
+const sectionId = normalizeAnchorId(blok.anchor_id);
+const backgroundClass = resolveBackgroundClass(blok.background_style);
 ---
 
 <div {...storyblokEditable(blok)}>
-  <WhatWeDo heading={blok.heading || homepageDefaults.whatWeDo.heading}>
-    {hasCardsField && (
+  <WhatWeDo
+    heading={blok.heading || homepageDefaults.whatWeDo.heading}
+    sectionId={sectionId}
+    backgroundClass={backgroundClass}
+  >
+    {cards.length > 0 && (
       <Fragment slot="cards">
         {cards.map((card) => <StoryblokComponent blok={card} />)}
       </Fragment>

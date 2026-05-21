@@ -16,15 +16,17 @@ const {
   bodyHtml,
   ctaLabel = homepageDefaults.arete.ctaLabel,
   ctaUrl = homepageDefaults.arete.ctaUrl,
+  sectionId = "arete-fellowship",
+  backgroundClass,
 } = Astro.props;
 
 const hasButtonsSlot = Astro.slots.has("buttons");
 ---
 
 <section
-  id="arete-fellowship"
-  class="relative"
-  style="background-color: #f4efe9;"
+  id={sectionId}
+  class={`relative ${backgroundClass || ""}`}
+  style={backgroundClass ? undefined : "background-color: #f4efe9;"}
 >
   <div class="mx-auto w-full max-w-[980px] px-5 text-center" style="min-height: 440px; padding-top: 87px;">
     <h2

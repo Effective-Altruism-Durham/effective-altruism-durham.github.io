@@ -1,9 +1,9 @@
 ---
-import { storyblokEditable } from "@storyblok/astro";
+import { renderRichText, storyblokEditable } from "@storyblok/astro";
 
 const { blok } = Astro.props;
 const label = blok.label || "";
-const text = blok.text || "";
+const textHtml = blok.text && typeof blok.text === "object" ? renderRichText(blok.text) : "";
 ---
 
 <div {...storyblokEditable(blok)} class="text-center" style="color: #ffffff;">
@@ -19,7 +19,13 @@ const text = blok.text || "";
     ))}
   </h3>
   <hr class="mx-auto mb-[18px] h-[5px] w-[254px] border-0 border-t border-white" />
-  <p class="font-ea-body text-[16px] leading-[1.4]" style="color: #ffffff;">
-    {text}
-  </p>
+  {textHtml ? (
+    <div class="font-ea-body text-[16px] leading-[1.4]" style="color: #ffffff;">
+      <Fragment set:html={textHtml} />
+    </div>
+  ) : (
+    <p class="font-ea-body text-[16px] leading-[1.4]" style="color: #ffffff;">
+      {blok.text || ""}
+    </p>
+  )}
 </div>

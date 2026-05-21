@@ -11,16 +11,18 @@ import { homepageDefaults } from "../data/homepageDefaults";
 
 const { 
   heading = homepageDefaults.contact.heading,
-  bodyHtml
+  bodyHtml,
+  sectionId = "contact-section",
+  backgroundClass,
 } = Astro.props;
 
 const hasButtonsSlot = Astro.slots.has("buttons");
 ---
 
 <section
-  id="contact-section"
-  class="relative"
-  style="background-color: #054d5a;"
+  id={sectionId}
+  class={`relative ${backgroundClass || ""}`}
+  style={backgroundClass ? undefined : "background-color: #054d5a;"}
 >
   <div class="mx-auto w-full max-w-[980px] px-5" style="padding-top: 19px; padding-bottom: 3px;">
     <h5

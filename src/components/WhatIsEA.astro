@@ -16,13 +16,15 @@ const {
   headingHtml = homepageDefaults.whatIsEa.headingHtml,
   bodyHtml = homepageDefaults.whatIsEa.bodyHtml,
   videoUrl = homepageDefaults.whatIsEa.videoUrl,
+  sectionId = "what-is-ea",
+  backgroundClass,
 } = Astro.props;
 ---
 
 <section
-  id="what-is-ea"
-  class="relative overflow-hidden"
-  style="background-color: #054d5a;"
+  id={sectionId}
+  class={`relative overflow-hidden ${backgroundClass || ""}`}
+  style={backgroundClass ? undefined : "background-color: #054d5a;"}
 >
   <div class="mx-auto grid w-full max-w-[980px] px-5" style="min-height: 525px; grid-template-columns: 554px 319px; grid-template-rows: min-content min-content; column-gap: 44px;">
     <div style="grid-column: 1; grid-row: 1; margin-left: 74px; margin-top: 49px; width: 441px;">

@@ -4,8 +4,12 @@ import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import AreteFellowship from "../components/AreteFellowship.astro";
 import { homepageDefaults } from "../data/homepageDefaults";
 
+import { normalizeAnchorId, resolveBackgroundClass } from "./storyblok-utils";
+
 const { blok } = Astro.props;
 const buttons = Array.isArray(blok.buttons) ? blok.buttons : [];
+const sectionId = normalizeAnchorId(blok.anchor_id);
+const backgroundClass = resolveBackgroundClass(blok.background_style);
 ---
 
 <div {...storyblokEditable(blok)}>
@@ -13,6 +17,8 @@ const buttons = Array.isArray(blok.buttons) ? blok.buttons : [];
     heading={blok.heading || homepageDefaults.arete.heading}
     bodyHtml={blok.body ? renderRichText(blok.body) : undefined}
     body={blok.body ? undefined : homepageDefaults.arete.body}
+    sectionId={sectionId}
+    backgroundClass={backgroundClass}
   >
     {buttons.length > 0 && (
       <Fragment slot="buttons">
