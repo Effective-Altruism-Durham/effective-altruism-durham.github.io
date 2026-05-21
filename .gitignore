@@ -4,6 +4,7 @@
 .superpowers/
 .playwright-mcp/
 storyblok-blueprint-files
+NOTES.md
 
 # build output
 dist/
