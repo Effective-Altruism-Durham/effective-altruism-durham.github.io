@@ -15,6 +15,7 @@ export default defineConfig({
     process.env.TINA_CLIENT_ID || process.env.NEXT_PUBLIC_TINA_CLIENT_ID || null,
   // Get this from tina.io
   token: process.env.TINA_TOKEN || null,
+  localContentPath: "../content",
 
   build: {
     outputFolder: "admin",
@@ -28,7 +29,7 @@ export default defineConfig({
   // },
   media: {
     tina: {
-      mediaRoot: "",
+      mediaRoot: "uploads",
       publicFolder: "public",
     },
   },
@@ -36,29 +37,9 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "post",
-        label: "Posts",
-        path: "content/posts",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
-        ],
-      },
-      {
         name: "teamMember",
         label: "Team Members",
-        path: "content/team-members",
+        path: "team-members",
         format: "json",
         fields: [
           {

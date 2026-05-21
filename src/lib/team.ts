@@ -24,8 +24,8 @@ export interface TeamMemberData {
   };
 }
 
-export interface ContactTeamData {
-  __typename: "ContactTeam";
+export interface TeamData {
+  __typename: "Team";
   title: string;
   people: TeamMemberData[];
   _content_source?: {
@@ -67,7 +67,7 @@ const TEAM_MEMBER_QUERY = `
   }
 `;
 
-export async function getContactTeam(): Promise<{ data: ContactTeamData }> {
+export async function getTeam(): Promise<{ data: TeamData }> {
   const people = await Promise.all(
     Object.entries(teamMemberModules).map(([path, entry]) => {
       const person = toTeamMember(
@@ -80,7 +80,7 @@ export async function getContactTeam(): Promise<{ data: ContactTeamData }> {
 
   return {
     data: {
-      __typename: "ContactTeam",
+      __typename: "Team",
       title: "Contact Us",
       people: people.sort((a, b) => a.order - b.order),
     },
@@ -107,12 +107,12 @@ function toTeamMember(path: string, member: TeamMemberJson): TeamMemberData {
 
   return {
     __typename: "TeamMember",
-    id: `content/team-members/${relativePath}`,
+    id: `team-members/${relativePath}`,
     ...member,
     _sys: {
       filename,
       basename: filename,
-      path: `content/team-members/${relativePath}`,
+      path: `team-members/${relativePath}`,
       relativePath,
       extension: ".json",
       breadcrumbs: [relativePath],

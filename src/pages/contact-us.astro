@@ -3,11 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import TinaIsland from "@tinacms/astro/TinaIsland.astro";
-import ContactTeam from "../components/ContactTeam.astro";
-import { getContactTeam } from "../lib/contact-team";
+import Team from "../components/Team.astro";
+import { getTeam } from "../lib/team";
 import { islands } from "../lib/islands";
 
-const contactTeam = await getContactTeam();
+const team = await getTeam();
 ---
 
 <Layout
@@ -17,8 +17,8 @@ const contactTeam = await getContactTeam();
   <SiteHeader />
   
   <main class="w-full bg-white">
-    <TinaIsland name="contact-team" wrapper={islands["contact-team"].wrapper}>
-      <ContactTeam data={contactTeam.data} />
+    <TinaIsland name="team" wrapper={islands.team.wrapper}>
+      <Team data={team.data} />
     </TinaIsland>
   </main>
   

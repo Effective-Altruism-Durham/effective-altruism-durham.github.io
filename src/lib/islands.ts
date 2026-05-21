@@ -1,18 +1,18 @@
 import type { IslandRegistry } from "@tinacms/astro/experimental";
-import ContactTeam from "../components/ContactTeam.astro";
-import { getContactTeam } from "./contact-team";
+import Team from "../components/Team.astro";
+import { getTeam } from "./team";
 
 export const islands: IslandRegistry = {
-  "contact-team": {
-    fetch: () => getContactTeam(),
-    component: ContactTeam,
+  team: {
+    fetch: () => getTeam(),
+    component: Team,
     wrapper: {
       tag: "div",
       className:
         "mx-auto w-full max-w-[1200px] px-6 pt-[52px] pb-24 sm:px-8 lg:px-0",
     },
     propsFromData: (result) => ({
-      data: (result as Awaited<ReturnType<typeof getContactTeam>>).data,
+      data: (result as Awaited<ReturnType<typeof getTeam>>).data,
     }),
   },
 };
