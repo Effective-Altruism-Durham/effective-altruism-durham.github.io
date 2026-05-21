@@ -4,7 +4,7 @@
 
 ## Tooling
 
-- Stack: pnpm, Astro, Tailwind CSS, Storyblok CMS, and Netlify.
+- Stack: pnpm, Astro, Tailwind CSS, Tina CMS, and Netlify.
 - Use pnpm for every package-manager command in this workspace.
 - Do not use npm, yarn, or bun to install dependencies or run scripts.
 - Keep `pnpm-lock.yaml` as the only package-manager lockfile. The repo also ignores other lockfiles.
@@ -23,7 +23,6 @@
 
 - This is an Astro 6 site using Tailwind CSS v4 through `@tailwindcss/vite`.
 - `astro.config.mjs` sets `site: 'https://www.eadurham.org'`, uses the Netlify adapter, and builds with `output: 'server'`.
-- Storyblok is wired through `@storyblok/astro` with the EU API region. Builds that touch Storyblok-backed behavior may need `STORYBLOK_DELIVERY_API_TOKEN` in the environment.
 - Routes live in `src/pages/*.astro`; shared page chrome is in `src/layouts/Layout.astro`; reusable UI is in `src/components/`.
 - Global styling and Tailwind theme utilities live in `src/styles/global.css`.
 - Static assets live in `public/`. Many `public/assets/*` files are migrated legacy site assets, so do not delete whole asset directories unless the consuming pages have been checked.
