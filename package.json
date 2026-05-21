@@ -12,7 +12,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "storyblok:sync-schema": "node scripts/sync-storyblok-schema.mjs",
+    "storyblok:sync-schema:dry-run": "node scripts/sync-storyblok-schema.mjs --dry-run"
   },
   "dependencies": {
     "@astrojs/netlify": "^7.0.10",
