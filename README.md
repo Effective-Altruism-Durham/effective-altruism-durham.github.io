@@ -44,18 +44,7 @@ the reusable section blocks below, `/` falls back to the current static Astro
 homepage so incomplete Storyblok setup does not blank or replace the site by
 accident.
 
-Create a `page` content type with a `body` blocks field. For the homepage body,
-use these nestable blocks:
-
-| Storyblok component       | Fields                                                                 |
-| :------------------------ | :--------------------------------------------------------------------- |
-| `hero_section`            | `headline`, `body` rich text, `primary_label`, `primary_link`, `secondary_label`, `secondary_link` |
-| `rich_text_video_section` | `heading`, `body` rich text, `video_url`                               |
-| `cta_section`             | `heading`, `body`, `cta_label`, `cta_link`                             |
-| `card_grid_section`       | `heading`, `cards` blocks using `text_card`                            |
-| `text_card`               | `label`, `text`                                                        |
-| `social_links_section`    | `links` blocks or entries with `label` and `link`                      |
-| `contact_section`         | `heading`                                                              |
+The homepage Storyblok schema is documented in `docs/storyblok/homepage-schema.md`. Keep the Storyblok UI schema and Astro renderers in sync: adding a field in Storyblok has no effect until Astro renders it, and adding a fallback in Astro is not visually editable until the field exists in Storyblok.
 
 New non-home stories are served by `src/pages/[...slug].astro`. Add new
 Storyblok components in `src/storyblok/` and register them in
