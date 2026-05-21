@@ -9,12 +9,16 @@ import netlify from '@astrojs/netlify';
 
 import mdx from '@astrojs/mdx';
 
+import tina from '@tinacms/astro/integration';
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
 
-  integrations: [sitemap(), mdx()],
-  adapter: netlify()
+  site: 'https://www.eadurham.org',
+  integrations: [sitemap(), mdx(), tina()],
+  adapter: netlify(),
+  output: 'server'
 });

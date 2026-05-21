@@ -1,0 +1,42 @@
+---
+interface Props {
+  name: string;
+  roles: string;
+  email: string;
+  bio: string;
+  image: string;
+}
+
+const { name, roles, email, bio, image } = Astro.props;
+---
+
+<article class="grid items-start gap-9 md:grid-cols-[200px_minmax(0,1fr)] md:gap-12 lg:pl-[68px]">
+  <img 
+    src={image} 
+    alt={name} 
+    class="h-[200px] w-[200px] rounded-[18px] bg-white object-cover md:justify-self-start" 
+    width="200"
+    height="200"
+    loading="lazy"
+  />
+  
+  <div class="min-w-0 md:pt-[2px]">
+    <h2 class="mb-[22px] font-ea-heading text-[22px] font-bold leading-none text-[#054d5a]">
+      {name}
+    </h2>
+    
+    <div class="mb-[34px] grid gap-4 font-ea-body text-[18px] leading-[1.35] text-black md:grid-cols-[minmax(250px,1fr)_minmax(260px,max-content)] md:gap-10">
+      <p>{roles}</p>
+      <a 
+        href={`mailto:${email}`} 
+        class="break-all text-black hover:underline md:text-right"
+      >
+        {email}
+      </a>
+    </div>
+    
+    <p class="max-w-[780px] font-ea-body text-[16px] leading-[1.55] text-black sm:text-[17px]">
+      {bio}
+    </p>
+  </div>
+</article>

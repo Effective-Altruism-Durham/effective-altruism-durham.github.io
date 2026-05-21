@@ -54,6 +54,57 @@ export default defineConfig({
           },
         ],
       },
+      {
+        name: "teamMember",
+        label: "Team Members",
+        path: "content/team-members",
+        format: "json",
+        fields: [
+          {
+            type: "number",
+            name: "order",
+            label: "Display Order",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "name",
+            label: "Name",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "roles",
+            label: "Roles",
+            required: true,
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "string",
+            name: "email",
+            label: "Email",
+            required: true,
+          },
+          {
+            type: "image",
+            name: "image",
+            label: "Image",
+            required: true,
+          },
+          {
+            type: "string",
+            name: "bio",
+            label: "Bio",
+            required: true,
+            ui: {
+              component: "textarea",
+            },
+          },
+        ],
+      },
     ],
   },
 });
