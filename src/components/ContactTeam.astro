@@ -1,0 +1,20 @@
+---
+import PersonCard from "./PersonCard.astro";
+import type { ContactTeamData } from "../lib/contact-team";
+
+interface Props {
+  data: ContactTeamData;
+}
+
+const { data } = Astro.props;
+---
+
+<h1 class="mb-[54px] text-center font-ea-heading text-[44px] font-normal leading-none text-[#054d5a] sm:text-[56px]">
+  {data.title}
+</h1>
+
+<div class="flex flex-col gap-[124px]">
+  {data.people.map((person) => (
+    <PersonCard person={person} />
+  ))}
+</div>

@@ -1,19 +1,28 @@
 ---
+import { tinaField } from "@tinacms/astro/tina-field";
+
 interface Props {
-  name: string;
-  roles: string;
-  email: string;
-  bio: string;
-  image: string;
+  person: {
+    name: string;
+    roles: string;
+    email: string;
+    bio: string;
+    image: string;
+    _content_source?: {
+      queryId: string;
+      path: Array<string | number>;
+    };
+  };
 }
 
-const { name, roles, email, bio, image } = Astro.props;
+const { person } = Astro.props;
 ---
 
 <article class="grid items-start gap-9 md:grid-cols-[200px_minmax(0,1fr)] md:gap-12 lg:pl-[68px]">
   <img 
-    src={image} 
-    alt={name} 
+    data-tina-field={tinaField(person, "image")}
+    src={person.image} 
+    alt={person.name} 
     class="h-[200px] w-[200px] rounded-[18px] bg-white object-cover md:justify-self-start" 
     width="200"
     height="200"
@@ -21,22 +30,23 @@ const { name, roles, email, bio, image } = Astro.props;
   />
   
   <div class="min-w-0 md:pt-[2px]">
-    <h2 class="mb-[22px] font-ea-heading text-[22px] font-bold leading-none text-[#054d5a]">
-      {name}
+    <h2 data-tina-field={tinaField(person, "name")} class="mb-[22px] font-ea-heading text-[22px] font-bold leading-none text-[#054d5a]">
+      {person.name}
     </h2>
     
     <div class="mb-[34px] grid gap-4 font-ea-body text-[18px] leading-[1.35] text-black md:grid-cols-[minmax(250px,1fr)_minmax(260px,max-content)] md:gap-10">
-      <p>{roles}</p>
+      <p data-tina-field={tinaField(person, "roles")}>{person.roles}</p>
       <a 
-        href={`mailto:${email}`} 
+        data-tina-field={tinaField(person, "email")}
+        href={`mailto:${person.email}`} 
         class="break-all text-black hover:underline md:text-right"
       >
-        {email}
+        {person.email}
       </a>
     </div>
     
-    <p class="max-w-[780px] font-ea-body text-[16px] leading-[1.55] text-black sm:text-[17px]">
-      {bio}
+    <p data-tina-field={tinaField(person, "bio")} class="max-w-[780px] font-ea-body text-[16px] leading-[1.55] text-black sm:text-[17px]">
+      {person.bio}
     </p>
   </div>
 </article>
