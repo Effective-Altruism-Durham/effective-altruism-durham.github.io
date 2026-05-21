@@ -7,6 +7,12 @@
       "skillPath": "skills/astro/SKILL.md",
       "computedHash": "ebefe26b231d32379c14e41a46c2de7b4b0184543bedab7febdabe4fb21fba4e"
     },
+    "favicon-gen": {
+      "source": "jezweb/claude-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/design-assets/skills/favicon-gen/SKILL.md",
+      "computedHash": "6173ac6112e400e3701d677efd2b1b0fd1c83c79b83e82cfa96ab4c01a0afe50"
+    },
     "frontend-design": {
       "source": "anthropics/skills",
       "sourceType": "github",
