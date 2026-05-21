@@ -1,5 +1,7 @@
 # EA Durham Site
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/73bdf713-1554-4c84-9146-926ddc7e346f/deploy-status)](https://app.netlify.com/projects/eadurham-test/deploys)
+
 This project uses pnpm for dependency management. Do not use npm, yarn, or bun in
 this workspace, and do not commit lockfiles from other package managers.
 
