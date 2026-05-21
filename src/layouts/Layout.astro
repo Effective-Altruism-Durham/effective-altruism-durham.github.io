@@ -1,5 +1,8 @@
 ---
 import "../styles/global.css";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { getStoryblokSiteSettings } from "../data/storyblokSiteSettings";
 
 interface Props {
   title?: string;
@@ -10,6 +13,8 @@ const {
   title = "Effective Altruism Durham",
   description = "We represent the Effective Altruism movement in Durham University. We empower students who want to make a change through our programmes, events, and community.",
 } = Astro.props;
+
+const siteSettings = await getStoryblokSiteSettings();
 ---
 
 <!doctype html>
@@ -28,6 +33,8 @@ const {
     <title>{title}</title>
   </head>
   <body>
+    <SiteHeader siteSettings={siteSettings} />
     <slot />
+    <SiteFooter siteSettings={siteSettings} />
   </body>
 </html>

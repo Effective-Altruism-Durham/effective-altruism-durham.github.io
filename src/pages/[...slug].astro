@@ -2,8 +2,6 @@
 import { getPayload, useStoryblokApi } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import Layout from "../layouts/Layout.astro";
-import SiteHeader from "../components/SiteHeader.astro";
-import SiteFooter from "../components/SiteFooter.astro";
 import { homepageDefaults } from "../data/homepageDefaults";
 
 const { slug } = Astro.params;
@@ -35,7 +33,6 @@ const description = storyContent?.meta_description || homepageDefaults.descripti
 ---
 
 <Layout title={title} description={description}>
-  <SiteHeader />
   {storyContent ? (
     <StoryblokComponent blok={storyContent} />
   ) : (
@@ -43,5 +40,4 @@ const description = storyContent?.meta_description || homepageDefaults.descripti
       <h1 class="font-ea-heading text-[40px] text-[#054d5a]">Page not found</h1>
     </main>
   )}
-  <SiteFooter />
 </Layout>

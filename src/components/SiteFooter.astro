@@ -5,6 +5,17 @@
  *   - bg: color_43 = #054D5A
  *   - Text: Raleway 14px, white, the Durham SU disclaimer
  */
+
+interface Props {
+  siteSettings?: {
+    footerHtml?: string;
+    footerLinks?: { label: string; url: string }[];
+  };
+}
+
+const { siteSettings } = Astro.props;
+const footerHtml = siteSettings?.footerHtml;
+const footerLinks = siteSettings?.footerLinks ?? [];
 ---
 
 <footer
@@ -13,11 +24,27 @@
   style="background-color: #054d5a;"
 >
   <div class="mx-auto w-full max-w-[980px] px-5 py-5">
-    <p class="font-ea-body text-[14px] leading-normal text-white">
-      Effective Altruism Durham is a student group affiliated with Durham Students' Union (also known as Durham SU or DSU), 
-      which is registered in England as a company limited by guarantee (07689815) and a charity (1145400). 
-      DSU's registered office is Dunelm House, New Elvet, Durham, DH1 3AN.
-      Effective Altruism Durham follows Durham Students' Union's privacy policy and code of conduct.
-    </p>
+    {footerHtml ? (
+      <div class="font-ea-body text-[14px] leading-normal text-white prose prose-invert max-w-none [&_p]:mb-3 last:[&_p]:mb-0" set:html={footerHtml} />
+    ) : (
+      <p class="font-ea-body text-[14px] leading-normal text-white">
+        Effective Altruism Durham is a student group affiliated with Durham Students' Union (also known as Durham SU or DSU), 
+        which is registered in England as a company limited by guarantee (07689815) and a charity (1145400). 
+        DSU's registered office is Dunelm House, New Elvet, Durham, DH1 3AN.
+        Effective Altruism Durham follows Durham Students' Union's privacy policy and code of conduct.
+      </p>
+    )}
+    {footerLinks.length > 0 && (
+      <div class="mt-4 flex flex-wrap gap-4 border-t border-white/20 pt-4">
+        {footerLinks.map((link) => (
+          <a
+            href={link.url}
+            class="text-[13px] font-bold text-white/80 hover:text-white underline transition-colors"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    )}
   </div>
 </footer>

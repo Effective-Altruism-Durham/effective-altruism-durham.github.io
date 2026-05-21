@@ -90,3 +90,7 @@ Fields:
 Fields:
 - `label` (Text)
 - `link` (Link)
+
+## Editor Usage
+
+Open the `home` story in Storyblok Visual Editor. The page is built from the `body` blocks field. To edit visible content, click a section or nested item in the preview, then edit the fields in the right panel. To change order, reorder blocks in `body` or the nested block field. To add another card/button/link, add another nested block of the allowed type.

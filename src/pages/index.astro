@@ -2,16 +2,13 @@
 import { getPayload, useStoryblokApi } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import Layout from "../layouts/Layout.astro";
-import SiteHeader from "../components/SiteHeader.astro";
 import HeroSection from "../components/HeroSection.astro";
 import WhatIsEA from "../components/WhatIsEA.astro";
 import AreteFellowship from "../components/AreteFellowship.astro";
 import WhatWeDo from "../components/WhatWeDo.astro";
 import SocialLinks from "../components/SocialLinks.astro";
 import ContactSection from "../components/ContactSection.astro";
-import SiteFooter from "../components/SiteFooter.astro";
 import { homepageDefaults } from "../data/homepageDefaults";
-import { storyblokHomeComponents } from "../data/storyblokHomeComponents";
 
 let story;
 const previewPayload = await getPayload({ locals: Astro.locals });
@@ -31,11 +28,7 @@ if (!story && import.meta.env.STORYBLOK_DELIVERY_API_TOKEN) {
 }
 
 const storyContent = story?.content;
-const hasHomepageBlocks =
-  storyContent?.component === "page" &&
-  storyContent.body?.some((blok) => storyblokHomeComponents.has(blok.component));
-const isStoryblokPreview = Astro.url.searchParams.has("_storyblok");
-const shouldRenderStoryblok = storyContent && (hasHomepageBlocks || isStoryblokPreview);
+const shouldRenderStoryblok = storyContent?.component === "page";
 const title = storyContent?.meta_title || homepageDefaults.title;
 const description = storyContent?.meta_description || homepageDefaults.description;
 ---
@@ -44,12 +37,8 @@ const description = storyContent?.meta_description || homepageDefaults.descripti
   title={title}
   description={description}
 >
-  <SiteHeader />
   {shouldRenderStoryblok ? (
-    <StoryblokComponent
-      blok={storyContent}
-      allowedComponents={isStoryblokPreview ? undefined : storyblokHomeComponents}
-    />
+    <StoryblokComponent blok={storyContent} />
   ) : (
     <main>
       <HeroSection />
@@ -60,5 +49,4 @@ const description = storyContent?.meta_description || homepageDefaults.descripti
       <ContactSection />
     </main>
   )}
-  <SiteFooter />
 </Layout>

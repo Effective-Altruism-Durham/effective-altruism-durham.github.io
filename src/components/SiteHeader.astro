@@ -14,7 +14,17 @@ interface NavItem {
   children?: { label: string; href: string }[];
 }
 
-const navItems: NavItem[] = [
+interface Props {
+  siteSettings?: {
+    siteName?: string;
+    logo?: string;
+    navigation?: { label: string; url: string }[];
+  };
+}
+
+const { siteSettings } = Astro.props;
+
+const defaultNavigation: NavItem[] = [
   {
     label: "PROGRAMMES",
     href: "/programmes",
@@ -43,6 +53,20 @@ const navItems: NavItem[] = [
   { label: "EVENTS", href: "/events" },
   { label: "CONTACT US", href: "/contact-us" },
 ];
+
+const navigation = siteSettings?.navigation
+  ? siteSettings.navigation.map((item: any) => ({
+      label: item.label.toUpperCase(),
+      href: item.url,
+    }))
+  : defaultNavigation;
+
+const siteName = siteSettings?.siteName ?? "Effective Altruism Durham";
+const logo = siteSettings?.logo ?? "/favicon.svg";
+
+const siteNameParts = siteName.split(" ");
+const firstWord = siteNameParts[0];
+const restOfName = siteNameParts.slice(1).join(" ");
 ---
 
 <header id="site-header" class="sticky top-0 z-50 w-full bg-[#0c869b]">
@@ -54,8 +78,8 @@ const navItems: NavItem[] = [
         <!-- Logo circle -->
         <a href="/" class="flex-shrink-0" aria-label="EA Durham Home">
           <img
-            src="/favicon.svg"
-            alt="EA Durham"
+            src={logo}
+            alt={siteName}
             class="h-[100px] w-[100px]"
           />
         </a>
@@ -68,14 +92,20 @@ const navItems: NavItem[] = [
               class="font-ea-heading text-[30px] leading-tight"
               style="font-weight: normal;"
             >
-              <span class="font-bold">Effective</span> Altruism Durham
+              {firstWord === "Effective" ? (
+                <>
+                  <span class="font-bold">Effective</span> {restOfName}
+                </>
+              ) : (
+                siteName
+              )}
             </h1>
           </a>
 
           <!-- Navigation -->
           <nav aria-label="Site" class="hidden md:block">
             <ul class="flex items-center gap-5">
-              {navItems.map((item) => (
+              {navigation.map((item) => (
                 <li class="group relative">
                   <a
                     href={item.href}
@@ -85,7 +115,7 @@ const navItems: NavItem[] = [
                   </a>
                   {item.children && (
                     <ul class="invisible absolute left-0 top-full z-[99999] min-w-[220px] rounded-[5px] bg-[#0c869b] p-4 pt-3 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
-                      {item.children.map((child) => (
+                      {item.children.map((child: any) => (
                         <li>
                           <a
                             href={child.href}
@@ -128,7 +158,7 @@ const navItems: NavItem[] = [
             class="absolute right-0 top-full z-[99999] mt-3 w-[250px] rounded-[5px] bg-[#0c869b] p-4 shadow-lg"
           >
             <ul class="space-y-2">
-              {navItems.map((item) => (
+              {navigation.map((item) => (
                 <li>
                   <a
                     href={item.href}
@@ -138,7 +168,7 @@ const navItems: NavItem[] = [
                   </a>
                   {item.children && (
                     <ul class="ml-3 border-l border-white/25 pl-3">
-                      {item.children.map((child) => (
+                      {item.children.map((child: any) => (
                         <li>
                           <a
                             href={child.href}
