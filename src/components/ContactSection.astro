@@ -9,7 +9,12 @@
 
 import { homepageDefaults } from "../data/homepageDefaults";
 
-const { heading = homepageDefaults.contact.heading } = Astro.props;
+const { 
+  heading = homepageDefaults.contact.heading,
+  bodyHtml
+} = Astro.props;
+
+const hasButtonsSlot = Astro.slots.has("buttons");
 ---
 
 <section
@@ -24,6 +29,18 @@ const { heading = homepageDefaults.contact.heading } = Astro.props;
     >
       {heading}
     </h5>
+
+    {bodyHtml && (
+      <div class="mx-auto mb-6 max-w-[629px] text-center font-ea-body text-[16px] leading-[1.8] text-white">
+        <Fragment set:html={bodyHtml} />
+      </div>
+    )}
+
+    {hasButtonsSlot && (
+      <div class="mx-auto mb-8 flex flex-col items-center justify-center gap-3 w-[268px]">
+        <slot name="buttons" />
+      </div>
+    )}
 
     <form class="mx-auto grid max-w-[797px] md:grid-cols-[304px_471px]" style="column-gap: 21px;" id="contact-form">
       <div class="grid grid-cols-1">

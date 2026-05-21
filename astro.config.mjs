@@ -47,6 +47,7 @@ export default defineConfig({
         text_card: 'storyblok/TextCard',
         social_links_section: 'storyblok/SocialLinksSection',
         contact_section: 'storyblok/ContactSection',
+        button_link: 'storyblok/ButtonLink',
 			},
     }),
   ],

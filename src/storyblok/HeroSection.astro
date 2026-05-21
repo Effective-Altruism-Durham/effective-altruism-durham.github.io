@@ -1,27 +1,22 @@
 ---
 import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import HeroSection from "../components/HeroSection.astro";
 import { homepageDefaults } from "../data/homepageDefaults";
-import { resolveStoryblokLink } from "../data/storyblokLinks";
 
 const { blok } = Astro.props;
-
-const ctas = [
-  {
-    label: blok.primary_label || homepageDefaults.hero.ctas[0].label,
-    url: resolveStoryblokLink(blok.primary_link, homepageDefaults.hero.ctas[0].url),
-  },
-  {
-    label: blok.secondary_label || homepageDefaults.hero.ctas[1].label,
-    url: resolveStoryblokLink(blok.secondary_link, homepageDefaults.hero.ctas[1].url),
-  },
-].filter((cta) => cta.label && cta.url);
+const buttons = Array.isArray(blok.buttons) ? blok.buttons : [];
 ---
 
 <div {...storyblokEditable(blok)}>
   <HeroSection
     headline={blok.headline || homepageDefaults.hero.headline}
     bodyHtml={blok.body ? renderRichText(blok.body) : homepageDefaults.hero.bodyHtml}
-    ctas={ctas}
-  />
+  >
+    {buttons.length > 0 && (
+      <Fragment slot="ctas">
+        {buttons.map((button) => <StoryblokComponent blok={button} />)}
+      </Fragment>
+    )}
+  </HeroSection>
 </div>

@@ -1,17 +1,23 @@
 ---
-import { storyblokEditable } from "@storyblok/astro";
+import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import AreteFellowship from "../components/AreteFellowship.astro";
 import { homepageDefaults } from "../data/homepageDefaults";
-import { resolveStoryblokLink } from "../data/storyblokLinks";
 
 const { blok } = Astro.props;
+const buttons = Array.isArray(blok.buttons) ? blok.buttons : [];
 ---
 
 <div {...storyblokEditable(blok)}>
   <AreteFellowship
     heading={blok.heading || homepageDefaults.arete.heading}
-    body={blok.body || homepageDefaults.arete.body}
-    ctaLabel={blok.cta_label || homepageDefaults.arete.ctaLabel}
-    ctaUrl={resolveStoryblokLink(blok.cta_link, homepageDefaults.arete.ctaUrl)}
-  />
+    bodyHtml={blok.body ? renderRichText(blok.body) : undefined}
+    body={blok.body ? undefined : homepageDefaults.arete.body}
+  >
+    {buttons.length > 0 && (
+      <Fragment slot="buttons">
+        {buttons.map((button) => <StoryblokComponent blok={button} />)}
+      </Fragment>
+    )}
+  </AreteFellowship>
 </div>

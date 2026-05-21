@@ -1,11 +1,22 @@
 ---
-import { storyblokEditable } from "@storyblok/astro";
+import { renderRichText, storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import ContactSection from "../components/ContactSection.astro";
 import { homepageDefaults } from "../data/homepageDefaults";
 
 const { blok } = Astro.props;
+const buttons = Array.isArray(blok.buttons) ? blok.buttons : [];
 ---
 
 <div {...storyblokEditable(blok)}>
-  <ContactSection heading={blok.heading || homepageDefaults.contact.heading} />
+  <ContactSection 
+    heading={blok.heading || homepageDefaults.contact.heading}
+    bodyHtml={blok.body ? renderRichText(blok.body) : undefined}
+  >
+    {buttons.length > 0 && (
+      <Fragment slot="buttons">
+        {buttons.map((button) => <StoryblokComponent blok={button} />)}
+      </Fragment>
+    )}
+  </ContactSection>
 </div>
