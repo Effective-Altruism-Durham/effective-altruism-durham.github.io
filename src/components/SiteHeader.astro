@@ -35,9 +35,10 @@ const navItems: NavItem[] = [
     label: "CAUSES",
     href: "/causes",
     children: [
-      { label: "AI Safety", href: "/ai-safety" },
-      { label: "Animal Advocacy", href: "/animal-advocacy" },
-      { label: "Biosecurity", href: "/biosecurity" },
+      { label: "AI Safety", href: "https://durhamaisafety.uk/" },
+      { label: "Animal Advocacy: Factory Farming", href: "https://80000hours.org/problem-profiles/factory-farming/" },
+      { label: "Animal Advocacy: Wild Welfare", href: "https://80000hours.org/problem-profiles/wild-animal-welfare/" },
+      { label: "Biosecurity & Pandemics", href: "https://80000hours.org/problem-profiles/preventing-catastrophic-pandemics/" },
     ],
   },
   { label: "EVENTS", href: "/events" },
@@ -84,11 +85,13 @@ const navItems: NavItem[] = [
                     {item.label}
                   </a>
                   {item.children && (
-                    <ul class="invisible absolute left-0 top-full z-[99999] min-w-[220px] rounded-[5px] bg-[#0c869b] p-4 pt-3 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
+                    <ul class="invisible absolute left-0 top-full z-[99999] min-w-[280px] rounded-[5px] bg-[#0c869b] p-4 pt-3 opacity-0 shadow-lg transition-all group-hover:visible group-hover:opacity-100">
                       {item.children.map((child) => (
                         <li>
                           <a
                             href={child.href}
+                            target={child.href.startsWith("http") ? "_blank" : undefined}
+                            rel={child.href.startsWith("http") ? "noreferrer noopener" : undefined}
                             class="block border-t border-white/20 px-2 py-2 text-sm text-white transition-opacity first:border-0 hover:opacity-80"
                           >
                             {child.label}
@@ -142,6 +145,8 @@ const navItems: NavItem[] = [
                         <li>
                           <a
                             href={child.href}
+                            target={child.href.startsWith("http") ? "_blank" : undefined}
+                            rel={child.href.startsWith("http") ? "noreferrer noopener" : undefined}
                             class="block px-2 py-1.5 text-[13px] text-white hover:bg-white/10"
                           >
                             {child.label}
