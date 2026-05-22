@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import CauseCard from '../components/CauseCard.astro';
+import PageFrame from '../components/PageFrame.astro';
 
 const causes = [
 	{
@@ -83,25 +84,7 @@ const causes = [
 >
 	<SiteHeader />
 
-	<main
-		class="relative min-h-screen bg-cover bg-center bg-fixed bg-no-repeat"
-		style="background-image: url('/assets/shared/page-hero-bg.jpg');"
-	>
-		<!-- Semi-transparent cream overlay to align with the EA brand theme and ensure readability -->
-		<div class="absolute inset-0 bg-[#f4efe9]/80 backdrop-blur-[1px]"></div>
-
-		<!-- Content container -->
-		<div class="relative z-10 mx-auto w-full max-w-[980px] px-5 py-16 md:py-24">
-			<!-- Page Title -->
-			<div class="text-center mb-12">
-				<h1
-					class="font-ea-heading text-4xl md:text-5xl font-normal tracking-[0.25em] text-[#054d5a] uppercase mb-4"
-				>
-					Cause Areas
-				</h1>
-				<div class="mx-auto h-[3px] w-24 bg-[#0c869b]"></div>
-			</div>
-
+	<PageFrame title="Cause Areas" overlay="soft">
 			<!-- Cards Grid -->
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 				{
@@ -116,8 +99,7 @@ const causes = [
 					))
 				}
 			</div>
-		</div>
-	</main>
+	</PageFrame>
 
 	<SiteFooter />
 </Layout>

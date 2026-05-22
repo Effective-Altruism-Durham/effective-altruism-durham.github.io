@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import BrandButton from '../components/BrandButton.astro';
+import PageFrame from '../components/PageFrame.astro';
 ---
 
 <Layout
@@ -10,46 +12,28 @@ import SiteFooter from '../components/SiteFooter.astro';
 >
 	<SiteHeader />
 
-	<main
-		class="relative min-h-screen bg-cover bg-center bg-fixed bg-no-repeat"
-		style="background-image: url('/assets/shared/page-hero-bg.jpg');"
-	>
-		<!-- Semi-transparent cream overlay to align with the EA brand theme and ensure readability -->
-		<div class="absolute inset-0 bg-[#f4efe9]/85 backdrop-blur-[2px]"></div>
-
-		<!-- Content container -->
-		<div class="relative z-10 mx-auto w-full max-w-[980px] px-5 py-16 md:py-24">
-			<!-- Page Title -->
-			<div class="text-center mb-12">
-				<h1
-					class="font-ea-heading text-4xl md:text-5xl font-normal tracking-[0.25em] text-[#054d5a] uppercase mb-4"
-				>
-					Free 1-1 Careers Advice
-				</h1>
-				<div class="mx-auto h-[3px] w-24 bg-[#0c869b] mb-6"></div>
-			</div>
-
+	<PageFrame title="Free 1-1 Careers Advice">
 			<!-- Section 1: Intro Grid (Two Columns) -->
 			<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
 				<!-- Text Column -->
 				<div class="lg:col-span-8 space-y-6">
 					<div
-						class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-6 md:p-8"
+						class="ea-card p-6 md:p-8"
 					>
 						<p
-							class="font-ea-body text-base md:text-lg leading-relaxed text-[#404040] mb-4 font-bold"
+							class="font-ea-body text-base md:text-lg leading-relaxed text-ea-text-secondary mb-4 font-bold"
 						>
 							Career planning is really hard, (and for me, quite scary!) but
 							80,000 hours offer free online 1-1 career advice.
 						</p>
 						<p
-							class="font-ea-body text-base leading-relaxed text-[#404040] mb-4"
+							class="font-ea-body text-base leading-relaxed text-ea-text-secondary mb-4"
 						>
 							I (Alex Vellins) have spoken to them twice and found them to be
 							friendly, incredibly knowledgeable and very focused on impact.
 						</p>
 						<p
-							class="font-ea-body text-base leading-relaxed text-[#404040] mb-2 font-semibold"
+							class="font-ea-body text-base leading-relaxed text-ea-text-secondary mb-2 font-semibold"
 						>
 							For me, the only limitation is that it's on you to take action on
 							the resources they provide; so don't expect to leave with a full
@@ -57,7 +41,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 						</p>
 
 						<ul
-							class="font-ea-body text-base leading-relaxed text-[#404040] space-y-2 mb-6 list-disc list-inside pl-2"
+							class="font-ea-body text-base leading-relaxed text-ea-text-secondary space-y-2 mb-6 list-disc list-inside pl-2"
 						>
 							<li>Useful research questions and alternative framings</li>
 							<li>A great variety of useful resources</li>
@@ -67,7 +51,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 							</li>
 						</ul>
 
-						<p class="font-ea-body text-base leading-relaxed text-[#404040]">
+						<p class="font-ea-body text-base leading-relaxed text-ea-text-secondary">
 							Most people overestimate the amount of preparation required to
 							apply to 80,000 hours, so if you're not sure, please apply! We
 							expect that doing something like our Arete fellowship will be
@@ -78,30 +62,27 @@ import SiteFooter from '../components/SiteFooter.astro';
 					</div>
 
 					<div class="flex flex-col sm:flex-row items-center gap-4">
-						<a
+						<BrandButton
 							href="/arete-fellowship"
-							class="w-full sm:w-auto text-center inline-flex h-[54px] px-8 items-center justify-center rounded-[5px] text-[16px] font-bold text-white transition-all duration-300 hover:scale-[1.02]"
-							style="background-color: #68246d;"
-							onmouseover="this.style.backgroundColor='#541d58'"
-							onmouseout="this.style.backgroundColor='#68246d'"
+							class="h-[54px] w-full px-8 text-[16px] sm:w-auto"
 						>
 							ARETE FELLOWSHIP
-						</a>
-						<a
+						</BrandButton>
+						<BrandButton
 							href="https://80000hours.org/speak-with-us/"
-							target="_blank"
-							rel="noreferrer noopener"
-							class="w-full sm:w-auto text-center inline-flex h-[54px] px-8 items-center justify-center rounded-[5px] text-[16px] font-bold text-[#68246d] border-2 border-[#68246d] transition-all duration-300 hover:bg-[#68246d]/5 hover:scale-[1.02]"
+							external
+							variant="outline-purple"
+							class="h-[54px] w-full px-8 text-[16px] sm:w-auto"
 						>
 							APPLY FOR ADVISING!
-						</a>
+						</BrandButton>
 					</div>
 				</div>
 
 				<!-- Book Image Column -->
 				<div class="lg:col-span-4 flex justify-center">
 					<div
-						class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-4 transition-all duration-300 hover:shadow-lg"
+						class="ea-card p-4 ea-card-hover"
 					>
 						<img
 							src="/assets/free-careers-advice/80Kbook-twobooks-whitebkg-scaled-e1693395630953.jpg"
@@ -115,7 +96,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 			<!-- Section 3: Testimonials Block -->
 			<div class="mb-16">
 				<h2
-					class="font-ea-heading text-2xl md:text-3xl font-normal text-[#054d5a] tracking-wide mb-8 uppercase text-center"
+					class="font-ea-heading text-2xl md:text-3xl font-normal text-ea-dark-teal tracking-wide mb-8 uppercase text-center"
 				>
 					Still not sure? Here's what two EA Durham Graduates have to say about
 					the service:
@@ -124,31 +105,31 @@ import SiteFooter from '../components/SiteFooter.astro';
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
 					<!-- Iyngkarran Card -->
 					<div
-						class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:border-[#0c869b]/30"
+						class="ea-card p-6 md:p-8 flex flex-col items-center text-center ea-card-hover"
 					>
 						<div class="mb-6 flex-shrink-0">
 							<img
 								src="/assets/free-careers-advice/Iyngkarran.jpeg"
 								alt="Iyngkarran"
-								class="w-[200px] h-[200px] rounded-full object-cover border-4 border-[#e8dfd3]"
+								class="w-[200px] h-[200px] rounded-full object-cover border-4 border-ea-border"
 							/>
 						</div>
 
 						<div
-							class="bg-[#054d5a] text-[#f4efe9] rounded-lg px-4 py-2 text-sm font-bold font-ea-body tracking-wide mb-6 shadow-sm"
+							class="bg-ea-dark-teal text-ea-cream rounded-lg px-4 py-2 text-sm font-bold font-ea-body tracking-wide mb-6 shadow-sm"
 						>
 							Iyngkarran, researcher at the Transformative Futures Institute
 						</div>
 
 						<div
-							class="relative bg-[#f4efe9]/60 rounded-lg p-5 md:p-6 border border-[#e8dfd3] text-left"
+							class="relative bg-ea-cream/60 rounded-lg p-5 md:p-6 border border-ea-border text-left"
 						>
 							<span
-								class="absolute top-2 left-2 text-4xl text-[#0c869b]/20 font-serif"
+								class="absolute top-2 left-2 text-4xl text-ea-active-teal/20 font-serif"
 								>“</span
 							>
 							<div
-								class="font-ea-body text-sm md:text-base leading-relaxed text-[#404040] italic relative z-10 px-2 space-y-4"
+								class="font-ea-body text-sm md:text-base leading-relaxed text-ea-text-secondary italic relative z-10 px-2 space-y-4"
 							>
 								<p class="font-semibold">
 									Some benefits and limitations of 80k advising from my personal
@@ -182,7 +163,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 								</p>
 							</div>
 							<span
-								class="absolute bottom-2 right-2 text-4xl text-[#0c869b]/20 font-serif"
+								class="absolute bottom-2 right-2 text-4xl text-ea-active-teal/20 font-serif"
 								>”</span
 							>
 						</div>
@@ -190,31 +171,31 @@ import SiteFooter from '../components/SiteFooter.astro';
 
 					<!-- Sam Card -->
 					<div
-						class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-6 md:p-8 flex flex-col items-center text-center transition-all duration-300 hover:shadow-lg hover:border-[#0c869b]/30"
+						class="ea-card p-6 md:p-8 flex flex-col items-center text-center ea-card-hover"
 					>
 						<div class="mb-6 flex-shrink-0">
 							<img
 								src="/assets/free-careers-advice/Sam A.jpeg"
 								alt="Sam"
-								class="w-[200px] h-[200px] rounded-full object-cover border-4 border-[#e8dfd3]"
+								class="w-[200px] h-[200px] rounded-full object-cover border-4 border-ea-border"
 							/>
 						</div>
 
 						<div
-							class="bg-[#054d5a] text-[#f4efe9] rounded-lg px-4 py-2 text-sm font-bold font-ea-body tracking-wide mb-6 shadow-sm"
+							class="bg-ea-dark-teal text-ea-cream rounded-lg px-4 py-2 text-sm font-bold font-ea-body tracking-wide mb-6 shadow-sm"
 						>
 							Sam in his Durham glory!
 						</div>
 
 						<div
-							class="relative bg-[#f4efe9]/60 rounded-lg p-5 md:p-6 border border-[#e8dfd3] text-left"
+							class="relative bg-ea-cream/60 rounded-lg p-5 md:p-6 border border-ea-border text-left"
 						>
 							<span
-								class="absolute top-2 left-2 text-4xl text-[#0c869b]/20 font-serif"
+								class="absolute top-2 left-2 text-4xl text-ea-active-teal/20 font-serif"
 								>“</span
 							>
 							<p
-								class="font-ea-body text-sm md:text-base leading-relaxed text-[#404040] italic relative z-10 px-2"
+								class="font-ea-body text-sm md:text-base leading-relaxed text-ea-text-secondary italic relative z-10 px-2"
 							>
 								I was really impressed, and quite honestly surprised, about how
 								insightful the 80K advisory session was. Huon, the advisor I
@@ -225,7 +206,7 @@ import SiteFooter from '../components/SiteFooter.astro';
 								this free, actionable, and valuable service.
 							</p>
 							<span
-								class="absolute bottom-2 right-2 text-4xl text-[#0c869b]/20 font-serif"
+								class="absolute bottom-2 right-2 text-4xl text-ea-active-teal/20 font-serif"
 								>”</span
 							>
 						</div>
@@ -235,19 +216,19 @@ import SiteFooter from '../components/SiteFooter.astro';
 
 			<!-- Section 4: Alex Vellins Bottom Card -->
 			<div
-				class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-8 md:p-12 text-center transition-all duration-300 hover:shadow-lg hover:border-[#0c869b]/30"
+				class="ea-card p-8 md:p-12 text-center ea-card-hover"
 			>
 				<div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
 					<div class="flex-shrink-0">
 						<img
 							src="/assets/free-careers-advice/Alex V.png"
 							alt="Alex Vellins"
-							class="w-[160px] h-[210px] object-cover rounded-lg shadow-sm border-2 border-[#e8dfd3]"
+							class="w-[160px] h-[210px] object-cover rounded-lg shadow-sm border-2 border-ea-border"
 						/>
 					</div>
 					<div class="flex-1 text-center md:text-left">
 						<p
-							class="font-ea-body text-base md:text-lg leading-relaxed text-[#404040] mb-8 font-semibold"
+							class="font-ea-body text-base md:text-lg leading-relaxed text-ea-text-secondary mb-8 font-semibold"
 						>
 							Want help applying? Book in a chat with me, Alex Vellins,
 							(co-president of EA Durham). There is no application form and no
@@ -256,23 +237,18 @@ import SiteFooter from '../components/SiteFooter.astro';
 							the 80,000 hours application.
 						</p>
 						<div class="flex justify-center md:justify-start">
-							<a
+							<BrandButton
 								href="https://calendly.com/alexvellins/hello"
-								target="_blank"
-								rel="noreferrer noopener"
-								class="group inline-flex h-[54px] px-8 items-center justify-center gap-2 rounded-[5px] text-[16px] font-bold text-white transition-all duration-300 hover:scale-[1.02]"
-								style="background-color: #68246d;"
-								onmouseover="this.style.backgroundColor='#541d58'"
-								onmouseout="this.style.backgroundColor='#68246d'"
+								external
+								class="h-[54px] px-8 text-[16px]"
 							>
 								<span>SPEAK TO ALEX :D</span>
-							</a>
+							</BrandButton>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</main>
+	</PageFrame>
 
 	<SiteFooter />
 </Layout>

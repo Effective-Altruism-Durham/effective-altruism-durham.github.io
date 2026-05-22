@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import BrandButton from '../components/BrandButton.astro';
+import PageFrame from '../components/PageFrame.astro';
 ---
 
 <Layout
@@ -10,40 +12,16 @@ import SiteFooter from '../components/SiteFooter.astro';
 >
 	<SiteHeader />
 
-	<main
-		class="relative min-h-screen bg-cover bg-center bg-fixed bg-no-repeat"
-		style="background-image: url('/assets/shared/page-hero-bg.jpg');"
-	>
-		<!-- Semi-transparent cream overlay to align with the EA brand theme and ensure readability -->
-		<div class="absolute inset-0 bg-[#f4efe9]/85 backdrop-blur-[2px]"></div>
-
-		<!-- Content container -->
-		<div class="relative z-10 mx-auto w-full max-w-[980px] px-5 py-16 md:py-24">
-			<!-- Page Title -->
-			<div class="text-center mb-16">
-				<h1
-					class="font-ea-heading text-4xl md:text-5xl font-normal tracking-[0.25em] text-[#054d5a] uppercase mb-4"
-				>
-					Programmes
-				</h1>
-				<div class="mx-auto h-[3px] w-24 bg-[#0c869b]"></div>
-			</div>
-
+	<PageFrame title="Programmes" spaciousTitle>
 			<!-- Programmes Sections Stack -->
 			<div class="space-y-12">
 				<!-- Arête Fellowship Card -->
-				<div
-					class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-8 md:p-12 transition-all duration-300 hover:shadow-lg hover:border-[#0c869b]/30 group"
-				>
-					<h2
-						class="font-ea-heading text-2xl md:text-3xl font-normal text-[#054d5a] mb-6 tracking-wide"
-					>
+				<div class="ea-card ea-card-hover p-8 md:p-12 group">
+					<h2 class="ea-section-heading mb-6 normal-case">
 						Arête Fellowship
 					</h2>
 
-					<p
-						class="font-ea-body text-base md:text-lg leading-relaxed text-[#404040] mb-8"
-					>
+					<p class="ea-copy mb-8 text-base md:text-lg">
 						The Arête Fellowship is an eight-week seminar programme aimed to
 						help you think about how you can have a positive impact on the
 						world. Each week, fellows will read, think about and discuss key
@@ -52,12 +30,9 @@ import SiteFooter from '../components/SiteFooter.astro';
 					</p>
 
 					<div>
-						<a
+						<BrandButton
 							href="/arete-fellowship"
-							class="group inline-flex h-[54px] w-[268px] items-center justify-center gap-3 rounded-[5px] text-[16px] font-bold text-white transition-all duration-300 hover:scale-[1.02]"
-							style="background-color: #68246d;"
-							onmouseover="this.style.backgroundColor='#541d58'"
-							onmouseout="this.style.backgroundColor='#68246d'"
+							class="h-[54px] w-[268px] text-[16px]"
 						>
 							<span>Read more</span>
 							<svg
@@ -69,23 +44,17 @@ import SiteFooter from '../components/SiteFooter.astro';
 									d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"
 								></path>
 							</svg>
-						</a>
+						</BrandButton>
 					</div>
 				</div>
 
 				<!-- In-Depth EA (IDEA) Fellowship Card -->
-				<div
-					class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-8 md:p-12 transition-all duration-300 hover:shadow-lg hover:border-[#0c869b]/30 group"
-				>
-					<h2
-						class="font-ea-heading text-2xl md:text-3xl font-normal text-[#054d5a] mb-6 tracking-wide"
-					>
+				<div class="ea-card ea-card-hover p-8 md:p-12 group">
+					<h2 class="ea-section-heading mb-6 normal-case">
 						In-Depth EA (IDEA) Fellowship
 					</h2>
 
-					<p
-						class="font-ea-body text-base md:text-lg leading-relaxed text-[#404040] mb-8"
-					>
+					<p class="ea-copy mb-8 text-base md:text-lg">
 						The IDEA (In-Depth EA) Fellowship is open to everybody who has
 						completed the Arête Fellowship. It’s an eight-week programme,
 						beginning with two weeks of setting intentions and thinking about
@@ -94,12 +63,9 @@ import SiteFooter from '../components/SiteFooter.astro';
 					</p>
 
 					<div>
-						<a
+						<BrandButton
 							href="/idea-fellowship"
-							class="group inline-flex h-[54px] w-[268px] items-center justify-center gap-3 rounded-[5px] text-[16px] font-bold text-white transition-all duration-300 hover:scale-[1.02]"
-							style="background-color: #68246d;"
-							onmouseover="this.style.backgroundColor='#541d58'"
-							onmouseout="this.style.backgroundColor='#68246d'"
+							class="h-[54px] w-[268px] text-[16px]"
 						>
 							<span>Read more</span>
 							<svg
@@ -111,12 +77,11 @@ import SiteFooter from '../components/SiteFooter.astro';
 									d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"
 								></path>
 							</svg>
-						</a>
+						</BrandButton>
 					</div>
 				</div>
 			</div>
-		</div>
-	</main>
+	</PageFrame>
 
 	<SiteFooter />
 </Layout>
