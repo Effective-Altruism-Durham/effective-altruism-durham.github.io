@@ -4,7 +4,7 @@
 .superpowers/
 .playwright-mcp/
 storyblok-blueprint-files
-.worktrees/
+NOTES.md
 
 # build output
 dist/
@@ -58,3 +58,5 @@ npm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+node_modules

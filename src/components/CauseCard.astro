@@ -1,0 +1,80 @@
+---
+interface Link {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  image: string;
+  links: Link[];
+}
+
+const { title, image, links } = Astro.props;
+const isSingleLink = links.length === 1;
+const primaryLink = isSingleLink ? links[0].href : null;
+---
+
+{
+  isSingleLink ? (
+    <a
+      href={primaryLink}
+      target="_blank"
+      rel="noreferrer noopener"
+      class="flex flex-col h-full bg-white/95 border border-ea-border rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-ea-active-teal/40 transition-all duration-300 group cursor-pointer"
+    >
+      <div class="relative w-full aspect-[3/1] overflow-hidden bg-slate-100">
+        <img
+          src={image}
+          alt={title}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
+      </div>
+      <div class="flex flex-col items-center justify-center p-6 text-center flex-grow bg-white/50">
+        <h2 class="font-ea-heading text-lg md:text-xl font-bold tracking-[0.2em] text-ea-dark-teal uppercase mb-4 mt-2">
+          {title}
+        </h2>
+        <span class="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-ea-active-teal group-hover:bg-ea-dark-teal rounded transition-colors duration-300 min-w-[160px] justify-center">
+          Learn More
+          <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 fill-none stroke-current stroke-2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          </svg>
+        </span>
+      </div>
+    </a>
+  ) : (
+    <div
+      class="flex flex-col h-full bg-white/95 border border-ea-border rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group"
+    >
+      <div class="relative w-full aspect-[3/1] overflow-hidden bg-slate-100">
+        <img
+          src={image}
+          alt={title}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
+      </div>
+      <div class="flex flex-col items-center justify-center p-6 text-center flex-grow bg-white/50">
+        <h2 class="font-ea-heading text-lg md:text-xl font-bold tracking-[0.2em] text-ea-dark-teal uppercase mb-4 mt-2">
+          {title}
+        </h2>
+        <div class="w-full flex flex-col sm:flex-row gap-3 justify-center items-center mt-2">
+          {links.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noreferrer noopener"
+              class="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-ea-active-teal hover:bg-ea-dark-teal rounded transition-colors duration-300 min-w-[150px] justify-center"
+            >
+              {link.label}
+              <svg viewBox="0 0 24 24" class="h-3.5 w-3.5 fill-none stroke-current stroke-2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}

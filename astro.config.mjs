@@ -1,57 +1,24 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+
 import tailwindcss from '@tailwindcss/vite';
+
 import sitemap from '@astrojs/sitemap';
+
 import netlify from '@astrojs/netlify';
-import { storyblok } from '@storyblok/astro';
-import { loadEnv } from 'vite';
-import mkcert from 'vite-plugin-mkcert';
 
+import mdx from '@astrojs/mdx';
 
-const env = loadEnv(import.meta.env.MODE, process.cwd(), '');
-const {
-	STORYBLOK_DELIVERY_API_TOKEN,
-	STORYBLOK_REGION,
-} = env;
+import tina from '@tinacms/astro/integration';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.eadurham.org',
-  devToolbar: {
-		enabled: false,
-	},
-
   vite: {
-    plugins: [
-      tailwindcss(),
-      mkcert(),
-    ]
+    plugins: [tailwindcss()]
   },
 
-  integrations: [
-    sitemap(),
-    storyblok({
-      accessToken: STORYBLOK_DELIVERY_API_TOKEN,
-      apiOptions: {
-        region: STORYBLOK_REGION || 'eu',
-      },
-      livePreview: true,
-      enableFallbackComponent: true,
-      customFallbackComponent: 'storyblok/MissingBlock',
-      components: {
-        page: 'storyblok/Page',
-        hero_section: 'storyblok/HeroSection',
-        rich_text_video_section: 'storyblok/RichTextVideoSection',
-        cta_section: 'storyblok/CtaSection',
-        card_grid_section: 'storyblok/CardGridSection',
-        text_card: 'storyblok/TextCard',
-        social_links_section: 'storyblok/SocialLinksSection',
-        contact_section: 'storyblok/ContactSection',
-        button_link: 'storyblok/ButtonLink',
-        social_link: 'storyblok/SocialLink',
-			},
-    }),
-  ],
+  site: 'https://www.eadurham.org',
+  integrations: [sitemap(), mdx(), tina()],
   adapter: netlify(),
-  output: 'server',
+  output: 'server'
 });

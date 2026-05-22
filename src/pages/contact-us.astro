@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import Team from '../components/Team.astro';
+import PageFrame from '../components/PageFrame.astro';
+import { getTeam } from '../lib/team';
+import { islands } from '../lib/islands';
+
+const team = await getTeam();
+---
+
+<Layout
+	title="Contact Us | EA Durham"
+	description="Contact the Effective Altruism Durham committee members. Find roles, email addresses, and bios for our organizers."
+>
+	<SiteHeader />
+
+	<PageFrame title="Contact Us" spaciousTitle>
+		<TinaIsland name="team" wrapper={islands.team.wrapper}>
+			<Team data={team.data} showTitle={false} />
+		</TinaIsland>
+	</PageFrame>
+
+	<SiteFooter />
+</Layout>

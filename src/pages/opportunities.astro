@@ -1,0 +1,402 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import BrandButton from '../components/BrandButton.astro';
+import PageFrame from '../components/PageFrame.astro';
+---
+
+<Layout
+	title="Opportunities | EA Durham"
+	description="Explore exciting career advice, mentoring, online courses, and recommendations within the Effective Altruism community."
+>
+	<SiteHeader />
+
+	<PageFrame title="Opportunities">
+				<p slot="intro">
+					There are so many exciting opportunities within the Effective Altruism
+					community as a whole, and within Effective Altruism Durham (of
+					course!), so here are some of our favourites!
+				</p>
+
+			<!-- Section 1: Arthur Field Publicity Officer (Contact Card) -->
+			<div
+				class="ea-card p-8 md:p-12 mb-16 ea-card-hover"
+			>
+				<div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+					<div class="flex-shrink-0">
+						<a
+							href="https://calendly.com/alexvellins/hello"
+							target="_blank"
+							rel="noreferrer noopener"
+							class="block transition-transform duration-300 hover:scale-105"
+						>
+							<img
+								src="/assets/opportunities/IMG_1647_edited.jpg"
+								alt="Arthur Field"
+								class="w-[200px] h-[200px] md:w-[220px] md:h-[220px] rounded-full object-cover border-4 border-ea-border"
+							/>
+						</a>
+					</div>
+					<div class="flex-1 text-center md:text-left">
+						<p
+							class="font-ea-body text-base md:text-lg leading-relaxed text-ea-text-secondary mb-8 font-semibold"
+						>
+							There's a lot of stuff here, so if you're still not sure I,
+							(Arthur Field, Publicity Officer of EA Durham), would love to
+							chat! There is no application form and no preparation needed. I
+							can talk you through what events EA Durham are running that might
+							help as well as signposting you to useful places
+						</p>
+						<div
+							class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4"
+						>
+							<BrandButton
+								href="https://calendly.com/arthur-field04"
+								external
+								class="h-[50px] px-8 text-[16px]"
+							>
+								<span>Let's chat!</span>
+							</BrandButton>
+							<BrandButton
+								href="mailto:kwjc75@durham.ac.uk"
+								variant="outline-purple"
+								class="h-[50px] px-8 text-[16px]"
+							>
+								<span>Or email me!</span>
+							</BrandButton>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Section 2: Advising and Mentoring -->
+			<div class="mb-16">
+				<h2
+					class="font-ea-heading text-2xl md:text-3xl font-normal text-ea-dark-teal tracking-wide mb-8 uppercase text-center md:text-left"
+				>
+					Advice and Mentorship
+				</h2>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<!-- 80,000 Hours Card -->
+					<div
+						class="ea-card p-6 md:p-8 flex flex-col h-full ea-card-hover group"
+					>
+						<div class="mb-6 flex-shrink-0 overflow-hidden rounded-lg">
+							<a
+								href="/free-careers-advice"
+								class="block transition-transform duration-300 group-hover:scale-[1.02]"
+							>
+								<img
+									src="/assets/opportunities/80000hours.png"
+									alt="80,000 Hours Logo"
+									class="w-full h-auto object-cover rounded-lg"
+								/>
+							</a>
+						</div>
+
+						<div class="flex-1 flex flex-col justify-between">
+							<div class="space-y-4 mb-8">
+								<p
+									class="font-ea-body text-sm md:text-base leading-relaxed text-ea-text-secondary font-bold"
+								>
+									80,000 hours do a bunch of research into the world's most
+									pressing problems, and how to find the best career to tackle
+									them, so they offer free online 1-1 career advice focused on
+									helping you to improve the world as much as possible.
+								</p>
+								<p
+									class="font-ea-body text-sm md:text-base leading-relaxed text-ea-text-secondary"
+								>
+									Josh and Amber have learnt lots about 80k and their advice for
+									having a high-impact career and they can help with any
+									questions you have!
+								</p>
+								<p
+									class="font-ea-body text-sm md:text-base leading-relaxed text-ea-text-secondary"
+								>
+									We've written more about what EA Durham people have to say
+									here:
+								</p>
+							</div>
+
+							<div class="flex flex-col sm:flex-row items-center gap-3">
+								<BrandButton
+									href="/free-careers-advice"
+									class="h-[45px] w-full px-5 text-[14px] sm:w-auto"
+								>
+									WHAT OUR MEMBERS SAY
+								</BrandButton>
+								<BrandButton
+									href="https://80000hours.org/speak-with-us/"
+									external
+									variant="outline-purple"
+									class="h-[45px] w-full px-5 text-[14px] sm:w-auto"
+								>
+									APPLY NOW!
+								</BrandButton>
+							</div>
+						</div>
+					</div>
+
+					<!-- Magnify Mentoring Card -->
+					<div
+						class="ea-card p-6 md:p-8 flex flex-col h-full ea-card-hover group"
+					>
+						<div class="mb-6 flex-shrink-0 overflow-hidden rounded-lg">
+							<a
+								href="https://www.magnifymentoring.org/"
+								target="_blank"
+								rel="noreferrer noopener"
+								class="block transition-transform duration-300 group-hover:scale-[1.02]"
+							>
+								<img
+									src="/assets/opportunities/Magnify.png"
+									alt="Magnify Mentoring Logo"
+									class="w-full h-auto object-cover rounded-lg"
+								/>
+							</a>
+						</div>
+
+						<div class="flex-1 flex flex-col justify-between">
+							<div class="space-y-4 mb-8">
+								<p
+									class="font-ea-body text-sm md:text-base leading-relaxed text-ea-text-secondary font-bold"
+								>
+									Magnify Mentoring has a wholesome and inclusive community of
+									500 people across 50 countries.
+								</p>
+								<p
+									class="font-ea-body text-sm md:text-base leading-relaxed text-ea-text-secondary"
+								>
+									While they typically focus on women, non-binary and
+									transgender people, they have recently opened an unrestricted
+									round for people of all minorities.
+								</p>
+								<p
+									class="font-ea-body text-sm md:text-base leading-relaxed text-ea-text-secondary"
+								>
+									Through Magnify Mentoring, I was paired with a mentor who is
+									very kind, knowledgeable and experience in a variety of
+									fields. I would personally strongly recommend them!
+								</p>
+							</div>
+
+							<div class="flex flex-col sm:flex-row items-center gap-3">
+								<BrandButton
+									href="https://www.magnifymentoring.org/"
+									external
+									class="h-[45px] w-full px-5 text-[14px] sm:w-auto"
+								>
+									LEARN MORE
+								</BrandButton>
+								<BrandButton
+									href="https://forms.zohopublic.com/eamentorshipprogram/form/MagnifyMenteePilotRoundApplicationForm/formperma/rRMrKjLA1-L0T3N_IhdqEuCNR-1ks_z5ot9SkD1EgpQ"
+									external
+									variant="outline-purple"
+									class="h-[45px] w-full px-5 text-[14px] sm:w-auto"
+								>
+									APPLY NOW!
+								</BrandButton>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Section 3: Online Courses -->
+			<div class="mb-16">
+				<h2
+					class="font-ea-heading text-2xl md:text-3xl font-normal text-ea-dark-teal tracking-wide mb-4 uppercase text-center md:text-left"
+				>
+					Online Courses
+				</h2>
+				<p
+					class="font-ea-body text-base leading-relaxed text-ea-text-secondary mb-8 text-center md:text-left"
+				>
+					These 12 week online courses, by BlueDot Impact, are open now. They
+					involve learning alongside others with an experienced facilitator; and
+					help you in your next steps by sharing opportunities within their
+					large network and potentially connecting you with recruiters.
+				</p>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<!-- AGI Strategy Card -->
+					<a
+						href="https://bluedot.org/courses/agi-strategy"
+						target="_blank"
+						rel="noreferrer noopener"
+						class="flex flex-col h-full bg-white/95 border border-ea-border rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-ea-active-teal/40 transition-all duration-300 group cursor-pointer"
+					>
+						<div
+							class="relative w-full aspect-[3/1] overflow-hidden bg-slate-100"
+						>
+							<img
+								src="/assets/opportunities/AISF.png"
+								alt="AGI Strategy Course"
+								class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+							/>
+							<div
+								class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"
+							>
+							</div>
+						</div>
+						<div
+							class="flex flex-col items-center justify-center p-6 text-center flex-grow bg-white/50"
+						>
+							<h3
+								class="font-ea-heading text-lg md:text-xl font-bold tracking-[0.2em] text-ea-dark-teal uppercase mb-4 mt-2"
+							>
+								AGI Strategy
+							</h3>
+							<span
+								class="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-ea-active-teal group-hover:bg-ea-dark-teal rounded transition-colors duration-300 min-w-[160px] justify-center"
+							>
+								Learn More
+								<svg
+									viewBox="0 0 24 24"
+									class="h-3.5 w-3.5 fill-none stroke-current stroke-2"
+									aria-hidden="true"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+									></path>
+								</svg>
+							</span>
+						</div>
+					</a>
+
+					<!-- Pandemics Course Card -->
+					<a
+						href="https://bluedot.org/courses/biosecurity"
+						target="_blank"
+						rel="noreferrer noopener"
+						class="flex flex-col h-full bg-white/95 border border-ea-border rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-ea-active-teal/40 transition-all duration-300 group cursor-pointer"
+					>
+						<div
+							class="relative w-full aspect-[3/1] overflow-hidden bg-slate-100"
+						>
+							<img
+								src="/assets/opportunities/Pandemics.jpg"
+								alt="Pandemics & Biosecurity Course"
+								class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+							/>
+							<div
+								class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"
+							>
+							</div>
+						</div>
+						<div
+							class="flex flex-col items-center justify-center p-6 text-center flex-grow bg-white/50"
+						>
+							<h3
+								class="font-ea-heading text-lg md:text-xl font-bold tracking-[0.2em] text-ea-dark-teal uppercase mb-4 mt-2"
+							>
+								Biosecurity & Pandemics
+							</h3>
+							<span
+								class="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-ea-active-teal group-hover:bg-ea-dark-teal rounded transition-colors duration-300 min-w-[160px] justify-center"
+							>
+								Learn More
+								<svg
+									viewBox="0 0 24 24"
+									class="h-3.5 w-3.5 fill-none stroke-current stroke-2"
+									aria-hidden="true"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+									></path>
+								</svg>
+							</span>
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<!-- Section 4: Our Recommendations -->
+			<div
+				class="ea-card p-8 md:p-12 mb-12 text-center ea-card-hover"
+			>
+				<h2
+					class="font-ea-heading text-2xl md:text-3xl font-normal text-ea-dark-teal tracking-wide mb-6 uppercase"
+				>
+					Our Recommendations
+				</h2>
+
+				<p
+					class="font-ea-body text-base md:text-lg leading-relaxed text-ea-text-secondary mb-4"
+				>
+					If that wasn't enough, our weekly term-time newsletter contains
+					curated opportunities - so we highly recommend signing up to that!
+				</p>
+
+				<p
+					class="font-ea-body text-base md:text-lg leading-relaxed text-ea-text-secondary mb-4"
+				>
+					Our previous lead organisers also wrote this super in depth (and
+					slightly outdated) list of opportunities, newsletters and motivation
+					and mental health resources.
+				</p>
+
+				<p
+					class="font-ea-body text-base md:text-lg leading-relaxed text-ea-text-secondary mb-8"
+				>
+					For regularly updated external opportunities, we also highly recommend
+					checking out the global Effective Altruism Opportunities Board.
+				</p>
+
+				<div
+					class="flex flex-col md:flex-row items-center justify-center gap-4 mb-10"
+				>
+					<!-- Newsletter Sign-up Button (Matching Footer style but balanced height) -->
+					<BrandButton
+						href="https://outlook.office365.com/owa/effectivealtruismdurham@durhamuniversity.onmicrosoft.com/groupsubscription.ashx?action=join&source=MSExchange/LokiServer&guid=e5909571-b397-42c5-99bc-b362c640ca29"
+						external
+						class="h-[54px] w-full max-w-[268px] px-6 text-[16px]"
+					>
+						<span>Join the mailing list</span>
+						<svg
+							viewBox="0 0 60 60"
+							class="h-4 w-4 fill-current"
+							aria-hidden="true"
+						>
+							<path
+								d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"
+							></path>
+						</svg>
+					</BrandButton>
+
+					<!-- Google Doc Opportunities Button -->
+					<BrandButton
+						href="https://docs.google.com/document/d/1RtKyNa6_tvynjjYVfT_Lk5uI7LzZyJgGaWmZefrA1BE/edit?tab=t.0"
+						external
+						variant="outline-purple"
+						class="h-[54px] w-full max-w-[268px] text-[16px]"
+					>
+						VIEW OPPORTUNITIES
+					</BrandButton>
+
+					<!-- EA Opportunities Board Button -->
+					<BrandButton
+						href="https://www.effectivealtruism.org/opportunities"
+						external
+						variant="outline-purple"
+						class="h-[54px] w-full max-w-[268px] text-[16px]"
+					>
+						EXTERNAL OPPORTUNITIES
+					</BrandButton>
+				</div>
+
+				<p class="font-ea-heading text-xl font-normal text-ea-dark-teal italic">
+					Phew, that's it! I hope this helped :D
+				</p>
+			</div>
+	</PageFrame>
+
+	<SiteFooter />
+</Layout>

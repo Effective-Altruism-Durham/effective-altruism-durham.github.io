@@ -1,52 +1,23 @@
 ---
-import { getPayload, useStoryblokApi } from "@storyblok/astro";
-import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
-import Layout from "../layouts/Layout.astro";
-import HeroSection from "../components/HeroSection.astro";
-import WhatIsEA from "../components/WhatIsEA.astro";
-import AreteFellowship from "../components/AreteFellowship.astro";
-import WhatWeDo from "../components/WhatWeDo.astro";
-import SocialLinks from "../components/SocialLinks.astro";
-import ContactSection from "../components/ContactSection.astro";
-import { homepageDefaults } from "../data/homepageDefaults";
-
-let story;
-const previewPayload = await getPayload({ locals: Astro.locals });
-story = previewPayload.story;
-
-if (!story && import.meta.env.STORYBLOK_DELIVERY_API_TOKEN) {
-  try {
-    const storyblokApi = useStoryblokApi();
-    const { data } = await storyblokApi.get("cdn/stories/home", {
-      version: import.meta.env.DEV ? "draft" : "published",
-    });
-
-    story = data.story;
-  } catch (error) {
-    console.warn("Storyblok homepage unavailable; rendering static fallback.", error);
-  }
-}
-
-const storyContent = story?.content;
-const shouldRenderStoryblok = storyContent?.component === "page";
-const title = storyContent?.meta_title || homepageDefaults.title;
-const description = storyContent?.meta_description || homepageDefaults.description;
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import HeroSection from '../components/HeroSection.astro';
+import WhatIsEA from '../components/WhatIsEA.astro';
+import AreteFellowship from '../components/AreteFellowship.astro';
+import WhatWeDo from '../components/WhatWeDo.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 ---
 
 <Layout
-  title={title}
-  description={description}
+	title="Home | EA Durham"
+	description="We represent the Effective Altruism movement in Durham University. We empower students who want to make a change through our programmes, events, and community."
 >
-  {shouldRenderStoryblok ? (
-    <StoryblokComponent blok={storyContent} />
-  ) : (
-    <main>
-      <HeroSection />
-      <WhatIsEA />
-      <AreteFellowship />
-      <WhatWeDo />
-      <SocialLinks />
-      <ContactSection />
-    </main>
-  )}
+	<SiteHeader />
+	<main>
+		<HeroSection />
+		<WhatIsEA />
+		<AreteFellowship />
+		<WhatWeDo />
+	</main>
+	<SiteFooter />
 </Layout>

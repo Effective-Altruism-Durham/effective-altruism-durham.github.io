@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import PageFrame from '../components/PageFrame.astro';
+---
+
+<Layout
+	title="Events | EA Durham"
+	description="We host a variety of external speakers, talks, and workshops. Join us to learn about effective altruism and how to do good better."
+>
+	<SiteHeader />
+
+	<PageFrame title="Events">
+			<!-- Main Content Card -->
+			<div class="ea-card ea-card-hover p-8 md:p-12">
+				<!-- Text Blurb -->
+				<div
+					class="prose ea-copy max-w-none text-base md:text-lg space-y-6 mb-12"
+				>
+					<p>
+						We have a variety of external speakers come in and give talks. These
+						talks are completely free of charge, so please do come along! In
+						addition, we have members of EA Durham lead talks and workshops on
+						various topics and skills.
+					</p>
+					<p>
+						We ask attendees to register so we have an idea of the numbers
+						expected. We often offer free vegan pizza after the talk!
+					</p>
+				</div>
+
+				<!-- Section Accent Divider -->
+				<div class="flex items-center gap-4 my-8">
+					<div class="h-px flex-1 bg-ea-border"></div>
+					<span
+						class="text-xs uppercase tracking-[0.2em] font-bold text-ea-active-teal"
+						>See events on our Instagram</span
+					>
+					<div class="h-px flex-1 bg-ea-border"></div>
+				</div>
+
+				<!-- Instagram Profile Widget -->
+				<div class="w-full overflow-hidden rounded-md bg-white">
+					<script
+						src="https://cdn.commoninja.com/sdk/latest/commonninja.js"
+						defer
+						is:inline
+					></script>
+					<div
+						class="commonninja_component pid-7f8b5cc2-5782-4487-8643-70b8c7359bd6"
+					>
+					</div>
+				</div>
+			</div>
+	</PageFrame>
+
+	<SiteFooter />
+</Layout>

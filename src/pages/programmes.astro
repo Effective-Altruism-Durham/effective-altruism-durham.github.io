@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import BrandButton from '../components/BrandButton.astro';
+import PageFrame from '../components/PageFrame.astro';
+---
+
+<Layout
+	title="Programmes | EA Durham"
+	description="Explore our seminar programmes aimed to help you think about how you can have a positive impact on the world, including the Arête Fellowship and In-Depth EA (IDEA) Fellowship."
+>
+	<SiteHeader />
+
+	<PageFrame title="Programmes" spaciousTitle>
+			<!-- Programmes Sections Stack -->
+			<div class="space-y-12">
+				<!-- Arête Fellowship Card -->
+				<div class="ea-card ea-card-hover p-8 md:p-12 group">
+					<h2 class="ea-section-heading mb-6 normal-case">
+						Arête Fellowship
+					</h2>
+
+					<p class="ea-copy mb-8 text-base md:text-lg">
+						The Arête Fellowship is an eight-week seminar programme aimed to
+						help you think about how you can have a positive impact on the
+						world. Each week, fellows will read, think about and discuss key
+						ideas and concepts from a range of disciplines related to doing good
+						effectively.
+					</p>
+
+					<div>
+						<BrandButton
+							href="/arete-fellowship"
+							class="h-[54px] w-[268px] text-[16px]"
+						>
+							<span>Read more</span>
+							<svg
+								viewBox="0 0 60 60"
+								class="h-4 w-4 fill-current transition-transform duration-300 group-hover:translate-x-1"
+								aria-hidden="true"
+							>
+								<path
+									d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"
+								></path>
+							</svg>
+						</BrandButton>
+					</div>
+				</div>
+
+				<!-- In-Depth EA (IDEA) Fellowship Card -->
+				<div class="ea-card ea-card-hover p-8 md:p-12 group">
+					<h2 class="ea-section-heading mb-6 normal-case">
+						In-Depth EA (IDEA) Fellowship
+					</h2>
+
+					<p class="ea-copy mb-8 text-base md:text-lg">
+						The IDEA (In-Depth EA) Fellowship is open to everybody who has
+						completed the Arête Fellowship. It’s an eight-week programme,
+						beginning with two weeks of setting intentions and thinking about
+						our own values and how we arrive at them, followed by 6 weeks where
+						your fellowship group decides together which topics to cover.
+					</p>
+
+					<div>
+						<BrandButton
+							href="/idea-fellowship"
+							class="h-[54px] w-[268px] text-[16px]"
+						>
+							<span>Read more</span>
+							<svg
+								viewBox="0 0 60 60"
+								class="h-4 w-4 fill-current transition-transform duration-300 group-hover:translate-x-1"
+								aria-hidden="true"
+							>
+								<path
+									d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"
+								></path>
+							</svg>
+						</BrandButton>
+					</div>
+				</div>
+			</div>
+	</PageFrame>
+
+	<SiteFooter />
+</Layout>

@@ -2,67 +2,59 @@
 /**
  * WhatIsEA — "What is Effective Altruism?" section
  * Wix reference: section comp-loker22v
- *   - bg: color_43 = #054D5A
+ *   - bg: brand dark teal
  *   - Heading: "What is / Effective Altruism?" at left:35px, Roboto Slab 40px, white
  *   - Description text at left:492px, width:407px, Raleway 18px, white
  *   - Video player at left:0px, 449x253, below heading
  *
  * The video is below the heading on the left, with the description to its right.
  */
-
-import { homepageDefaults } from "../data/homepageDefaults";
-
-const {
-  headingHtml = homepageDefaults.whatIsEa.headingHtml,
-  bodyHtml = homepageDefaults.whatIsEa.bodyHtml,
-  videoUrl = homepageDefaults.whatIsEa.videoUrl,
-  layout = "text_right",
-  sectionId = "what-is-ea",
-  backgroundClass,
-} = Astro.props;
-
-const isStacked = layout === "stacked";
-const textFirst = layout === "text_left";
-const gridStyle = isStacked
-  ? "min-height: 525px; grid-template-columns: 1fr; grid-template-rows: auto auto auto;"
-  : "min-height: 525px; grid-template-columns: 554px 319px; grid-template-rows: min-content min-content; column-gap: 44px;";
-const headingStyle = isStacked
-  ? "grid-column: 1; grid-row: 1; margin: 49px auto 0; width: min(700px, 100%);"
-  : textFirst
-    ? "grid-column: 1; grid-row: 1; margin-left: 74px; margin-top: 49px; width: 441px;"
-    : "grid-column: 1; grid-row: 1; margin-left: 74px; margin-top: 49px; width: 441px;";
-const bodyStyle = isStacked
-  ? "grid-column: 1; grid-row: 2; margin: 24px auto 0; width: min(700px, 100%);"
-  : textFirst
-    ? "grid-column: 1; grid-row: 2; margin-left: 74px; margin-top: 58px; width: 319px;"
-    : "grid-column: 2; grid-row: 2; margin-top: 58px; width: 319px;";
-const videoStyle = isStacked
-  ? "grid-column: 1; grid-row: 3; margin: 48px auto 0; width: min(480px, 100%); height: 270px;"
-  : textFirst
-    ? "grid-column: 2; grid-row: 2; margin-top: 48px; width: 480px; height: 270px;"
-    : "grid-column: 1; grid-row: 2; margin-left: 74px; margin-top: 48px; width: 480px; height: 270px;";
 ---
 
 <section
-  id={sectionId}
-  class={`relative overflow-hidden ${backgroundClass || ""}`}
-  style={backgroundClass ? undefined : "background-color: #054d5a;"}
+  id="what-is-ea"
+  class="relative overflow-hidden bg-ea-dark-teal"
 >
-  <div class="mx-auto grid w-full max-w-[980px] px-5" style={gridStyle}>
-    <div style={headingStyle}>
-      <h3 class="font-ea-heading text-[40px] leading-[1.4] font-normal text-white">
-          <Fragment set:html={headingHtml} />
+  <div 
+    class="mx-auto w-full max-w-[980px] px-5 py-12 md:py-0 md:min-h-[525px] flex flex-col md:grid md:grid-cols-[554px_319px] md:grid-rows-[auto_auto] md:gap-x-[44px]"
+  >
+    <!-- Heading -->
+    <div class="w-full md:w-[441px] md:col-start-1 md:row-start-1 md:ml-[74px] mt-4 md:mt-[49px]">
+        <h3 class="font-ea-heading text-[32px] md:text-[40px] leading-[1.4] font-normal text-white">
+          What is<br />
+          <span class="font-bold">Effective&nbsp;</span>Altruism?
         </h3>
     </div>
-    <div class="font-ea-body text-[18px] leading-[1.4] text-white" style={bodyStyle}>
-        <Fragment set:html={bodyHtml} />
+
+    <!-- Description (Stacks below the video on mobile/tablet, but at Row 2, Col 2 on Desktop) -->
+    <div 
+      class="font-ea-body text-[18px] leading-[1.4] text-white w-full md:w-[319px] md:col-start-2 md:row-start-2 mt-8 md:mt-[58px] order-3 md:order-none"
+    >
+        <p>
+          <a
+            href="https://www.effectivealtruism.org/"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="text-white underline">Effective Altruism</a
+          > is a framework for applying evidence-based reasoning to
+          <a
+            href="https://80000hours.org/problem-profiles/"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="text-white underline"
+            >the world's most pressing problems</a
+          >. It's also a practical community sharing diverse views on which
+          problems to prioritise and how to tackle them.
+        </p>
     </div>
-    <div style={videoStyle}>
+
+    <!-- Video Frame (Stacks below heading on mobile/tablet, but at Row 2, Col 1 on Desktop) -->
+    <div 
+      class="w-full max-w-[480px] aspect-video md:aspect-auto md:w-[480px] md:h-[270px] md:col-start-1 md:row-start-2 md:ml-[74px] mt-6 md:mt-[48px] order-2 md:order-none"
+    >
       <iframe
-        class="h-full w-full"
-        width="560"
-        height="315"
-        src={videoUrl}
+        class="h-full w-full rounded-lg md:rounded-none"
+        src="https://www.youtube-nocookie.com/embed/Diuv3XZQXyc?si=p6XQuSQe5CiJ9SsC"
         title="YouTube video player"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

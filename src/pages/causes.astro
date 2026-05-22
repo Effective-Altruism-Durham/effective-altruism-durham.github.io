@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import CauseCard from '../components/CauseCard.astro';
+import PageFrame from '../components/PageFrame.astro';
+
+const causes = [
+	{
+		title: 'AI Safety',
+		image: '/assets/causes/67772eaaa8174950975992b1e23d8c02.jpg',
+		links: [{ label: 'Durham AI Safety', href: 'https://durhamaisafety.uk/' }],
+	},
+	{
+		title: 'Animal Advocacy',
+		image: '/assets/causes/Cow.jpg',
+		links: [
+			{
+				label: 'Factory Farming',
+				href: 'https://80000hours.org/problem-profiles/factory-farming/',
+			},
+			{
+				label: 'Wild Animal Welfare',
+				href: 'https://80000hours.org/problem-profiles/wild-animal-welfare/',
+			},
+		],
+	},
+	{
+		title: 'Biosecurity & Pandemics',
+		image: '/assets/causes/Vaccine Production Line.jpg',
+		links: [
+			{
+				label: 'Learn More',
+				href: 'https://80000hours.org/problem-profiles/preventing-catastrophic-pandemics/',
+			},
+		],
+	},
+	{
+		title: 'Global Health & Development',
+		image: '/assets/causes/Favelas.jpeg',
+		links: [
+			{
+				label: 'Learn More',
+				href: 'https://www.effectivealtruism.org/articles/cause-profile-global-health-and-development',
+			},
+		],
+	},
+	{
+		title: 'Future Generations',
+		image: '/assets/causes/Love the Earth.jpeg',
+		links: [
+			{
+				label: 'Learn More',
+				href: 'https://www.effectivealtruism.org/articles/cause-profile-long-run-future',
+			},
+		],
+	},
+	{
+		title: 'Government & Policy',
+		image: '/assets/causes/Country Flags.jpg',
+		links: [
+			{
+				label: 'Learn More',
+				href: 'https://80000hours.org/career-reviews/policy-careers-focused-on-other-pressing-global-issues/',
+			},
+		],
+	},
+	{
+		title: 'Nuclear Risk',
+		image: '/assets/causes/Image by Yves Alarie.jpg',
+		links: [
+			{
+				label: 'Learn More',
+				href: 'https://80000hours.org/problem-profiles/nuclear-security/',
+			},
+		],
+	},
+];
+---
+
+<Layout
+	title="Cause Areas | EA Durham"
+	description="We focus our efforts on the world's most pressing and neglected problems: global health, biosecurity, AI safety, animal advocacy, future generations, and more."
+>
+	<SiteHeader />
+
+	<PageFrame title="Cause Areas" overlay="soft">
+			<!-- Cards Grid -->
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+				{
+					causes.map((cause) => (
+						<div class="h-full">
+							<CauseCard
+								title={cause.title}
+								image={cause.image}
+								links={cause.links}
+							/>
+						</div>
+					))
+				}
+			</div>
+	</PageFrame>
+
+	<SiteFooter />
+</Layout>

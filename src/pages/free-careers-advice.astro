@@ -1,0 +1,254 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import BrandButton from '../components/BrandButton.astro';
+import PageFrame from '../components/PageFrame.astro';
+---
+
+<Layout
+	title="Free 1-1 Careers Advice | EA Durham"
+	description="Learn about free online 1-1 career advising services from 80,000 Hours, read EA Durham graduates' reviews, and get help applying."
+>
+	<SiteHeader />
+
+	<PageFrame title="Free 1-1 Careers Advice">
+			<!-- Section 1: Intro Grid (Two Columns) -->
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
+				<!-- Text Column -->
+				<div class="lg:col-span-8 space-y-6">
+					<div
+						class="ea-card p-6 md:p-8"
+					>
+						<p
+							class="font-ea-body text-base md:text-lg leading-relaxed text-ea-text-secondary mb-4 font-bold"
+						>
+							Career planning is really hard, (and for me, quite scary!) but
+							80,000 hours offer free online 1-1 career advice.
+						</p>
+						<p
+							class="font-ea-body text-base leading-relaxed text-ea-text-secondary mb-4"
+						>
+							I (Alex Vellins) have spoken to them twice and found them to be
+							friendly, incredibly knowledgeable and very focused on impact.
+						</p>
+						<p
+							class="font-ea-body text-base leading-relaxed text-ea-text-secondary mb-2 font-semibold"
+						>
+							For me, the only limitation is that it's on you to take action on
+							the resources they provide; so don't expect to leave with a full
+							career plan, rather, expect to leave with:
+						</p>
+
+						<ul
+							class="font-ea-body text-base leading-relaxed text-ea-text-secondary space-y-2 mb-6 list-disc list-inside pl-2"
+						>
+							<li>Useful research questions and alternative framings</li>
+							<li>A great variety of useful resources</li>
+							<li>Options that you wouldn't have previously considered</li>
+							<li>
+								And possibly connections to people working in your cause area!
+							</li>
+						</ul>
+
+						<p class="font-ea-body text-base leading-relaxed text-ea-text-secondary">
+							Most people overestimate the amount of preparation required to
+							apply to 80,000 hours, so if you're not sure, please apply! We
+							expect that doing something like our Arete fellowship will be
+							sufficient, but if you've thought deeply about the worlds problems
+							and what you can do to tackle them, we'd be excited for you to
+							apply!
+						</p>
+					</div>
+
+					<div class="flex flex-col sm:flex-row items-center gap-4">
+						<BrandButton
+							href="/arete-fellowship"
+							class="h-[54px] w-full px-8 text-[16px] sm:w-auto"
+						>
+							ARETE FELLOWSHIP
+						</BrandButton>
+						<BrandButton
+							href="https://80000hours.org/speak-with-us/"
+							external
+							variant="outline-purple"
+							class="h-[54px] w-full px-8 text-[16px] sm:w-auto"
+						>
+							APPLY FOR ADVISING!
+						</BrandButton>
+					</div>
+				</div>
+
+				<!-- Book Image Column -->
+				<div class="lg:col-span-4 flex justify-center">
+					<div
+						class="ea-card p-4 ea-card-hover"
+					>
+						<img
+							src="/assets/free-careers-advice/80Kbook-twobooks-whitebkg-scaled-e1693395630953.jpg"
+							alt="80,000 Hours Books"
+							class="w-full max-w-[280px] lg:max-w-full h-auto rounded-lg object-cover"
+						/>
+					</div>
+				</div>
+			</div>
+
+			<!-- Section 3: Testimonials Block -->
+			<div class="mb-16">
+				<h2
+					class="font-ea-heading text-2xl md:text-3xl font-normal text-ea-dark-teal tracking-wide mb-8 uppercase text-center"
+				>
+					Still not sure? Here's what two EA Durham Graduates have to say about
+					the service:
+				</h2>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+					<!-- Iyngkarran Card -->
+					<div
+						class="ea-card p-6 md:p-8 flex flex-col items-center text-center ea-card-hover"
+					>
+						<div class="mb-6 flex-shrink-0">
+							<img
+								src="/assets/free-careers-advice/Iyngkarran.jpeg"
+								alt="Iyngkarran"
+								class="w-[200px] h-[200px] rounded-full object-cover border-4 border-ea-border"
+							/>
+						</div>
+
+						<div
+							class="bg-ea-dark-teal text-ea-cream rounded-lg px-4 py-2 text-sm font-bold font-ea-body tracking-wide mb-6 shadow-sm"
+						>
+							Iyngkarran, researcher at the Transformative Futures Institute
+						</div>
+
+						<div
+							class="relative bg-ea-cream/60 rounded-lg p-5 md:p-6 border border-ea-border text-left"
+						>
+							<span
+								class="absolute top-2 left-2 text-4xl text-ea-active-teal/20 font-serif"
+								>“</span
+							>
+							<div
+								class="font-ea-body text-sm md:text-base leading-relaxed text-ea-text-secondary italic relative z-10 px-2 space-y-4"
+							>
+								<p class="font-semibold">
+									Some benefits and limitations of 80k advising from my personal
+									experience:
+								</p>
+								<p>
+									<strong>Benefits:</strong><br />
+									- If you've not thought deeply about career planning before, 80k
+									advising is a great call. They can introduce you to opportunities
+									and even cause areas that you've never heard of before, and suggest
+									concrete steps to start exploring them.<br />
+									- Even if you've thought long and hard about career plans, 80k
+									have a huge network of contacts that you can benefit from. They
+									can introduce you to new contacts and help build your own network
+									in the field.
+								</p>
+								<p>
+									<strong>Limitations:</strong><br />
+									- At the end of the day it's one 60-minute phone call, so the onus
+									to take action on the things discussed in the meeting is on you.
+									The 80k advisors only have time to check in and see how things
+									are going every few months.<br />
+									- If you've thought long and hard about your career the advising
+									will be less useful, because 80k will be able to recommend fewer
+									organisations and opportunities that you've not heard of. That
+									being said, there is still a lot of value from making connections,
+									see above.<br />
+									- This goes without saying but prepare for the meeting beforehand,
+									or else you'll miss out on a lot of potential value. I'd recommend
+									something like 2hrs spent on 80k's preparatory doc before the meeting.
+								</p>
+							</div>
+							<span
+								class="absolute bottom-2 right-2 text-4xl text-ea-active-teal/20 font-serif"
+								>”</span
+							>
+						</div>
+					</div>
+
+					<!-- Sam Card -->
+					<div
+						class="ea-card p-6 md:p-8 flex flex-col items-center text-center ea-card-hover"
+					>
+						<div class="mb-6 flex-shrink-0">
+							<img
+								src="/assets/free-careers-advice/Sam A.jpeg"
+								alt="Sam"
+								class="w-[200px] h-[200px] rounded-full object-cover border-4 border-ea-border"
+							/>
+						</div>
+
+						<div
+							class="bg-ea-dark-teal text-ea-cream rounded-lg px-4 py-2 text-sm font-bold font-ea-body tracking-wide mb-6 shadow-sm"
+						>
+							Sam in his Durham glory!
+						</div>
+
+						<div
+							class="relative bg-ea-cream/60 rounded-lg p-5 md:p-6 border border-ea-border text-left"
+						>
+							<span
+								class="absolute top-2 left-2 text-4xl text-ea-active-teal/20 font-serif"
+								>“</span
+							>
+							<p
+								class="font-ea-body text-sm md:text-base leading-relaxed text-ea-text-secondary italic relative z-10 px-2"
+							>
+								I was really impressed, and quite honestly surprised, about how
+								insightful the 80K advisory session was. Huon, the advisor I
+								booked a session with, helped me reframe job hunting and opened
+								my eyes to career paths and opportunities I had not previously
+								considered. Whether you're just starting your degree or coming
+								to the end of it, I'd definitely recommend making the most of
+								this free, actionable, and valuable service.
+							</p>
+							<span
+								class="absolute bottom-2 right-2 text-4xl text-ea-active-teal/20 font-serif"
+								>”</span
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Section 4: Alex Vellins Bottom Card -->
+			<div
+				class="ea-card p-8 md:p-12 text-center ea-card-hover"
+			>
+				<div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+					<div class="flex-shrink-0">
+						<img
+							src="/assets/free-careers-advice/Alex V.png"
+							alt="Alex Vellins"
+							class="w-[160px] h-[210px] object-cover rounded-lg shadow-sm border-2 border-ea-border"
+						/>
+					</div>
+					<div class="flex-1 text-center md:text-left">
+						<p
+							class="font-ea-body text-base md:text-lg leading-relaxed text-ea-text-secondary mb-8 font-semibold"
+						>
+							Want help applying? Book in a chat with me, Alex Vellins,
+							(co-president of EA Durham). There is no application form and no
+							preparation needed. I can talk you through the opportunities
+							available and help you formulate your answers to the questions in
+							the 80,000 hours application.
+						</p>
+						<div class="flex justify-center md:justify-start">
+							<BrandButton
+								href="https://calendly.com/alexvellins/hello"
+								external
+								class="h-[54px] px-8 text-[16px]"
+							>
+								<span>SPEAK TO ALEX :D</span>
+							</BrandButton>
+						</div>
+					</div>
+				</div>
+			</div>
+	</PageFrame>
+
+	<SiteFooter />
+</Layout>
