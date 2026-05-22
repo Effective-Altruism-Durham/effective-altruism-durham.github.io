@@ -7,7 +7,7 @@ interface Props {
 		roles: string;
 		email: string;
 		bio: string;
-		image: string;
+		image?: string;
 		_content_source?: {
 			queryId: string;
 			path: Array<string | number>;
@@ -34,7 +34,7 @@ const roleList = person.roles
 		</div>
 		<img
 			data-tina-field={tinaField(person, 'image')}
-			src={person.image}
+			src={person.image || '/assets/contact-us/ead_white_square.png'}
 			alt={person.name}
 			class="h-28 w-28 md:h-32 md:w-32 rounded-full border-4 border-ea-border group-hover:border-ea-active-teal/70 bg-white object-cover transition-colors duration-300 relative z-10"
 			width="128"

@@ -8,7 +8,7 @@ export interface TeamMemberData {
   roles: string;
   email: string;
   bio: string;
-  image: string;
+  image?: string;
   _sys: {
     filename: string;
     basename: string;
@@ -98,7 +98,12 @@ async function getTeamMember(person: TeamMemberData): Promise<TeamMemberData> {
     },
   });
 
-  return result.data.teamMember;
+  const member = result.data.teamMember;
+  if (member && !member.image) {
+    member.image = "/assets/contact-us/ead_white_square.png";
+  }
+
+  return member;
 }
 
 function toTeamMember(path: string, member: TeamMemberJson): TeamMemberData {
@@ -109,6 +114,7 @@ function toTeamMember(path: string, member: TeamMemberJson): TeamMemberData {
     __typename: "TeamMember",
     id: `team-members/${relativePath}`,
     ...member,
+    image: member.image || "/assets/contact-us/ead_white_square.png",
     _sys: {
       filename,
       basename: filename,

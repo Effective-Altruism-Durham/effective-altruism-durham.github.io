@@ -41,6 +41,17 @@ export default defineConfig({
         label: "Team Members",
         path: "team-members",
         format: "json",
+        ui: {
+          filename: {
+            readonly: true,
+            slugify: (values) => {
+              return (values?.name || "member")
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/(^-|-$)/g, "");
+            },
+          },
+        },
         fields: [
           {
             type: "number",
@@ -74,7 +85,7 @@ export default defineConfig({
             type: "image",
             name: "image",
             label: "Image",
-            required: true,
+            required: false,
           },
           {
             type: "string",
