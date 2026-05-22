@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "astro dev",
     "dev:tina": "tinacms dev -c \"astro dev\"",
-    "build": "astro build",
+    "build": "tinacms build && astro build",
+    "build:astro-only": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
