@@ -1,0 +1,370 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+
+<Layout
+	title="Opportunities - Effective Altruism Durham"
+	description="Explore exciting career advice, mentoring, online courses, and recommendations within the Effective Altruism community."
+>
+	<SiteHeader />
+
+	<main
+		class="relative min-h-screen bg-cover bg-center bg-fixed bg-no-repeat"
+		style="background-image: url('/assets/shared/page-hero-bg.jpg');"
+	>
+		<!-- Semi-transparent cream overlay to align with the EA brand theme and ensure readability -->
+		<div class="absolute inset-0 bg-[#f4efe9]/85 backdrop-blur-[2px]"></div>
+
+		<!-- Content container -->
+		<div class="relative z-10 mx-auto w-full max-w-[980px] px-5 py-16 md:py-24">
+			<!-- Page Title -->
+			<div class="text-center mb-12">
+				<h1
+					class="font-ea-heading text-4xl md:text-5xl font-normal tracking-[0.25em] text-[#054d5a] uppercase mb-4"
+				>
+					Opportunities
+				</h1>
+				<div class="mx-auto h-[3px] w-24 bg-[#0c869b] mb-6"></div>
+				<p
+					class="font-ea-body text-base md:text-lg leading-relaxed text-[#404040] max-w-[800px] mx-auto"
+				>
+					There are so many exciting opportunities within the Effective Altruism
+					community as a whole, and within Effective Altruism Durham (of
+					course!), so here are some of our favourites!
+				</p>
+			</div>
+
+			<!-- Section 1: Arthur Field Publicity Officer (Contact Card) -->
+			<div
+				class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-8 md:p-12 mb-16 transition-all duration-300 hover:shadow-lg hover:border-[#0c869b]/30"
+			>
+				<div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+					<div class="flex-shrink-0">
+						<a
+							href="https://calendly.com/alexvellins/hello"
+							target="_blank"
+							rel="noreferrer noopener"
+							class="block transition-transform duration-300 hover:scale-105"
+						>
+							<img
+								src="/assets/opportunities/IMG_1647_edited.jpg"
+								alt="Arthur Field"
+								class="w-[200px] h-[200px] md:w-[220px] md:h-[220px] rounded-full object-cover border-4 border-[#e8dfd3]"
+							/>
+						</a>
+					</div>
+					<div class="flex-1 text-center md:text-left">
+						<p
+							class="font-ea-body text-base md:text-lg leading-relaxed text-[#404040] mb-8 font-semibold"
+						>
+							There's a lot of stuff here, so if you're still not sure I,
+							(Arthur Field, Publicity Officer of EA Durham), would love to
+							chat! There is no application form and no preparation needed. I
+							can talk you through what events EA Durham are running that might
+							help as well as signposting you to useful places
+						</p>
+						<div
+							class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4"
+						>
+							<a
+								href="https://calendly.com/arthur-field04"
+								target="_blank"
+								rel="noreferrer noopener"
+								class="group inline-flex h-[50px] px-8 items-center justify-center gap-2 rounded-[5px] text-[16px] font-bold text-white transition-all duration-300 hover:scale-[1.02]"
+								style="background-color: #68246d;"
+								onmouseover="this.style.backgroundColor='#541d58'"
+								onmouseout="this.style.backgroundColor='#68246d'"
+							>
+								<span>Let's chat!</span>
+							</a>
+							<a
+								href="mailto:kwjc75@durham.ac.uk"
+								class="group inline-flex h-[50px] px-8 items-center justify-center gap-2 rounded-[5px] text-[16px] font-bold text-[#68246d] border-2 border-[#68246d] transition-all duration-300 hover:bg-[#68246d]/5 hover:scale-[1.02]"
+							>
+								<span>Or email me!</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Section 2: Advising and Mentoring -->
+			<div class="mb-16">
+				<h2
+					class="font-ea-heading text-2xl md:text-3xl font-normal text-[#054d5a] tracking-wide mb-8 uppercase text-center md:text-left"
+				>
+					Advising and Mentoring
+				</h2>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<!-- 80,000 Hours Card -->
+					<div
+						class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-6 md:p-8 flex flex-col h-full transition-all duration-300 hover:shadow-lg hover:border-[#0c869b]/30 group"
+					>
+						<div class="mb-6 flex-shrink-0 overflow-hidden rounded-lg">
+							<a
+								href="/free-careers-advice"
+								class="block transition-transform duration-300 group-hover:scale-[1.02]"
+							>
+								<img
+									src="/assets/opportunities/80000hours.png"
+									alt="80,000 Hours Logo"
+									class="w-full h-auto object-cover rounded-lg"
+								/>
+							</a>
+						</div>
+
+						<div class="flex-1 flex flex-col justify-between">
+							<div class="space-y-4 mb-8">
+								<p
+									class="font-ea-body text-sm md:text-base leading-relaxed text-[#404040] font-bold"
+								>
+									80,000 hours do a bunch of research into the world's most
+									pressing problems, and how to find the best career to tackle
+									them, so they offer free online 1-1 career advice focused on
+									helping you to improve the world as much as possible.
+								</p>
+								<p
+									class="font-ea-body text-sm md:text-base leading-relaxed text-[#404040]"
+								>
+									Josh and Amber have learnt lots about 80k and their advice for
+									having a high-impact career and they can help with any
+									questions you have!
+								</p>
+								<p
+									class="font-ea-body text-sm md:text-base leading-relaxed text-[#404040]"
+								>
+									We've written more about what EA Durham people have to say
+									here:
+								</p>
+							</div>
+
+							<div class="flex flex-col sm:flex-row items-center gap-3">
+								<a
+									href="/free-careers-advice"
+									class="w-full sm:w-auto text-center inline-flex h-[45px] px-5 items-center justify-center rounded-[5px] text-[14px] font-bold text-white transition-all duration-300 hover:scale-[1.02]"
+									style="background-color: #68246d;"
+									onmouseover="this.style.backgroundColor='#541d58'"
+									onmouseout="this.style.backgroundColor='#68246d'"
+								>
+									WHAT OUR MEMBERS SAY
+								</a>
+								<a
+									href="https://80000hours.org/speak-with-us/"
+									target="_blank"
+									rel="noreferrer noopener"
+									class="w-full sm:w-auto text-center inline-flex h-[45px] px-5 items-center justify-center rounded-[5px] text-[14px] font-bold text-[#68246d] border-2 border-[#68246d] transition-all duration-300 hover:bg-[#68246d]/5 hover:scale-[1.02]"
+								>
+									APPLY NOW!
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<!-- Magnify Mentoring Card -->
+					<div
+						class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-6 md:p-8 flex flex-col h-full transition-all duration-300 hover:shadow-lg hover:border-[#0c869b]/30 group"
+					>
+						<div class="mb-6 flex-shrink-0 overflow-hidden rounded-lg">
+							<a
+								href="https://www.magnifymentoring.org/"
+								target="_blank"
+								rel="noreferrer noopener"
+								class="block transition-transform duration-300 group-hover:scale-[1.02]"
+							>
+								<img
+									src="/assets/opportunities/Magnify.png"
+									alt="Magnify Mentoring Logo"
+									class="w-full h-auto object-cover rounded-lg"
+								/>
+							</a>
+						</div>
+
+						<div class="flex-1 flex flex-col justify-between">
+							<div class="space-y-4 mb-8">
+								<p
+									class="font-ea-body text-sm md:text-base leading-relaxed text-[#404040] font-bold"
+								>
+									Magnify Mentoring has a wholesome and inclusive community of
+									500 people across 50 countries.
+								</p>
+								<p
+									class="font-ea-body text-sm md:text-base leading-relaxed text-[#404040]"
+								>
+									While they typically focus on women, non-binary and
+									transgender people, they have recently opened an unrestricted
+									round for people of all minorities.
+								</p>
+								<p
+									class="font-ea-body text-sm md:text-base leading-relaxed text-[#404040]"
+								>
+									Through Magnify Mentoring, I was paired with a mentor who is
+									very kind, knowledgeable and experience in a variety of
+									fields. I would personally strongly recommend them!
+								</p>
+							</div>
+
+							<div class="flex flex-col sm:flex-row items-center gap-3">
+								<a
+									href="https://www.magnifymentoring.org/"
+									target="_blank"
+									rel="noreferrer noopener"
+									class="w-full sm:w-auto text-center inline-flex h-[45px] px-5 items-center justify-center rounded-[5px] text-[14px] font-bold text-white transition-all duration-300 hover:scale-[1.02]"
+									style="background-color: #68246d;"
+									onmouseover="this.style.backgroundColor='#541d58'"
+									onmouseout="this.style.backgroundColor='#68246d'"
+								>
+									LEARN MORE
+								</a>
+								<a
+									href="https://forms.zohopublic.com/eamentorshipprogram/form/MagnifyMenteePilotRoundApplicationForm/formperma/rRMrKjLA1-L0T3N_IhdqEuCNR-1ks_z5ot9SkD1EgpQ"
+									target="_blank"
+									rel="noreferrer noopener"
+									class="w-full sm:w-auto text-center inline-flex h-[45px] px-5 items-center justify-center rounded-[5px] text-[14px] font-bold text-[#68246d] border-2 border-[#68246d] transition-all duration-300 hover:bg-[#68246d]/5 hover:scale-[1.02]"
+								>
+									APPLY NOW!
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Section 3: Online Courses -->
+			<div class="mb-16">
+				<h2
+					class="font-ea-heading text-2xl md:text-3xl font-normal text-[#054d5a] tracking-wide mb-4 uppercase text-center md:text-left"
+				>
+					Online Courses
+				</h2>
+				<p
+					class="font-ea-body text-base leading-relaxed text-[#404040] mb-8 text-center md:text-left"
+				>
+					These 12 week online courses, by BlueDot Impact, are open now. They
+					involve learning alongside others with an experienced facilitator; and
+					help you in your next steps by sharing opportunities within their
+					large network and potentially connecting you with recruiters.
+				</p>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<!-- AGI Strategy Card -->
+					<div
+						class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-6 flex flex-col justify-between items-center transition-all duration-300 hover:shadow-lg hover:border-[#0c869b]/30 group"
+					>
+						<div class="mb-6 overflow-hidden rounded-lg w-full max-w-[280px]">
+							<a
+								href="https://bluedot.org/courses/agi-strategy"
+								target="_blank"
+								rel="noreferrer noopener"
+								class="block transition-transform duration-300 group-hover:scale-105"
+							>
+								<img
+									src="/assets/opportunities/AISF.png"
+									alt="AISF - AGI Strategy Course"
+									class="w-full h-auto object-cover rounded-lg"
+								/>
+							</a>
+						</div>
+
+						<a
+							href="https://bluedot.org/courses/agi-strategy"
+							target="_blank"
+							rel="noreferrer noopener"
+							class="w-full text-center inline-flex h-[50px] items-center justify-center rounded-[5px] text-[15px] font-bold text-white transition-all duration-300 hover:scale-[1.02]"
+							style="background-color: #68246d;"
+							onmouseover="this.style.backgroundColor='#541d58'"
+							onmouseout="this.style.backgroundColor='#68246d'"
+						>
+							AGI STRATEGY
+						</a>
+					</div>
+
+					<!-- Pandemics Course Card -->
+					<div
+						class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-6 flex flex-col justify-between items-center transition-all duration-300 hover:shadow-lg hover:border-[#0c869b]/30 group"
+					>
+						<div class="mb-6 overflow-hidden rounded-lg w-full max-w-[280px]">
+							<a
+								href="https://bluedot.org/courses/biosecurity"
+								target="_blank"
+								rel="noreferrer noopener"
+								class="block transition-transform duration-300 group-hover:scale-105"
+							>
+								<img
+									src="/assets/opportunities/Pandemics.jpg"
+									alt="Pandemics & Biosecurity Course"
+									class="w-full h-auto object-cover rounded-lg"
+								/>
+							</a>
+						</div>
+
+						<a
+							href="https://bluedot.org/courses/biosecurity"
+							target="_blank"
+							rel="noreferrer noopener"
+							class="w-full text-center inline-flex h-[50px] items-center justify-center rounded-[5px] text-[15px] font-bold text-white transition-all duration-300 hover:scale-[1.02]"
+							style="background-color: #68246d;"
+							onmouseover="this.style.backgroundColor='#541d58'"
+							onmouseout="this.style.backgroundColor='#68246d'"
+						>
+							PANDEMICS & BIOSECURITY COURSE
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Section 4: Our Recommendations -->
+			<div
+				class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-8 md:p-12 mb-12 text-center transition-all duration-300 hover:shadow-lg hover:border-[#0c869b]/30"
+			>
+				<h2
+					class="font-ea-heading text-2xl md:text-3xl font-normal text-[#054d5a] tracking-wide mb-6 uppercase"
+				>
+					Our Recommendations
+				</h2>
+
+				<p
+					class="font-ea-body text-base md:text-lg leading-relaxed text-[#404040] mb-6"
+				>
+					If that wasn't enough, I've compiled some recommendations that I'm
+					excited about in a google document. It contains:
+				</p>
+
+				<ul
+					class="font-ea-body text-base leading-relaxed text-[#404040] space-y-3 mb-8 max-w-[700px] mx-auto text-left list-disc list-inside"
+				>
+					<li>Regularly updated time sensitive opportunities,</li>
+					<li>
+						Motivating and mental health resources that I think more Effective
+						Altruists should read, and
+					</li>
+					<li>
+						Cause area specific resources, including job boards and newsletters.
+					</li>
+				</ul>
+
+				<div class="mb-10">
+					<a
+						href="https://docs.google.com/document/d/1RtKyNa6_tvynjjYVfT_Lk5uI7LzZyJgGaWmZefrA1BE/edit?tab=t.0"
+						target="_blank"
+						rel="noreferrer noopener"
+						class="inline-flex h-[54px] w-[268px] items-center justify-center rounded-[5px] text-[16px] font-bold text-white transition-all duration-300 hover:scale-[1.02]"
+						style="background-color: #68246d;"
+						onmouseover="this.style.backgroundColor='#541d58'"
+						onmouseout="this.style.backgroundColor='#68246d'"
+					>
+						VIEW OPPORTUNITIES
+					</a>
+				</div>
+
+				<p class="font-ea-heading text-xl font-normal text-[#054d5a] italic">
+					Phew, that's it! I hope this helped :D
+				</p>
+			</div>
+		</div>
+	</main>
+
+	<SiteFooter />
+</Layout>
