@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+---
+
+<Layout
+	title="Events - Effective Altruism Durham"
+	description="We host a variety of external speakers, talks, and workshops. Join us to learn about effective altruism and how to do good better."
+>
+	<SiteHeader />
+
+	<main
+		class="relative min-h-screen bg-cover bg-center bg-fixed bg-no-repeat"
+		style="background-image: url('/assets/events/bc8c3b_950b321e22be4634985297456cbdd180~mv2.jpg');"
+	>
+		<!-- Semi-transparent cream overlay to align with the EA brand theme and ensure readability -->
+		<div class="absolute inset-0 bg-[#f4efe9]/85 backdrop-blur-[2px]"></div>
+
+		<!-- Content container -->
+		<div class="relative z-10 mx-auto w-full max-w-[980px] px-5 py-16 md:py-24">
+			<!-- Page Title -->
+			<div class="text-center mb-12">
+				<h1
+					class="font-ea-heading text-4xl md:text-5xl font-normal tracking-[0.25em] text-[#054d5a] uppercase mb-4"
+				>
+					Events
+				</h1>
+				<div class="mx-auto h-[3px] w-24 bg-[#0c869b]"></div>
+			</div>
+
+			<!-- Main Content Card -->
+			<div
+				class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-8 md:p-12 transition-all duration-300 hover:shadow-lg"
+			>
+				<!-- Text Blurb -->
+				<div
+					class="prose max-w-none text-[#404040] font-ea-body text-base md:text-lg leading-relaxed space-y-6 mb-12"
+				>
+					<p>
+						We have a variety of external speakers come in and give talks. These
+						talks are completely free of charge, so please do come along! In
+						addition, we have members of EA Durham lead talks and workshops on
+						various topics and skills.
+					</p>
+					<p>
+						We ask attendees to register so we have an idea of the numbers
+						expected. We often offer free vegan pizza after the talk!
+					</p>
+				</div>
+
+				<!-- Section Accent Divider -->
+				<div class="flex items-center gap-4 my-8">
+					<div class="h-px flex-1 bg-[#e8dfd3]"></div>
+					<span
+						class="text-xs uppercase tracking-[0.2em] font-bold text-[#0c869b]"
+						>See events on our Instagram</span
+					>
+					<div class="h-px flex-1 bg-[#e8dfd3]"></div>
+				</div>
+
+				<!-- Instagram Profile Widget -->
+				<div class="w-full overflow-hidden rounded-md bg-white">
+					<script
+						src="https://cdn.commoninja.com/sdk/latest/commonninja.js"
+						defer
+						is:inline
+					></script>
+					<div
+						class="commonninja_component pid-7f8b5cc2-5782-4487-8643-70b8c7359bd6"
+					>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<SiteFooter />
+</Layout>
