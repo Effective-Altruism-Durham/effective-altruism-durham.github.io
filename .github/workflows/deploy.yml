@@ -17,9 +17,6 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
-env:
-  ASTRO_TELEMETRY_DISABLED: 1
-
 jobs:
   build:
     name: Build Website
@@ -57,7 +54,8 @@ jobs:
       - name: Build Astro Site
         run: pnpm run build
         env:
-          NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_PUBLIC_CLIENT_ID }}
+          TINA_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_TINA_CLIENT_ID }}
+          NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_TINA_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
 
       - name: Upload Pages Artifact
