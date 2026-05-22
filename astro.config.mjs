@@ -5,8 +5,6 @@ import tailwindcss from '@tailwindcss/vite';
 
 import sitemap from '@astrojs/sitemap';
 
-import netlify from '@astrojs/netlify';
-
 import mdx from '@astrojs/mdx';
 
 import tina from '@tinacms/astro/integration';
@@ -18,7 +16,5 @@ export default defineConfig({
   },
 
   site: 'https://www.eadurham.org',
-  integrations: [sitemap(), mdx(), tina()],
-  adapter: netlify(),
-  output: 'server'
+  integrations: [sitemap(), mdx(), tina()]
 });
