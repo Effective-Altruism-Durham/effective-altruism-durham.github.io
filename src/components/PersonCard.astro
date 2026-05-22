@@ -24,19 +24,19 @@ const roleList = person.roles
 ---
 
 <article
-	class="flex flex-col items-center bg-white/95 border border-[#e8dfd3] rounded-2xl p-8 shadow-sm hover:shadow-xl hover:border-[#0c869b]/40 hover:-translate-y-1 transition-all duration-300 group h-full relative"
+	class="flex flex-col items-center bg-white/95 border border-ea-border rounded-2xl p-8 shadow-sm hover:shadow-xl hover:border-ea-active-teal/40 hover:-translate-y-1 transition-all duration-300 group h-full relative"
 >
 	<!-- Portrait Image (Double circular borders with group-hover transition) -->
 	<div class="mb-6 flex-shrink-0 relative">
 		<div
-			class="absolute inset-[-6px] rounded-full border border-[#0c869b]/25 scale-100 group-hover:scale-[1.08] transition-transform duration-300"
+			class="absolute inset-[-6px] rounded-full border border-ea-active-teal/25 scale-100 group-hover:scale-[1.08] transition-transform duration-300"
 		>
 		</div>
 		<img
 			data-tina-field={tinaField(person, 'image')}
 			src={person.image}
 			alt={person.name}
-			class="h-28 w-28 md:h-32 md:w-32 rounded-full border-4 border-[#e8dfd3] group-hover:border-[#0c869b]/70 bg-white object-cover transition-colors duration-300 relative z-10"
+			class="h-28 w-28 md:h-32 md:w-32 rounded-full border-4 border-ea-border group-hover:border-ea-active-teal/70 bg-white object-cover transition-colors duration-300 relative z-10"
 			width="128"
 			height="128"
 			loading="lazy"
@@ -48,7 +48,7 @@ const roleList = person.roles
 		<!-- Name -->
 		<h3
 			data-tina-field={tinaField(person, 'name')}
-			class="mb-3 font-ea-heading text-xl md:text-2xl font-bold leading-tight text-[#054d5a] tracking-wide"
+			class="mb-3 font-ea-heading text-xl md:text-2xl font-bold leading-tight text-ea-dark-teal tracking-wide"
 		>
 			{person.name}
 		</h3>
@@ -60,7 +60,7 @@ const roleList = person.roles
 		>
 			{
 				roleList.map((role) => (
-					<span class="inline-block px-3 py-1 bg-[#f4efe9] text-[#054d5a] font-ea-body text-xs font-semibold rounded-full border border-[#e8dfd3]/80 tracking-wide">
+					<span class="inline-block px-3 py-1 bg-ea-cream text-ea-dark-teal font-ea-body text-xs font-semibold rounded-full border border-ea-border/80 tracking-wide">
 						{role}
 					</span>
 				))
@@ -72,7 +72,7 @@ const roleList = person.roles
 			<a
 				data-tina-field={tinaField(person, 'email')}
 				href={`mailto:${person.email}`}
-				class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-[#0c869b] text-white font-ea-body text-sm font-semibold transition-all duration-300 hover:bg-[#054d5a] hover:scale-[1.03] active:scale-[0.98] shadow-sm hover:shadow-md"
+				class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-ea-active-teal text-white font-ea-body text-sm font-semibold transition-all duration-300 hover:bg-ea-dark-teal hover:scale-[1.03] active:scale-[0.98] shadow-sm hover:shadow-md"
 			>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -90,12 +90,12 @@ const roleList = person.roles
 		</div>
 
 		<!-- Thin Divider -->
-		<div class="w-12 h-px bg-[#e8dfd3] mb-5"></div>
+		<div class="w-12 h-px bg-ea-border mb-5"></div>
 
 		<!-- 1-2 Sentence Bio -->
 		<p
 			data-tina-field={tinaField(person, 'bio')}
-			class="max-w-[320px] font-ea-body text-sm leading-relaxed text-[#404040]/90 italic flex-grow"
+			class="max-w-[320px] font-ea-body text-sm leading-relaxed text-ea-text-secondary/90 italic flex-grow"
 		>
 			{person.bio}
 		</p>

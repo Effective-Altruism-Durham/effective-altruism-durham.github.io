@@ -1,20 +1,21 @@
 ---
+import BrandButton from './BrandButton.astro';
+
 /**
  * HeroSection — the white hero on the homepage.
  * Wix reference: section comp-lssw2v5b
- *   - bg: white (#FFFFFF)
+ *   - bg: brand white
  *   - Lightbulb SVG: 393x591px, at calc((100%-980px)/2 - 102px) from left, 10% opacity
  *   - Content starts at ~182px from the 980px content area left edge
  *   - Body text width: ~410px, Raleway 18px, black
- *   - Buttons: 255px wide, purple #68246D
- *   - Bottom divider: organic wave in dark teal #054D5A, 50px
+ *   - Buttons: 255px wide, brand purple
+ *   - Bottom divider: organic wave in brand dark teal, 50px
  */
 ---
 
 <section
   id="hero-section"
-  class="relative overflow-hidden"
-  style="background-color: #ffffff;"
+  class="relative overflow-hidden bg-ea-white"
 >
   <div
     class="pointer-events-none absolute left-0 top-0 z-[3] w-full"
@@ -39,7 +40,7 @@
       <path
         d="M299.209 567.046s-90.551-77.029-90.551-156.983c0-51.159 28.577-84.104 73.09-84.104 39.859 0 79.164 52.584 79.164 82.748 0 13.029-5.058 19.635-12.076 19.635s-11.9-7.923-11.9-19.444c0-30.558 44.904-82.3 85.373-82.3 43.455 0 68.622 38.133 68.622 74.645 0 69.71-41.409 137.769-97.446 213.228-60.275 81.165-82.303 74.003-116.496 74.003s-56.095-5.167-71.951-17.871c-32.774-26.26-21.856-63.119-60.95-124.346s-75.663-81.403-81.231-199.244c-5.825-123.285 91.337-294.92 286.71-294.92 222.813 0 297.538 207.78 287.912 300.885 0 0 2.966 91.763-68.396 181.679s-55.696 160.952-62.624 197.577c-13.012 68.787-175.551 82.329-265.949 82.253 89.986 0 253.219-4.421 253.896 60.537.674 64.679-144.839 53-251.185 52.114 105.578 1.269 208.518-3.463 252.835 70.209"
         fill="none"
-        stroke="#68246d"
+        stroke="var(--color-ea-purple)"
         stroke-width="52"
       ></path>
     </g>
@@ -51,8 +52,7 @@
   >
     <!-- Heading — offset right to clear the lightbulb on desktop (Wix: left:182px) -->
     <h3
-      class="font-ea-heading text-[32px] md:text-[40px] leading-[1.4] pl-0 md:pl-[74px] mb-[40px] md:mb-[78px]"
-      style="color: #054d5a;"
+      class="font-ea-heading text-[32px] md:text-[40px] leading-[1.4] pl-0 md:pl-[74px] mb-[40px] md:mb-[78px] text-ea-dark-teal"
     >
       We aspire to do the most good we can
     </h3>
@@ -80,43 +80,36 @@
 
       <!-- Right: CTA buttons (255px wide, positioned at right side) -->
       <div class="flex flex-col gap-[22px] w-full max-w-[268px] md:w-[268px]">
-        <a
+        <BrandButton
           href="/#get-involved"
-          class="group flex h-[70px] w-full items-center justify-center gap-3 rounded-[5px] px-6 text-center text-[16px] font-bold text-white transition-colors"
-          style="background-color: #68246d;"
-          onmouseover="this.style.backgroundColor='#541d58'"
-          onmouseout="this.style.backgroundColor='#68246d'"
+          class="h-[70px] w-full px-6 text-[16px]"
         >
           <span>Get involved</span>
           <svg viewBox="0 0 60 60" class="h-4 w-4 fill-current" aria-hidden="true">
             <path d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"></path>
           </svg>
-        </a>
-        <a
+        </BrandButton>
+        <BrandButton
           href="https://outlook.office365.com/owa/effectivealtruismdurham@durhamuniversity.onmicrosoft.com/groupsubscription.ashx?action=join&source=MSExchange/LokiServer&guid=e5909571-b397-42c5-99bc-b362c640ca29"
-          target="_blank"
-          rel="noreferrer noopener"
-          class="group flex h-[70px] w-full items-center justify-center gap-3 rounded-[5px] px-6 text-center text-[16px] font-bold text-white transition-colors"
-          style="background-color: #68246d;"
-          onmouseover="this.style.backgroundColor='#541d58'"
-          onmouseout="this.style.backgroundColor='#68246d'"
+          external
+          class="h-[70px] w-full px-6 text-[16px]"
         >
           <span>Join the mailing list</span>
           <svg viewBox="0 0 60 60" class="h-4 w-4 fill-current" aria-hidden="true">
             <path d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"></path>
           </svg>
-        </a>
+        </BrandButton>
       </div>
     </div>
   </div>
 
-  <!-- Bottom wave divider: organic wave, dark teal #054D5A, 50px -->
+  <!-- Bottom wave divider: organic wave in the brand dark teal token. -->
   <svg
     class="pointer-events-none absolute bottom-0 left-0 w-full"
     style="height: 50px;"
     viewBox="0 100 1920 200"
     preserveAspectRatio="none"
-    fill="#054d5a"
+    fill="var(--color-ea-dark-teal)"
   >
     <path
       d="M1920 300v-4.067c-455.162 0-690.876-51.203-1082.65-129.288C490.044 97.423 0 100.013 0 100.013V300h1920z"

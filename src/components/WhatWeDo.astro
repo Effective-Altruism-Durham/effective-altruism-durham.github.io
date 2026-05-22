@@ -2,7 +2,7 @@
 /**
  * WhatWeDo — "What we do" three-column section
  * Wix reference: section comp-loker22z
- *   - bg: color_44 = rgb(12,134,155) = #0C869B
+ *   - bg: brand active teal
  *   - Heading: "What we do" in Roboto Slab 36px, white, centered
  *   - Three cards: IDEA FELLOWSHIP, SPEAKER EVENTS, CAREER PLANNING
  *   - Each with uppercase label, horizontal line, description
@@ -26,13 +26,11 @@ const cards = [
 
 <section
   id="what-we-do"
-  class="relative"
-  style="background-color: #0c869b;"
+  class="relative bg-ea-active-teal"
 >
   <div class="mx-auto w-full max-w-[980px] px-5" style="padding-top: 32px; padding-bottom: 66px;">
     <h1
-      class="mb-[39px] text-center font-ea-heading text-[36px] font-normal"
-      style="color: #ffffff;"
+      class="mb-[39px] text-center font-ea-heading text-[36px] font-normal text-white"
     >
       What we do
     </h1>
@@ -41,10 +39,9 @@ const cards = [
       class="grid grid-cols-1 md:grid-cols-[254px_254px_254px] gap-10 md:gap-x-[40px] justify-center pl-0 md:pl-[47px]"
     >
       {cards.map((card) => (
-        <div class="text-center" style="color: #ffffff;">
+        <div class="text-center text-white">
           <h3
-            class="mb-[18px] font-ea-body text-[14px] font-bold uppercase leading-normal"
-            style="letter-spacing: 0.4em; color: #ffffff;"
+            class="mb-[18px] font-ea-body text-[14px] font-bold uppercase leading-normal tracking-[0.4em] text-white"
           >
             {card.label.split("\n").map((line, i) => (
               <>
@@ -54,7 +51,7 @@ const cards = [
             ))}
           </h3>
           <hr class="mx-auto mb-[18px] h-[5px] w-[254px] border-0 border-t border-white" />
-          <p class="font-ea-body text-[16px] leading-[1.4]" style="color: #ffffff;">
+          <p class="font-ea-body text-[16px] leading-[1.4] text-white">
             {card.text}
           </p>
         </div>

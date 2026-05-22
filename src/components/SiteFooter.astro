@@ -1,16 +1,17 @@
 ---
+import BrandButton from './BrandButton.astro';
+
 /**
  * SiteFooter — Footer bar with Newsletter sign-up, DSU disclaimer and Social Links
  * Wix reference: SITE_FOOTER
- *   - bg: color_43 = #054D5A
+ *   - bg: brand dark teal
  *   - Grid layout: Left has mailing list button and DSU disclaimer; Right has vertical socials stack
  */
 ---
 
 <footer
   id="site-footer"
-  class="relative py-12"
-  style="background-color: #054d5a;"
+  class="relative bg-ea-dark-teal py-12"
 >
   <div class="mx-auto w-full max-w-[980px] px-5">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[1fr_auto] md:gap-16">
@@ -18,20 +19,16 @@
       <!-- Left Column: Newsletter CTA & Disclaimer -->
       <div class="flex flex-col items-center md:items-start gap-6">
         <!-- Join the mailing list button (copied from HeroSection) -->
-        <a
+        <BrandButton
           href="https://outlook.office365.com/owa/effectivealtruismdurham@durhamuniversity.onmicrosoft.com/groupsubscription.ashx?action=join&source=MSExchange/LokiServer&guid=e5909571-b397-42c5-99bc-b362c640ca29"
-          target="_blank"
-          rel="noreferrer noopener"
-          class="group flex h-[70px] w-full max-w-[268px] items-center justify-center gap-3 rounded-[5px] px-6 text-center text-[16px] font-bold text-white transition-colors"
-          style="background-color: #68246d;"
-          onmouseover="this.style.backgroundColor='#541d58'"
-          onmouseout="this.style.backgroundColor='#68246d'"
+          external
+          class="h-[70px] w-full max-w-[268px] px-6 text-[16px]"
         >
           <span>Join the mailing list</span>
           <svg viewBox="0 0 60 60" class="h-4 w-4 fill-current" aria-hidden="true">
             <path d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"></path>
           </svg>
-        </a>
+        </BrandButton>
 
         <!-- Disclaimer -->
         <p class="font-ea-body text-[14px] leading-normal text-white text-center md:text-left">

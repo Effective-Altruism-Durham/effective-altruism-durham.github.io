@@ -1,9 +1,11 @@
 ---
+import BrandButton from './BrandButton.astro';
+
 /**
  * AreteFellowship — Arete Fellowship call-out section
  * Wix reference: section comp-m6gxpfqv
- *   - bg: color_42 = rgb(244,239,233) = #F4EFE9 (cream)
- *   - Heading: "Arete Fellowship" in 56px, centered, color_43 = #054D5A
+ *   - bg: brand cream
+ *   - Heading: "Arete Fellowship" in 56px, centered, brand dark teal
  *   - Description: Raleway 16px, 1.8em line-height, centered, black
  *   - Button: purple "Learn more" with chevron
  */
@@ -11,13 +13,11 @@
 
 <section
   id="arete-fellowship"
-  class="relative"
-  style="background-color: #f4efe9;"
+  class="relative bg-ea-cream"
 >
   <div class="mx-auto w-full max-w-[980px] px-5 text-center py-16 md:py-0 md:min-h-[440px] md:pt-[87px]">
     <h2
-      class="mb-[30px] font-ea-heading text-[36px] sm:text-[56px] font-normal leading-[1.4]"
-      style="color: #054d5a;"
+      class="mb-[30px] font-ea-heading text-[36px] sm:text-[56px] font-normal leading-[1.4] text-ea-dark-teal"
     >
       Arete Fellowship
     </h2>
@@ -27,12 +27,9 @@
       An 8-week seminar programme aimed to introduce you to ideas from various
       disciplines for making a positive impact on the world.
     </p>
-    <a
+    <BrandButton
       href="/arete-fellowship"
-      class="group inline-flex h-[54px] w-[268px] items-center justify-center gap-3 rounded-[5px] px-7 text-[16px] font-bold text-white transition-colors"
-      style="background-color: #68246d;"
-      onmouseover="this.style.backgroundColor='#541d58'"
-      onmouseout="this.style.backgroundColor='#68246d'"
+      class="h-[54px] w-[268px] px-7 text-[16px]"
     >
       <span>Learn more</span>
       <svg
@@ -44,6 +41,6 @@
           d="M46.5 28.9L20.6 3c-.6-.6-1.6-.6-2.2 0l-4.8 4.8c-.6.6-.6 1.6 0 2.2l19.8 20-19.9 19.9c-.6.6-.6 1.6 0 2.2l4.8 4.8c.6.6 1.6.6 2.2 0l21-21 4.8-4.8c.8-.6.8-1.6.2-2.2z"
         ></path>
       </svg>
-    </a>
+    </BrandButton>
   </div>
 </section>
