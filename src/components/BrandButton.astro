@@ -1,0 +1,30 @@
+---
+interface Props {
+  href: string;
+  variant?: "primary" | "outline-purple" | "outline-teal";
+  external?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  variant = "primary",
+  external = false,
+  class: className = "",
+} = Astro.props;
+
+const variantClass = {
+  primary: "ea-button-primary",
+  "outline-purple": "ea-button-outline-purple",
+  "outline-teal": "ea-button-outline-teal",
+}[variant];
+---
+
+<a
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noreferrer noopener" : undefined}
+  class:list={["ea-button", variantClass, className]}
+>
+  <slot />
+</a>

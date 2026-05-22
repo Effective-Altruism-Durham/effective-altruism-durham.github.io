@@ -8,12 +8,25 @@
   --color-ea-active-teal: #0c869b;
   --color-ea-purple: #68246d;
   --color-ea-purple-hover: #541d58;
+  --color-ea-border: #e8dfd3;
+  --color-ea-alert-bg: #fcf8e3;
+  --color-ea-alert-border: #fbeed5;
+  --color-ea-alert-text: #c09853;
+  --color-ea-alert-hover: #a47e3c;
   --color-ea-text-primary: #000000;
   --color-ea-text-secondary: #404040;
 
   /* Fonts matching the Wix site */
   --font-ea-heading: "Roboto Slab", Georgia, serif;
   --font-ea-body: "Raleway", Arial, sans-serif;
+
+  --shadow-ea-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-ea-card-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+:root {
+  --ea-content-width: 980px;
+  --ea-page-hero-image: url("/assets/shared/page-hero-bg.jpg");
 }
 
 @layer base {
@@ -64,5 +77,93 @@
   *::before,
   *::after {
     box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .ea-page-shell {
+    @apply relative min-h-screen bg-cover bg-center bg-fixed bg-no-repeat;
+    background-image: var(--ea-page-hero-image);
+  }
+
+  .ea-page-overlay {
+    @apply absolute inset-0 bg-ea-cream/85 backdrop-blur-[2px];
+  }
+
+  .ea-page-overlay-soft {
+    @apply absolute inset-0 bg-ea-cream/80 backdrop-blur-[1px];
+  }
+
+  .ea-page-container {
+    @apply relative z-10 mx-auto w-full px-5 py-16 md:py-24;
+    max-width: var(--ea-content-width);
+  }
+
+  .ea-page-heading-wrap {
+    @apply mb-12 text-center;
+  }
+
+  .ea-page-heading-wrap-spacious {
+    @apply mb-16 text-center;
+  }
+
+  .ea-page-title {
+    @apply mb-4 font-ea-heading text-4xl font-normal uppercase tracking-[0.25em] text-ea-dark-teal md:text-5xl;
+  }
+
+  .ea-title-rule {
+    @apply mx-auto h-[3px] w-24 bg-ea-active-teal;
+  }
+
+  .ea-card {
+    @apply rounded-lg border border-ea-border bg-white/95 shadow-md;
+  }
+
+  .ea-card-hover {
+    @apply transition-all duration-300 hover:border-ea-active-teal/30 hover:shadow-lg;
+  }
+
+  .ea-copy {
+    @apply font-ea-body leading-relaxed text-ea-text-secondary;
+  }
+
+  .ea-section-heading {
+    @apply font-ea-heading text-2xl font-normal uppercase tracking-wide text-ea-dark-teal md:text-3xl;
+  }
+
+  .ea-link {
+    @apply font-semibold text-ea-active-teal underline hover:text-ea-dark-teal;
+  }
+
+  .ea-divider {
+    @apply my-8 border-t border-ea-border;
+  }
+
+  .ea-image-border {
+    @apply border-ea-border;
+  }
+
+  .ea-alert {
+    @apply rounded-[5px] border border-ea-alert-border bg-ea-alert-bg p-5 text-center font-ea-body text-base text-ea-alert-text;
+  }
+
+  .ea-alert a {
+    @apply font-bold underline hover:text-ea-alert-hover;
+  }
+
+  .ea-button {
+    @apply inline-flex items-center justify-center gap-3 rounded-[5px] text-center font-bold transition-all duration-300 hover:scale-[1.02];
+  }
+
+  .ea-button-primary {
+    @apply bg-ea-purple text-white hover:bg-ea-purple-hover;
+  }
+
+  .ea-button-outline-purple {
+    @apply border-2 border-ea-purple text-ea-purple hover:bg-ea-purple/5;
+  }
+
+  .ea-button-outline-teal {
+    @apply border-2 border-ea-active-teal text-ea-active-teal hover:bg-ea-active-teal/10;
   }
 }

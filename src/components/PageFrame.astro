@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  overlay?: "default" | "soft";
+  spaciousTitle?: boolean;
+}
+
+const { title, overlay = "default", spaciousTitle = false } = Astro.props;
+const hasIntro = Astro.slots.has("intro");
+---
+
+<main class="ea-page-shell">
+  <div class:list={[overlay === "soft" ? "ea-page-overlay-soft" : "ea-page-overlay"]}></div>
+
+  <div class="ea-page-container">
+    <div class:list={[spaciousTitle ? "ea-page-heading-wrap-spacious" : "ea-page-heading-wrap"]}>
+      <h1 class="ea-page-title">{title}</h1>
+      <div class:list={["ea-title-rule", hasIntro && "mb-6"]}></div>
+      {hasIntro && (
+        <div class="ea-copy mx-auto max-w-[800px] text-base md:text-lg">
+          <slot name="intro" />
+        </div>
+      )}
+    </div>
+
+    <slot />
+  </div>
+</main>
