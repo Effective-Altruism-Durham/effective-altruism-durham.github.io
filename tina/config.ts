@@ -15,7 +15,6 @@ export default defineConfig({
     process.env.TINA_CLIENT_ID || process.env.NEXT_PUBLIC_TINA_CLIENT_ID || null,
   // Get this from tina.io
   token: process.env.TINA_TOKEN || null,
-  localContentPath: "../content",
 
   build: {
     outputFolder: "admin",
@@ -39,7 +38,7 @@ export default defineConfig({
       {
         name: "teamMember",
         label: "Team Members",
-        path: "team-members",
+        path: "content/team-members",
         format: "json",
         ui: {
           filename: {
