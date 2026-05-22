@@ -47,21 +47,22 @@
 
   <!-- Hero content -->
   <div
-    class="relative z-[2] mx-auto w-full max-w-[980px] px-5"
-    style="min-height: 590px; padding-top: 75px; padding-bottom: 190px;"
+    class="relative z-[2] mx-auto w-full max-w-[980px] px-5 py-16 md:py-0 md:pt-[75px] md:pb-[190px] md:min-h-[590px]"
   >
-    <!-- Heading — offset right to clear the lightbulb (Wix: left:182px) -->
+    <!-- Heading — offset right to clear the lightbulb on desktop (Wix: left:182px) -->
     <h3
-      class="font-ea-heading text-[40px] leading-[1.4]"
-      style="color: #054d5a; padding-left: 74px; margin-bottom: 78px;"
+      class="font-ea-heading text-[32px] md:text-[40px] leading-[1.4] pl-0 md:pl-[74px] mb-[40px] md:mb-[78px]"
+      style="color: #054d5a;"
     >
       We aspire to do the most good we can
     </h3>
 
     <!-- Two-column layout matching Wix: text at left:182px (410px wide), buttons at left:596px (255px wide) -->
-    <div class="grid items-start gap-y-4 md:grid-cols-[441px_268px]" style="padding-left: 74px; column-gap: 122px;">
+    <div 
+      class="grid grid-cols-1 md:grid-cols-[441px_268px] items-start gap-y-8 md:gap-y-4 pl-0 md:pl-[74px] gap-x-0 md:gap-x-[122px]"
+    >
       <!-- Left: body text -->
-      <div class="font-ea-body text-[18px] leading-[1.4] text-black" style="width: 441px; max-width: 100%;">
+      <div class="font-ea-body text-[18px] leading-[1.4] text-black w-full md:w-[441px] max-w-full">
         <p class="mb-5">
           We represent the <a
             href="https://www.effectivealtruism.org/"
@@ -78,7 +79,7 @@
       </div>
 
       <!-- Right: CTA buttons (255px wide, positioned at right side) -->
-      <div class="flex flex-col gap-[22px]" style="width: 268px;">
+      <div class="flex flex-col gap-[22px] w-full max-w-[268px] md:w-[268px]">
         <a
           href="/#get-involved"
           class="group flex h-[70px] w-full items-center justify-center gap-3 rounded-[5px] px-6 text-center text-[16px] font-bold text-white transition-colors"
