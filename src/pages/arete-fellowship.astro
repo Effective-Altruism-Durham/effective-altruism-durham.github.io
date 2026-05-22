@@ -1,124 +1,203 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import SiteHeader from "../components/SiteHeader.astro";
-import SiteFooter from "../components/SiteFooter.astro";
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 ---
 
 <Layout
-  title="Arête Fellowship - Effective Altruism Durham"
-  description="The Arête Fellowship is an eight-week seminar programme aimed to help you think about how you can have a positive impact on the world."
+	title="Arête Fellowship | EA Durham"
+	description="The Arête Fellowship is an eight-week seminar programme aimed to help you think about how you can have a positive impact on the world."
 >
-  <SiteHeader />
+	<SiteHeader />
 
-  <main
-    class="relative min-h-screen bg-cover bg-center bg-fixed bg-no-repeat"
-    style="background-image: url('/assets/shared/page-hero-bg.jpg');"
-  >
-    <!-- Semi-transparent cream overlay to align with the EA brand theme and ensure readability -->
-    <div class="absolute inset-0 bg-[#f4efe9]/85 backdrop-blur-[2px]"></div>
+	<main
+		class="relative min-h-screen bg-cover bg-center bg-fixed bg-no-repeat"
+		style="background-image: url('/assets/shared/page-hero-bg.jpg');"
+	>
+		<!-- Semi-transparent cream overlay to align with the EA brand theme and ensure readability -->
+		<div class="absolute inset-0 bg-[#f4efe9]/85 backdrop-blur-[2px]"></div>
 
-    <!-- Content container -->
-    <div class="relative z-10 mx-auto w-full max-w-[980px] px-5 py-16 md:py-24">
-      
-      <!-- Page Title -->
-      <div class="text-center mb-12">
-        <h1
-          class="font-ea-heading text-4xl md:text-5xl font-normal tracking-[0.25em] text-[#054d5a] uppercase mb-4"
-        >
-          Arête Fellowship
-        </h1>
-        <div class="mx-auto h-[3px] w-24 bg-[#0c869b]"></div>
-      </div>
+		<!-- Content container -->
+		<div class="relative z-10 mx-auto w-full max-w-[980px] px-5 py-16 md:py-24">
+			<!-- Page Title -->
+			<div class="text-center mb-12">
+				<h1
+					class="font-ea-heading text-4xl md:text-5xl font-normal tracking-[0.25em] text-[#054d5a] uppercase mb-4"
+				>
+					Arête Fellowship
+				</h1>
+				<div class="mx-auto h-[3px] w-24 bg-[#0c869b]"></div>
+			</div>
 
-      <!-- Main Content Card -->
-      <div
-        class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-8 md:p-12 transition-all duration-300 hover:shadow-lg"
-      >
-        <!-- Closed Term Alert Banner -->
-        <div class="bg-[#fcf8e3] border border-[#fbeed5] text-[#c09853] rounded-[5px] p-5 mb-8 text-center text-base font-ea-body">
-          <strong>Applications have closed for Epiphany Term 2025.</strong> Join our <a href="https://outlook.office365.com/owa/effectivealtruismdurham@durhamuniversity.onmicrosoft.com/groupsubscription.ashx?action=join&source=MSExchange/LokiServer&guid=d19d28fc-165b-4f90-ae3c-7cc8ec3697c6" target="_blank" rel="noreferrer noopener" class="underline hover:text-[#a47e3c] font-bold">mailing list</a> or <a href="https://www.instagram.com/effectivealtruismdurham/" target="_blank" rel="noreferrer noopener" class="underline hover:text-[#a47e3c] font-bold">follow us on Instagram</a> to find out more about our programmes.
-        </div>
+			<!-- Main Content Card -->
+			<div
+				class="bg-white/95 border border-[#e8dfd3] rounded-lg shadow-md p-8 md:p-12 transition-all duration-300 hover:shadow-lg"
+			>
+				<!-- Closed Term Alert Banner -->
+				<div
+					class="bg-[#fcf8e3] border border-[#fbeed5] text-[#c09853] rounded-[5px] p-5 mb-8 text-center text-base font-ea-body"
+				>
+					<strong>Applications have closed for Epiphany Term 2025.</strong> Join
+					our <a
+						href="https://outlook.office365.com/owa/effectivealtruismdurham@durhamuniversity.onmicrosoft.com/groupsubscription.ashx?action=join&source=MSExchange/LokiServer&guid=d19d28fc-165b-4f90-ae3c-7cc8ec3697c6"
+						target="_blank"
+						rel="noreferrer noopener"
+						class="underline hover:text-[#a47e3c] font-bold">mailing list</a
+					> or <a
+						href="https://www.instagram.com/effectivealtruismdurham/"
+						target="_blank"
+						rel="noreferrer noopener"
+						class="underline hover:text-[#a47e3c] font-bold"
+						>follow us on Instagram</a
+					> to find out more about our programmes.
+				</div>
 
-        <!-- Text Block -->
-        <div
-          class="prose max-w-none text-[#404040] font-ea-body text-[16px] md:text-[18px] leading-[1.8] space-y-6 mb-12"
-        >
-          <p>
-            The Arête Fellowship is an 8-week seminar programme aimed to help you think about how you can have a positive impact on the world. Each week, fellows will read, think about and discuss key ideas and concepts from a range of disciplines related to doing good effectively. We expect it to take a total of 3-3.5 hours each week (~2 hours of reading/exercises each week and 1 hour 30 mins in a discussion group).
-          </p>
-          <p>
-            This syllabus is based on a similar programme at University of <a href="https://eaoxford.com/" target="_blank" rel="noreferrer noopener" class="text-[#0c869b] hover:text-[#054d5a] underline font-semibold">Oxford</a>; it is also hosted by other universities throughout the world, including <a href="https://www.eacambridge.org/" target="_blank" rel="noreferrer noopener" class="text-[#0c869b] hover:text-[#054d5a] underline font-semibold">Cambridge</a>, <a href="https://www.harvardea.org/" target="_blank" rel="noreferrer noopener" class="text-[#0c869b] hover:text-[#054d5a] underline font-semibold">Harvard</a>, <a href="https://web.stanford.edu/group/ea/" target="_blank" rel="noreferrer noopener" class="text-[#0c869b] hover:text-[#054d5a] underline font-semibold">Stanford</a>, <a href="https://www.yaleea.com/" target="_blank" rel="noreferrer noopener" class="text-[#0c869b] hover:text-[#054d5a] underline font-semibold">Yale</a>, and others. It has been lightly edited by the exec at EA Durham so that it fits easier into the typical Durham term.
-          </p>
-          <p>
-            Topics covered will include: research into effectiveness and impact, effective charities, animals and moral consideration, the moral status of future generations, emerging technologies, existential risk and high-impact careers. Readings are ordered by importance so please do not worry if you are occasionally unable to complete everything.
-          </p>
-        </div>
+				<!-- Text Block -->
+				<div
+					class="prose max-w-none text-[#404040] font-ea-body text-[16px] md:text-[18px] leading-[1.8] space-y-6 mb-12"
+				>
+					<p>
+						The Arête Fellowship is an 8-week seminar programme aimed to help
+						you think about how you can have a positive impact on the world.
+						Each week, fellows will read, think about and discuss key ideas and
+						concepts from a range of disciplines related to doing good
+						effectively. We expect it to take a total of 3-3.5 hours each week
+						(~2 hours of reading/exercises each week and 1 hour 30 mins in a
+						discussion group).
+					</p>
+					<p>
+						This syllabus is based on a similar programme at University of <a
+							href="https://eaoxford.com/"
+							target="_blank"
+							rel="noreferrer noopener"
+							class="text-[#0c869b] hover:text-[#054d5a] underline font-semibold"
+							>Oxford</a
+						>; it is also hosted by other universities throughout the world,
+						including <a
+							href="https://www.eacambridge.org/"
+							target="_blank"
+							rel="noreferrer noopener"
+							class="text-[#0c869b] hover:text-[#054d5a] underline font-semibold"
+							>Cambridge</a
+						>, <a
+							href="https://www.harvardea.org/"
+							target="_blank"
+							rel="noreferrer noopener"
+							class="text-[#0c869b] hover:text-[#054d5a] underline font-semibold"
+							>Harvard</a
+						>, <a
+							href="https://web.stanford.edu/group/ea/"
+							target="_blank"
+							rel="noreferrer noopener"
+							class="text-[#0c869b] hover:text-[#054d5a] underline font-semibold"
+							>Stanford</a
+						>, <a
+							href="https://www.yaleea.com/"
+							target="_blank"
+							rel="noreferrer noopener"
+							class="text-[#0c869b] hover:text-[#054d5a] underline font-semibold"
+							>Yale</a
+						>, and others. It has been lightly edited by the exec at EA Durham
+						so that it fits easier into the typical Durham term.
+					</p>
+					<p>
+						Topics covered will include: research into effectiveness and impact,
+						effective charities, animals and moral consideration, the moral
+						status of future generations, emerging technologies, existential
+						risk and high-impact careers. Readings are ordered by importance so
+						please do not worry if you are occasionally unable to complete
+						everything.
+					</p>
+				</div>
 
-        <!-- Section Accent Divider -->
-        <hr class="border-t border-[#e8dfd3] my-8" />
+				<!-- Section Accent Divider -->
+				<hr class="border-t border-[#e8dfd3] my-8" />
 
-        <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
-          <!-- Syllabus Link -->
-          <a
-            href="https://docs.google.com/document/d/18vAoZb2Uoln-s3iIV0-4naKzo5cCwDTAki3UH0nZw20"
-            target="_blank"
-            rel="noreferrer noopener"
-            class="group inline-flex h-[54px] w-full sm:w-[268px] items-center justify-center gap-3 rounded-[5px] text-[16px] font-bold text-white transition-all duration-300 hover:scale-[1.02]"
-            style="background-color: #68246d;"
-            onmouseover="this.style.backgroundColor='#541d58'"
-            onmouseout="this.style.backgroundColor='#68246d'"
-          >
-            <span>View Syllabus</span>
-            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current stroke-2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-            </svg>
-          </a>
+				<!-- Action Buttons -->
+				<div
+					class="flex flex-col sm:flex-row items-center justify-center gap-5"
+				>
+					<!-- Syllabus Link -->
+					<a
+						href="https://docs.google.com/document/d/18vAoZb2Uoln-s3iIV0-4naKzo5cCwDTAki3UH0nZw20"
+						target="_blank"
+						rel="noreferrer noopener"
+						class="group inline-flex h-[54px] w-full sm:w-[268px] items-center justify-center gap-3 rounded-[5px] text-[16px] font-bold text-white transition-all duration-300 hover:scale-[1.02]"
+						style="background-color: #68246d;"
+						onmouseover="this.style.backgroundColor='#541d58'"
+						onmouseout="this.style.backgroundColor='#68246d'"
+					>
+						<span>View Syllabus</span>
+						<svg
+							viewBox="0 0 24 24"
+							class="h-5 w-5 fill-none stroke-current stroke-2"
+							aria-hidden="true"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+							></path>
+						</svg>
+					</a>
 
-          <!-- Back Button -->
-          <a
-            href="/programmes"
-            class="group inline-flex h-[54px] w-full sm:w-[268px] items-center justify-center gap-3 rounded-[5px] text-[16px] font-bold text-[#0c869b] bg-transparent border-2 border-[#0c869b] hover:bg-[#0c869b]/10 transition-all duration-300 hover:scale-[1.02]"
-          >
-            <svg viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current stroke-2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-            </svg>
-            <span>Back to Programmes</span>
-          </a>
-        </div>
-      </div>
+					<!-- Back Button -->
+					<a
+						href="/programmes"
+						class="group inline-flex h-[54px] w-full sm:w-[268px] items-center justify-center gap-3 rounded-[5px] text-[16px] font-bold text-[#0c869b] bg-transparent border-2 border-[#0c869b] hover:bg-[#0c869b]/10 transition-all duration-300 hover:scale-[1.02]"
+					>
+						<svg
+							viewBox="0 0 24 24"
+							class="h-5 w-5 fill-none stroke-current stroke-2"
+							aria-hidden="true"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
+						</svg>
+						<span>Back to Programmes</span>
+					</a>
+				</div>
+			</div>
 
-      <!-- Testimonials Section -->
-      <div class="mt-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="overflow-hidden rounded-[8px] transition-all duration-300 hover:scale-[1.03] hover:shadow-lg bg-white/5">
-            <img
-              src="/assets/arete-fellowship/1-adriana-testimonial.png"
-              alt="Testimonial from Adriana: This fellowship helped me meet like-minded people, while also changing my view on a lot of important topics. I was happy to find a judgement-free zone to bounce off ideas about ethical dilemmas that I had, but maybe didn't know how to voice in a structured way."
-              class="w-full h-auto object-cover rounded-[8px]"
-              loading="lazy"
-            />
-          </div>
-          <div class="overflow-hidden rounded-[8px] transition-all duration-300 hover:scale-[1.03] hover:shadow-lg bg-white/5">
-            <img
-              src="/assets/arete-fellowship/2-tia-testimonial.png"
-              alt="Testimonial from Tia: The Arete fellowship improved my confidence to speak and express my ideas whilst teaching me about a philosophy I still support in my every day life."
-              class="w-full h-auto object-cover rounded-[8px]"
-              loading="lazy"
-            />
-          </div>
-          <div class="overflow-hidden rounded-[8px] transition-all duration-300 hover:scale-[1.03] hover:shadow-lg bg-white/5">
-            <img
-              src="/assets/arete-fellowship/3-lily-testimonial.png"
-              alt="Testimonial from Lily: The fellowship was highly rewarding both due to the inspiring content, and to how brilliantly it was put together by a team who are clearly passionate about what they do, and are keen to share it with others."
-              class="w-full h-auto object-cover rounded-[8px]"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+			<!-- Testimonials Section -->
+			<div class="mt-12">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+					<div
+						class="overflow-hidden rounded-[8px] transition-all duration-300 hover:scale-[1.03] hover:shadow-lg bg-white/5"
+					>
+						<img
+							src="/assets/arete-fellowship/1-adriana-testimonial.png"
+							alt="Testimonial from Adriana: This fellowship helped me meet like-minded people, while also changing my view on a lot of important topics. I was happy to find a judgement-free zone to bounce off ideas about ethical dilemmas that I had, but maybe didn't know how to voice in a structured way."
+							class="w-full h-auto object-cover rounded-[8px]"
+							loading="lazy"
+						/>
+					</div>
+					<div
+						class="overflow-hidden rounded-[8px] transition-all duration-300 hover:scale-[1.03] hover:shadow-lg bg-white/5"
+					>
+						<img
+							src="/assets/arete-fellowship/2-tia-testimonial.png"
+							alt="Testimonial from Tia: The Arete fellowship improved my confidence to speak and express my ideas whilst teaching me about a philosophy I still support in my every day life."
+							class="w-full h-auto object-cover rounded-[8px]"
+							loading="lazy"
+						/>
+					</div>
+					<div
+						class="overflow-hidden rounded-[8px] transition-all duration-300 hover:scale-[1.03] hover:shadow-lg bg-white/5"
+					>
+						<img
+							src="/assets/arete-fellowship/3-lily-testimonial.png"
+							alt="Testimonial from Lily: The fellowship was highly rewarding both due to the inspiring content, and to how brilliantly it was put together by a team who are clearly passionate about what they do, and are keen to share it with others."
+							class="w-full h-auto object-cover rounded-[8px]"
+							loading="lazy"
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
 
-  <SiteFooter />
+	<SiteFooter />
 </Layout>

@@ -1,52 +1,103 @@
 ---
-import { tinaField } from "@tinacms/astro/tina-field";
+import { tinaField } from '@tinacms/astro/tina-field';
 
 interface Props {
-  person: {
-    name: string;
-    roles: string;
-    email: string;
-    bio: string;
-    image: string;
-    _content_source?: {
-      queryId: string;
-      path: Array<string | number>;
-    };
-  };
+	person: {
+		name: string;
+		roles: string;
+		email: string;
+		bio: string;
+		image: string;
+		_content_source?: {
+			queryId: string;
+			path: Array<string | number>;
+		};
+	};
 }
 
 const { person } = Astro.props;
+
+// Split roles by comma to display as sleek badges
+const roleList = person.roles
+	? person.roles.split(',').map((role) => role.trim())
+	: [];
 ---
 
-<article class="grid items-start gap-9 md:grid-cols-[200px_minmax(0,1fr)] md:gap-12 lg:pl-[68px]">
-  <img 
-    data-tina-field={tinaField(person, "image")}
-    src={person.image} 
-    alt={person.name} 
-    class="h-[200px] w-[200px] rounded-[18px] bg-white object-cover md:justify-self-start" 
-    width="200"
-    height="200"
-    loading="lazy"
-  />
-  
-  <div class="min-w-0 md:pt-[2px]">
-    <h2 data-tina-field={tinaField(person, "name")} class="mb-[22px] font-ea-heading text-[22px] font-bold leading-none text-[#054d5a]">
-      {person.name}
-    </h2>
-    
-    <div class="mb-[34px] grid gap-4 font-ea-body text-[18px] leading-[1.35] text-black md:grid-cols-[minmax(250px,1fr)_minmax(260px,max-content)] md:gap-10">
-      <p data-tina-field={tinaField(person, "roles")}>{person.roles}</p>
-      <a 
-        data-tina-field={tinaField(person, "email")}
-        href={`mailto:${person.email}`} 
-        class="break-all text-black hover:underline md:text-right"
-      >
-        {person.email}
-      </a>
-    </div>
-    
-    <p data-tina-field={tinaField(person, "bio")} class="max-w-[780px] font-ea-body text-[16px] leading-[1.55] text-black sm:text-[17px]">
-      {person.bio}
-    </p>
-  </div>
+<article
+	class="flex flex-col items-center bg-white/95 border border-[#e8dfd3] rounded-2xl p-8 shadow-sm hover:shadow-xl hover:border-[#0c869b]/40 hover:-translate-y-1 transition-all duration-300 group h-full relative"
+>
+	<!-- Portrait Image (Double circular borders with group-hover transition) -->
+	<div class="mb-6 flex-shrink-0 relative">
+		<div
+			class="absolute inset-[-6px] rounded-full border border-[#0c869b]/25 scale-100 group-hover:scale-[1.08] transition-transform duration-300"
+		>
+		</div>
+		<img
+			data-tina-field={tinaField(person, 'image')}
+			src={person.image}
+			alt={person.name}
+			class="h-28 w-28 md:h-32 md:w-32 rounded-full border-4 border-[#e8dfd3] group-hover:border-[#0c869b]/70 bg-white object-cover transition-colors duration-300 relative z-10"
+			width="128"
+			height="128"
+			loading="lazy"
+		/>
+	</div>
+
+	<!-- Content Details -->
+	<div class="flex-grow flex flex-col items-center text-center w-full min-w-0">
+		<!-- Name -->
+		<h3
+			data-tina-field={tinaField(person, 'name')}
+			class="mb-3 font-ea-heading text-xl md:text-2xl font-bold leading-tight text-[#054d5a] tracking-wide"
+		>
+			{person.name}
+		</h3>
+
+		<!-- Roles Badges -->
+		<div
+			data-tina-field={tinaField(person, 'roles')}
+			class="mb-4 flex flex-wrap gap-2 justify-center"
+		>
+			{
+				roleList.map((role) => (
+					<span class="inline-block px-3 py-1 bg-[#f4efe9] text-[#054d5a] font-ea-body text-xs font-semibold rounded-full border border-[#e8dfd3]/80 tracking-wide">
+						{role}
+					</span>
+				))
+			}
+		</div>
+
+		<!-- Email Button -->
+		<div class="mb-5 flex items-center justify-center">
+			<a
+				data-tina-field={tinaField(person, 'email')}
+				href={`mailto:${person.email}`}
+				class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-[#0c869b] text-white font-ea-body text-sm font-semibold transition-all duration-300 hover:bg-[#054d5a] hover:scale-[1.03] active:scale-[0.98] shadow-sm hover:shadow-md"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					class="h-4 w-4 fill-current flex-shrink-0"
+					viewBox="0 0 20 20"
+				>
+					<path
+						d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+					></path>
+					<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+					></path>
+				</svg>
+				<span>Email me!</span>
+			</a>
+		</div>
+
+		<!-- Thin Divider -->
+		<div class="w-12 h-px bg-[#e8dfd3] mb-5"></div>
+
+		<!-- 1-2 Sentence Bio -->
+		<p
+			data-tina-field={tinaField(person, 'bio')}
+			class="max-w-[320px] font-ea-body text-sm leading-relaxed text-[#404040]/90 italic flex-grow"
+		>
+			{person.bio}
+		</p>
+	</div>
 </article>
