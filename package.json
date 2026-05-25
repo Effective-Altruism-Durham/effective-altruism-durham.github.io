@@ -22,7 +22,7 @@
     "@astrojs/vercel": "^10.0.2",
     "@tailwindcss/vite": "^4.3.0",
     "@tinacms/astro": "^0.2.0",
-    "astro": "^6.3.6",
+    "astro": "^6.3.7",
     "tailwindcss": "^4.3.0",
     "tinacms": "^3.8.1"
   },
