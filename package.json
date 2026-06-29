@@ -18,13 +18,13 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/sitemap": "^3.7.3",
     "@astrojs/vercel": "^10.0.2",
-    "@tailwindcss/vite": "^4.3.0",
-    "@tinacms/astro": "^0.2.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "@tinacms/astro": "^0.5.0",
     "astro": "^6.3.6",
-    "tailwindcss": "^4.3.0",
-    "tinacms": "^3.8.1"
+    "tailwindcss": "^4.3.1",
+    "tinacms": "^3.9.3"
   },
   "devDependencies": {
     "@tinacms/cli": "^2.3.1",
