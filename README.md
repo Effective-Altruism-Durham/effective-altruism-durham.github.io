@@ -48,4 +48,4 @@ Roles are separated by commas. People with a lower display order appear first. S
 - **To edit only:** someone who already has GitHub access opens the site in Pages CMS, goes to **Collaborators**, and invites the person by email. They don't need a GitHub account.
 - **To take over running the site:** add the person to the [Effective-Altruism-Durham](https://github.com/Effective-Altruism-Durham) GitHub organisation with write access to this repository. They can then sign in to Pages CMS with GitHub and invite editors themselves. Only GitHub users can invite people, so always keep at least one current committee member in the organisation.
 
-Don't rename this repository. Pages CMS links invites to the repository's name, so after a rename every editor has to be invited again, and the Admin link in `src/components/SiteFooter.astro` must be updated.
+Don't move this repository to a different GitHub account or organisation: Pages CMS deletes every email invite when a repository is transferred, so editors would need inviting again. Renaming it is fine, but update the Admin link in `src/components/SiteFooter.astro` to the new name.
