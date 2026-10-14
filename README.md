@@ -1,38 +1,13 @@
-# EA Durham Site
+# EA Durham website
 
-This project uses pnpm for dependency management. Do not use npm, yarn, or bun in
-this workspace, and do not commit lockfiles from other package managers.
+The website for Effective Altruism Durham, live at
+https://effective-altruism-durham.github.io/.
 
-## Project Structure
+- **Changing the committee list** (names, roles, emails, bios, photos): use Pages CMS, below. No coding needed.
+- **Events:** the Events page shows the society's Instagram feed (through a Common Ninja widget), so posting on Instagram is enough.
+- **Changing anything else** (page text, programmes, images): edit the files in `src/pages/` and `src/components/` on GitHub, or ask someone comfortable with code. Every change to `main` goes live automatically.
 
-This is an Astro site. The main project folders are:
-
-```text
-/
-├── public
-├── src
-│   ├── components
-│   ├── layouts
-│   └── pages
-└── package.json
-```
-
-## Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`         | Installs dependencies                            |
-| `pnpm run dev`         | Starts local dev server at `localhost:4321`      |
-| `pnpm run build`       | Builds the production site to `./dist/`          |
-| `pnpm run preview`     | Previews the production build locally            |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## Editing the website (Pages CMS)
-
-The committee on the Contact Us page is edited in Pages CMS. No coding is needed.
+## Editing the committee (Pages CMS)
 
 **To make a change**
 
@@ -46,6 +21,37 @@ Roles are separated by commas. People with a lower display order appear first. S
 **To give someone access**
 
 - **To edit only:** someone who already has GitHub access opens the site in Pages CMS, goes to **Collaborators**, and invites the person by email. They don't need a GitHub account.
-- **To take over running the site:** add the person to the [Effective-Altruism-Durham](https://github.com/Effective-Altruism-Durham) GitHub organisation with write access to this repository. They can then sign in to Pages CMS with GitHub and invite editors themselves. Only GitHub users can invite people, so always keep at least one current committee member in the organisation.
+- **Anyone with write or admin access to this repository on GitHub** can sign in to Pages CMS with GitHub straight away and invite others.
+
+## Handing over to a new maintainer
+
+Do this before you leave, or nobody will be able to add editors:
+
+1. Add the new maintainer to the [Effective-Altruism-Durham](https://github.com/Effective-Altruism-Durham) GitHub organisation, with write or admin access to this repository. That also gives them Pages CMS.
+2. Make sure at least one current committee member is an **owner** of the organisation.
+3. Point them at this README.
 
 Don't move this repository to a different GitHub account or organisation: Pages CMS deletes every email invite when a repository is transferred, so editors would need inviting again. Renaming it is fine, but update the Admin link in `src/components/SiteFooter.astro` to the new name.
+
+## What runs by itself
+
+- **Publishing:** every change to `main` (including Pages CMS saves) is built and published to GitHub Pages by `.github/workflows/deploy.yml`. Check the **Actions** tab if a change doesn't appear.
+- **Checks:** every pull request is type-checked and built by `.github/workflows/ci.yml`. A red check blocks merging.
+- **Updates:** Dependabot opens weekly pull requests for dependency updates. Minor and patch updates merge themselves once the checks pass. Major updates (for example a new Astro version) wait for someone to review them.
+
+## For developers
+
+This is an [Astro](https://astro.build) site with Tailwind CSS, built as plain static files. Use pnpm (not npm, yarn or bun) with Node 24 or newer.
+
+| Command | Action |
+| :--- | :--- |
+| `pnpm install` | Install dependencies |
+| `pnpm dev` | Start a local dev server at `localhost:4321` |
+| `pnpm check` | Type-check |
+| `pnpm build` | Build the production site to `./dist/` |
+| `pnpm preview` | Preview the production build locally |
+
+- `src/pages/`: one file per page. `src/components/`: shared sections. `src/styles/global.css`: colours, fonts and shared styles.
+- `content/team-members/`: one JSON file per committee member, edited by Pages CMS (`.pages.yml`) and checked at build time by `src/content.config.ts`.
+- Page images live in `src/assets/` and are optimised automatically; CMS uploads go in `public/uploads/`.
+- `AGENTS.md` has the detailed conventions and gotchas (also used by AI coding assistants).
