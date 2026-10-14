@@ -64,5 +64,9 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    // Vite 8 defaults to 'baseline-widely-available', which strips vendor prefixes such as
+    // -webkit-backdrop-filter that Safari 16-17 (still common on older iPhones) needs.
+    // Keep Vite 7's default CSS targets so the blurred page overlays still work there.
+    build: { cssTarget: ['chrome107', 'edge107', 'firefox104', 'safari16'] },
   },
 });

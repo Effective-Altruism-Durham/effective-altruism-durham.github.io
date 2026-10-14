@@ -95,12 +95,13 @@ const causes = [
 			<!-- Cards Grid -->
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 				{
-					causes.map((cause) => (
+					causes.map((cause, index) => (
 						<div class="h-full">
 							<CauseCard
 								title={cause.title}
 								image={cause.image}
 								links={cause.links}
+								eager={index < 4}
 							/>
 						</div>
 					))

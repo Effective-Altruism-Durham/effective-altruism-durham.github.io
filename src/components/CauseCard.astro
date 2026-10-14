@@ -10,9 +10,12 @@ interface Props {
   title: string;
   image: ImageMetadata;
   links: Link[];
+  /** Load the photo immediately; set for cards in the first screen. */
+  eager?: boolean;
 }
 
-const { title, image, links } = Astro.props;
+const { title, image, links, eager = false } = Astro.props;
+const loading = eager ? 'eager' : 'lazy';
 const isSingleLink = links.length === 1;
 const primaryLink = isSingleLink ? links[0].href : null;
 ---
@@ -30,6 +33,7 @@ const primaryLink = isSingleLink ? links[0].href : null;
           src={image}
           alt={title}
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading={loading}
         />
         <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
       </div>
@@ -54,6 +58,7 @@ const primaryLink = isSingleLink ? links[0].href : null;
           src={image}
           alt={title}
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading={loading}
         />
         <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300" />
       </div>
