@@ -1,4 +1,7 @@
 ---
+import { getImage } from "astro:assets";
+import heroBg from "../assets/shared/page-hero-bg.jpg";
+
 interface Props {
   title: string;
   overlay?: "default" | "soft";
@@ -7,9 +10,13 @@ interface Props {
 
 const { title, overlay = "default", spaciousTitle = false } = Astro.props;
 const hasIntro = Astro.slots.has("intro");
+
+// The 2940px source JPEG is ~1 MB. It sits under an 80-85% cream overlay with a blur, so a
+// 1920px quality-50 WebP (~190 kB) screenshots pixel-identical to the original.
+const background = await getImage({ src: heroBg, width: 1920, format: "webp", quality: 50 });
 ---
 
-<main class="ea-page-shell">
+<main class="ea-page-shell" style={`--ea-page-hero-image: url("${background.src}")`}>
   <div class:list={[overlay === "soft" ? "ea-page-overlay-soft" : "ea-page-overlay"]}></div>
 
   <div class="ea-page-container">

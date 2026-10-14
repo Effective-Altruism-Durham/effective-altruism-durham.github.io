@@ -1,4 +1,6 @@
-@import "tailwindcss";
+/* Scan only src/ for class names. Tailwind otherwise scans the whole repo, and the agent
+   docs in .agents/ add unused utilities to every page's CSS. */
+@import "tailwindcss" source("..");
 
 @theme {
   /* EA Durham brand colors — extracted from Wix CSS variables */
@@ -17,8 +19,9 @@
   --color-ea-text-secondary: #404040;
 
   /* Fonts matching the Wix site */
-  --font-ea-heading: "Roboto Slab", Georgia, serif;
-  --font-ea-body: "Raleway", Arial, sans-serif;
+  /* Self-hosted via Astro's Fonts API (astro.config.mjs), which defines these variables. */
+  --font-ea-heading: var(--font-roboto-slab);
+  --font-ea-body: var(--font-raleway);
 
   --shadow-ea-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-ea-card-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -26,7 +29,6 @@
 
 :root {
   --ea-content-width: 980px;
-  --ea-page-hero-image: url("/assets/shared/page-hero-bg.jpg");
 }
 
 @layer base {

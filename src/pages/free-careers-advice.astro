@@ -1,4 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+import booksImg from '../assets/free-careers-advice/80Kbook-twobooks-whitebkg-scaled-e1693395630953.jpg';
+import iyngkarranImg from '../assets/free-careers-advice/Iyngkarran.jpeg';
+import samAImg from '../assets/free-careers-advice/Sam A.jpeg';
+import alexVImg from '../assets/free-careers-advice/Alex V.png';
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -84,10 +89,11 @@ import PageFrame from '../components/PageFrame.astro';
 					<div
 						class="ea-card p-4 ea-card-hover"
 					>
-						<img
-							src="/assets/free-careers-advice/80Kbook-twobooks-whitebkg-scaled-e1693395630953.jpg"
+						<Image
+							src={booksImg}
 							alt="80,000 Hours Books"
 							class="w-full max-w-[280px] lg:max-w-full h-auto rounded-lg object-cover"
+							loading="eager"
 						/>
 					</div>
 				</div>
@@ -108,8 +114,8 @@ import PageFrame from '../components/PageFrame.astro';
 						class="ea-card p-6 md:p-8 flex flex-col items-center text-center ea-card-hover"
 					>
 						<div class="mb-6 flex-shrink-0">
-							<img
-								src="/assets/free-careers-advice/Iyngkarran.jpeg"
+							<Image
+								src={iyngkarranImg}
 								alt="Iyngkarran"
 								class="w-[200px] h-[200px] rounded-full object-cover border-4 border-ea-border"
 							/>
@@ -174,8 +180,8 @@ import PageFrame from '../components/PageFrame.astro';
 						class="ea-card p-6 md:p-8 flex flex-col items-center text-center ea-card-hover"
 					>
 						<div class="mb-6 flex-shrink-0">
-							<img
-								src="/assets/free-careers-advice/Sam A.jpeg"
+							<Image
+								src={samAImg}
 								alt="Sam"
 								class="w-[200px] h-[200px] rounded-full object-cover border-4 border-ea-border"
 							/>
@@ -220,8 +226,8 @@ import PageFrame from '../components/PageFrame.astro';
 			>
 				<div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
 					<div class="flex-shrink-0">
-						<img
-							src="/assets/free-careers-advice/Alex V.png"
+						<Image
+							src={alexVImg}
 							alt="Alex Vellins"
 							class="w-[160px] h-[210px] object-cover rounded-lg shadow-sm border-2 border-ea-border"
 						/>

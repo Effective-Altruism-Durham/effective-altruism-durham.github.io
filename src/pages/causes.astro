@@ -1,4 +1,11 @@
 ---
+import aiSafetyImg from '../assets/causes/67772eaaa8174950975992b1e23d8c02.jpg';
+import cowImg from '../assets/causes/Cow.jpg';
+import vaccineProductionLineImg from '../assets/causes/Vaccine Production Line.jpg';
+import favelasImg from '../assets/causes/Favelas.jpeg';
+import loveTheEarthImg from '../assets/causes/Love the Earth.jpeg';
+import countryFlagsImg from '../assets/causes/Country Flags.jpg';
+import imageByYvesAlarieImg from '../assets/causes/Image by Yves Alarie.jpg';
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -8,12 +15,12 @@ import PageFrame from '../components/PageFrame.astro';
 const causes = [
 	{
 		title: 'AI Safety',
-		image: '/assets/causes/67772eaaa8174950975992b1e23d8c02.jpg',
+		image: aiSafetyImg,
 		links: [{ label: 'Durham AI Safety', href: 'https://durhamaisafety.uk/' }],
 	},
 	{
 		title: 'Animal Advocacy',
-		image: '/assets/causes/Cow.jpg',
+		image: cowImg,
 		links: [
 			{
 				label: 'Factory Farming',
@@ -27,7 +34,7 @@ const causes = [
 	},
 	{
 		title: 'Biosecurity & Pandemics',
-		image: '/assets/causes/Vaccine Production Line.jpg',
+		image: vaccineProductionLineImg,
 		links: [
 			{
 				label: 'Learn More',
@@ -37,7 +44,7 @@ const causes = [
 	},
 	{
 		title: 'Global Health & Development',
-		image: '/assets/causes/Favelas.jpeg',
+		image: favelasImg,
 		links: [
 			{
 				label: 'Learn More',
@@ -47,7 +54,7 @@ const causes = [
 	},
 	{
 		title: 'Future Generations',
-		image: '/assets/causes/Love the Earth.jpeg',
+		image: loveTheEarthImg,
 		links: [
 			{
 				label: 'Learn More',
@@ -57,7 +64,7 @@ const causes = [
 	},
 	{
 		title: 'Government & Policy',
-		image: '/assets/causes/Country Flags.jpg',
+		image: countryFlagsImg,
 		links: [
 			{
 				label: 'Learn More',
@@ -67,7 +74,7 @@ const causes = [
 	},
 	{
 		title: 'Nuclear Risk',
-		image: '/assets/causes/Image by Yves Alarie.jpg',
+		image: imageByYvesAlarieImg,
 		links: [
 			{
 				label: 'Learn More',
@@ -88,12 +95,13 @@ const causes = [
 			<!-- Cards Grid -->
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 				{
-					causes.map((cause) => (
+					causes.map((cause, index) => (
 						<div class="h-full">
 							<CauseCard
 								title={cause.title}
 								image={cause.image}
 								links={cause.links}
+								eager={index < 4}
 							/>
 						</div>
 					))

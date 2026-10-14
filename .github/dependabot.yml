@@ -1,42 +1,28 @@
 version: 2
 updates:
-  - package-ecosystem: npm
-    directory: /
+  # npm/pnpm dependencies. Minor and patch bumps share one weekly PR, which
+  # dependabot-automerge.yml merges once CI passes. Majors open on their own for review.
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
-      interval: weekly
-      day: monday
-      time: "04:00"
+      interval: "weekly"
+      day: "monday"
     open-pull-requests-limit: 10
     groups:
-      framework:
-        patterns:
-          - "@angular/*"
-          - "@angular-devkit/*"
-          - "@astrojs/*"
-          - "astro"
-          - "next"
-          - "@next/*"
-          - "eslint-config-next"
-          - "nuxt"
-          - "@nuxt/*"
-          - "@nuxtjs/*"
-          - "svelte"
-          - "@sveltejs/*"
-          - "vue"
-          - "@vue/*"
-          - "@vitejs/*"
-          - "react"
-          - "react-dom"
-          - "@types/react"
-          - "@types/react-dom"
-      dev-dependencies:
-        dependency-type: development
-        exclude-patterns:
-          - "@storyblok/*"
-      production-minor-patch:
-        dependency-type: production
-        update-types:
-          - minor
-          - patch
-        exclude-patterns:
-          - "@storyblok/*"
+      npm-minor-patch:
+        update-types: ["minor", "patch"]
+    ignore:
+      # Astro majors need a manual upgrade (Astro 7 changed whitespace handling, for example).
+      - dependency-name: "astro"
+        update-types: ["version-update:semver-major"]
+
+  # GitHub Actions used by the workflows. Low-risk, so all bumps share one PR.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    groups:
+      github-actions:
+        patterns: ["*"]
