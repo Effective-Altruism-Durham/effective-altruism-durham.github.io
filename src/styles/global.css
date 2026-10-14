@@ -110,7 +110,7 @@
   }
 
   .ea-page-title {
-    @apply mb-4 font-ea-heading text-4xl font-normal uppercase tracking-[0.25em] text-ea-dark-teal md:text-5xl;
+    @apply mb-4 font-ea-heading text-3xl font-normal uppercase tracking-[0.1em] text-ea-dark-teal md:text-5xl md:tracking-[0.25em];
   }
 
   .ea-title-rule {
