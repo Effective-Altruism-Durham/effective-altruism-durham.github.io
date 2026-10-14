@@ -16,6 +16,7 @@
 - `pnpm install` installs dependencies.
 - `pnpm run dev` starts the Astro dev server.
 - `pnpm run build` is the production build; `pnpm check` type-checks. CI (`.github/workflows/ci.yml`) runs both on every PR. No credentials are needed.
+- Dependabot (`.github/dependabot.yml`) opens one weekly PR for minor/patch npm bumps and one for GitHub Actions. `.github/workflows/dependabot-automerge.yml` queues non-major ones for auto-merge, which waits for the required "Type-check and build" check. Majors (Astro majors are ignored entirely) are upgraded by hand.
 - `pnpm run preview` previews the built site.
 - `pnpm astro ...` runs Astro CLI commands through the repo package manager.
 
