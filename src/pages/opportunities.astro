@@ -1,4 +1,10 @@
 ---
+import { Image } from 'astro:assets';
+import arthurImg from '../assets/opportunities/IMG_1647_edited.jpg';
+import eightyThousandHoursImg from '../assets/opportunities/80000hours.png';
+import magnifyImg from '../assets/opportunities/Magnify.png';
+import agiStrategyImg from '../assets/opportunities/AISF.png';
+import pandemicsImg from '../assets/opportunities/Pandemics.jpg';
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -31,10 +37,11 @@ import PageFrame from '../components/PageFrame.astro';
 							rel="noreferrer noopener"
 							class="block transition-transform duration-300 hover:scale-105"
 						>
-							<img
-								src="/assets/opportunities/IMG_1647_edited.jpg"
+							<Image
+								src={arthurImg}
 								alt="Arthur Field"
 								class="w-[200px] h-[200px] md:w-[220px] md:h-[220px] rounded-full object-cover border-4 border-ea-border"
+								loading="eager"
 							/>
 						</a>
 					</div>
@@ -88,8 +95,8 @@ import PageFrame from '../components/PageFrame.astro';
 								href="/free-careers-advice"
 								class="block transition-transform duration-300 group-hover:scale-[1.02]"
 							>
-								<img
-									src="/assets/opportunities/80000hours.png"
+								<Image
+									src={eightyThousandHoursImg}
 									alt="80,000 Hours Logo"
 									class="w-full h-auto object-cover rounded-lg"
 								/>
@@ -151,8 +158,8 @@ import PageFrame from '../components/PageFrame.astro';
 								rel="noreferrer noopener"
 								class="block transition-transform duration-300 group-hover:scale-[1.02]"
 							>
-								<img
-									src="/assets/opportunities/Magnify.png"
+								<Image
+									src={magnifyImg}
 									alt="Magnify Mentoring Logo"
 									class="w-full h-auto object-cover rounded-lg"
 								/>
@@ -232,8 +239,8 @@ import PageFrame from '../components/PageFrame.astro';
 						<div
 							class="relative w-full aspect-[3/1] overflow-hidden bg-slate-100"
 						>
-							<img
-								src="/assets/opportunities/AISF.png"
+							<Image
+								src={agiStrategyImg}
 								alt="AGI Strategy Course"
 								class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
 							/>
@@ -279,8 +286,8 @@ import PageFrame from '../components/PageFrame.astro';
 						<div
 							class="relative w-full aspect-[3/1] overflow-hidden bg-slate-100"
 						>
-							<img
-								src="/assets/opportunities/Pandemics.jpg"
+							<Image
+								src={pandemicsImg}
 								alt="Pandemics & Biosecurity Course"
 								class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
 							/>

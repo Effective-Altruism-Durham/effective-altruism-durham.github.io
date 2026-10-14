@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { tinaField } from '@tinacms/astro/tina-field';
+import { resolveCmsImage } from '../lib/cms-images';
 
 interface Props {
 	person: {
@@ -17,6 +19,10 @@ interface Props {
 
 const { person } = Astro.props;
 
+const image = resolveCmsImage(person.image || '/assets/contact-us/ead_white_square.png');
+const imageClass =
+	'h-28 w-28 md:h-32 md:w-32 rounded-full border-4 border-ea-border group-hover:border-ea-active-teal/70 bg-white object-cover transition-colors duration-300 relative z-10';
+
 // Split roles by comma to display as sleek badges
 const roleList = person.roles
 	? person.roles.split(',').map((role) => role.trim())
@@ -32,15 +38,27 @@ const roleList = person.roles
 			class="absolute inset-[-6px] rounded-full border border-ea-active-teal/25 scale-100 group-hover:scale-[1.08] transition-transform duration-300"
 		>
 		</div>
-		<img
-			data-tina-field={tinaField(person, 'image')}
-			src={person.image || '/assets/contact-us/ead_white_square.png'}
-			alt={person.name}
-			class="h-28 w-28 md:h-32 md:w-32 rounded-full border-4 border-ea-border group-hover:border-ea-active-teal/70 bg-white object-cover transition-colors duration-300 relative z-10"
-			width="128"
-			height="128"
-			loading="lazy"
-		/>
+		{typeof image === 'string' ? (
+			<img
+				data-tina-field={tinaField(person, 'image')}
+				src={image}
+				alt={person.name}
+				class={imageClass}
+				width="128"
+				height="128"
+				loading="lazy"
+			/>
+		) : (
+			<Image
+				data-tina-field={tinaField(person, 'image')}
+				src={image}
+				alt={person.name}
+				class={imageClass}
+				width={128}
+				height={128}
+				densities={[1, 2]}
+			/>
+		)}
 	</div>
 
 	<!-- Content Details -->

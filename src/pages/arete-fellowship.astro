@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import adrianaTestimonialImg from '../assets/arete-fellowship/1-adriana-testimonial.png';
+import tiaTestimonialImg from '../assets/arete-fellowship/2-tia-testimonial.png';
+import lilyTestimonialImg from '../assets/arete-fellowship/3-lily-testimonial.png';
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -143,8 +147,8 @@ import PageFrame from '../components/PageFrame.astro';
 					<div
 						class="overflow-hidden rounded-[8px] transition-all duration-300 hover:scale-[1.03] hover:shadow-lg bg-white/5"
 					>
-						<img
-							src="/assets/arete-fellowship/1-adriana-testimonial.png"
+						<Image
+							src={adrianaTestimonialImg}
 							alt="Testimonial from Adriana: This fellowship helped me meet like-minded people, while also changing my view on a lot of important topics. I was happy to find a judgement-free zone to bounce off ideas about ethical dilemmas that I had, but maybe didn't know how to voice in a structured way."
 							class="w-full h-auto object-cover rounded-[8px]"
 							loading="lazy"
@@ -153,8 +157,8 @@ import PageFrame from '../components/PageFrame.astro';
 					<div
 						class="overflow-hidden rounded-[8px] transition-all duration-300 hover:scale-[1.03] hover:shadow-lg bg-white/5"
 					>
-						<img
-							src="/assets/arete-fellowship/2-tia-testimonial.png"
+						<Image
+							src={tiaTestimonialImg}
 							alt="Testimonial from Tia: The Arete fellowship improved my confidence to speak and express my ideas whilst teaching me about a philosophy I still support in my every day life."
 							class="w-full h-auto object-cover rounded-[8px]"
 							loading="lazy"
@@ -163,8 +167,8 @@ import PageFrame from '../components/PageFrame.astro';
 					<div
 						class="overflow-hidden rounded-[8px] transition-all duration-300 hover:scale-[1.03] hover:shadow-lg bg-white/5"
 					>
-						<img
-							src="/assets/arete-fellowship/3-lily-testimonial.png"
+						<Image
+							src={lilyTestimonialImg}
 							alt="Testimonial from Lily: The fellowship was highly rewarding both due to the inspiring content, and to how brilliantly it was put together by a team who are clearly passionate about what they do, and are keen to share it with others."
 							class="w-full h-auto object-cover rounded-[8px]"
 							loading="lazy"
