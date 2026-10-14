@@ -32,7 +32,7 @@ function fontsourceVariants(slug, weights) {
 // https://astro.build/config
 // Pure static site: GitHub Pages serves the built `dist/` directly.
 export default defineConfig({
-  site: 'https://www.eadurham.org',
+  site: 'https://effective-altruism-durham.github.io',
   integrations: [sitemap()],
   // Astro 7 defaults to 'jsx', which drops the newline between text and a following inline
   // element (e.g. "reasoning to\n<a>…" rendered as "reasoning to…" with no space). `true` is

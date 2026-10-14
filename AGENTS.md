@@ -22,7 +22,7 @@
 ## Project Shape
 
 - This is an Astro 7 site using Tailwind CSS v4 through `@tailwindcss/vite`.
-- `astro.config.mjs` sets `site: 'https://www.eadurham.org'` and builds a pure static site (no adapter). `.github/workflows/deploy.yml` publishes `dist/` to GitHub Pages on every push to `main`.
+- `astro.config.mjs` sets `site: 'https://effective-altruism-durham.github.io'` and builds a pure static site (no adapter). `.github/workflows/deploy.yml` publishes `dist/` to GitHub Pages on every push to `main`.
 - Routes live in `src/pages/*.astro`; shared page chrome is in `src/layouts/Layout.astro`; reusable UI is in `src/components/`.
 - Global styling and Tailwind theme utilities live in `src/styles/global.css`.
 - Page images live in `src/assets/` and are rendered with `<Image>` from `astro:assets`, which resizes them and converts them to WebP at build time. Import new images from there rather than adding them to `public/`.
@@ -31,7 +31,8 @@
 ## Content (Pages CMS)
 
 - Committee members are the only CMS-managed content: one JSON file per person in `content/team-members/`, loaded by the `team` content collection (`src/content.config.ts`) and `src/lib/team.ts`.
-- Non-technical editors use [Pages CMS](https://pagescms.org) at https://app.pagescms.org (the footer "Admin" link). They sign in with GitHub, or by email after a repo admin invites them as a collaborator in Pages CMS. Saves commit straight to `main`, which redeploys the site.
+- Non-technical editors use [Pages CMS](https://pagescms.org) at https://app.pagescms.org (the footer "Admin" link). They sign in with GitHub, or by email after someone with GitHub write access invites them under Collaborators. Saves commit straight to `main`, which redeploys the site. README §Editing the website is the editor-facing guide; keep it short and non-technical.
+- Pages CMS ties collaborators to the repository's exact name: renaming the repo drops every email invite and breaks the footer Admin link.
 - `.pages.yml` defines the CMS fields and media folder (`public/uploads`, served as `/uploads`). Keep it in sync with the Zod schema in `src/content.config.ts`; a CMS save that breaks the schema fails the build rather than deploying.
 
 ## Editing Guidance

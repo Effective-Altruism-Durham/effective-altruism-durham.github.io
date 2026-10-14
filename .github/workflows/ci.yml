@@ -1,7 +1,7 @@
 name: CI
 
 # Build gate for PRs (including Dependabot bumps). The live deploy only runs on push to main,
-# so a red check here keeps a broken change off eadurham.org.
+# so a red check here keeps a broken change off the live site.
 on:
   pull_request:
     branches: [main]
