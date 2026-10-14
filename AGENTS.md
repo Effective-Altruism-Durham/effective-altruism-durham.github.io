@@ -4,7 +4,7 @@
 
 ## Tooling
 
-- Stack: pnpm, Astro 7, Tailwind CSS v4, Tina CMS, deployed to GitHub Pages.
+- Stack: pnpm, Astro 7, Tailwind CSS v4, Pages CMS, deployed to GitHub Pages.
 - Use pnpm for every package-manager command in this workspace.
 - Do not use npm, yarn, or bun to install dependencies or run scripts.
 - Keep `pnpm-lock.yaml` as the only package-manager lockfile. The repo also ignores other lockfiles.
@@ -15,8 +15,7 @@
 
 - `pnpm install` installs dependencies.
 - `pnpm run dev` starts the Astro dev server.
-- `pnpm run build` is the production build (`tinacms build && astro build`); `tinacms build` needs Tina Cloud credentials (`.env.example`).
-- `pnpm run build:astro-only` builds the site without Tina credentials; `pnpm check` type-checks. CI (`.github/workflows/ci.yml`) runs both on every PR.
+- `pnpm run build` is the production build; `pnpm check` type-checks. CI (`.github/workflows/ci.yml`) runs both on every PR. No credentials are needed.
 - `pnpm run preview` previews the built site.
 - `pnpm astro ...` runs Astro CLI commands through the repo package manager.
 
@@ -27,7 +26,13 @@
 - Routes live in `src/pages/*.astro`; shared page chrome is in `src/layouts/Layout.astro`; reusable UI is in `src/components/`.
 - Global styling and Tailwind theme utilities live in `src/styles/global.css`.
 - Page images live in `src/assets/` and are rendered with `<Image>` from `astro:assets`, which resizes them and converts them to WebP at build time. Import new images from there rather than adding them to `public/`.
-- `public/` holds files that must keep a fixed URL: the favicon, Tina media uploads (`public/uploads/`) and the default team photo (`public/assets/contact-us/`). Team photos are still optimised: `src/lib/cms-images.ts` maps their public paths to imported images.
+- `public/` holds files that must keep a fixed URL: the favicon, CMS media uploads (`public/uploads/`) and the default team photo (`public/assets/contact-us/`). Team photos are still optimised: `src/lib/cms-images.ts` maps their public paths to imported images.
+
+## Content (Pages CMS)
+
+- Committee members are the only CMS-managed content: one JSON file per person in `content/team-members/`, loaded by the `team` content collection (`src/content.config.ts`) and `src/lib/team.ts`.
+- Non-technical editors use [Pages CMS](https://pagescms.org) at https://app.pagescms.org (the footer "Admin" link). They sign in with GitHub, or by email after a repo admin invites them as a collaborator in Pages CMS. Saves commit straight to `main`, which redeploys the site.
+- `.pages.yml` defines the CMS fields and media folder (`public/uploads`, served as `/uploads`). Keep it in sync with the Zod schema in `src/content.config.ts`; a CMS save that breaks the schema fails the build rather than deploying.
 
 ## Editing Guidance
 
@@ -52,5 +57,4 @@
 - There is no icon font. Icons are inline SVGs; do not re-add the Font Awesome CDN stylesheet for a single icon.
 - `src/styles/global.css` imports Tailwind with `source("..")`, so only `src/` is scanned for class names. Classes written outside `src/` will not be generated.
 - `compressHTML: true` is set on purpose. Astro 7's default (`'jsx'`) drops the line break between text and a following inline element, which deletes visible spaces (e.g. before a link that starts on the next line).
-- `build.client: './'` is set on purpose so `@tinacms/astro` emits `admin/bridge.js` into the static output. Without it the bridge lands in `dist/client/` and Tina visual editing breaks in production.
-- Internal links are prefetched on hover (`prefetch` in `astro.config.mjs`). Add `data-astro-prefetch="false"` to links that should not be, such as `/admin/`.
+- Internal links are prefetched on hover (`prefetch` in `astro.config.mjs`). Add `data-astro-prefetch="false"` to links that should not be.

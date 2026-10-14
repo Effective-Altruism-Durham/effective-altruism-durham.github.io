@@ -1,10 +1,10 @@
 /**
- * Tina stores media as public paths (e.g. "/uploads/amber.png"), which Astro can't optimise
+ * Pages CMS stores media as public paths (e.g. "/uploads/amber.png"), which Astro can't optimise
  * on their own. Importing the same files through Vite turns them into ImageMetadata, so
  * <Image> can resize them and convert them to WebP at build time.
  *
- * A path missing from this map (e.g. an upload made during a Tina visual-editing session,
- * before the next build) is returned unchanged and rendered as a plain <img>.
+ * A path missing from this map (e.g. a file outside these folders) is returned unchanged and
+ * rendered as a plain <img>.
  */
 const modules = import.meta.glob<{ default: ImageMetadata }>(
   [

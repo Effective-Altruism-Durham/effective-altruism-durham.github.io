@@ -5,8 +5,6 @@
     "**/*"
   ],
   "exclude": [
-    "dist",
-    "public/admin",
-    "tinacms-examples-astro_visual-editing"
+    "dist"
   ]
 }

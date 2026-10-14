@@ -1,0 +1,55 @@
+# Pages CMS configuration (https://pagescms.org). Editors sign in at
+# https://app.pagescms.org (with GitHub, or by email once invited as a collaborator) and
+# their saves are committed to `main`, which redeploys the site.
+#
+# Fields here must match the schema in src/content.config.ts: a build that fails
+# validation never deploys.
+
+media:
+  input: public/uploads
+  output: /uploads
+  categories: [image]
+
+content:
+  - name: team
+    label: Committee
+    description: The people listed on the Contact Us page.
+    type: collection
+    path: content/team-members
+    format: json
+    filename: "{fields.name}.json"
+    view:
+      primary: name
+      fields: [name, roles, order]
+      sort: [order, name]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: order
+        label: Display order
+        description: Lower numbers appear first.
+        type: number
+        required: true
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: roles
+        label: Roles
+        description: Separate roles with commas, e.g. "President, 1-1 Advisor".
+        type: string
+        required: true
+      - name: email
+        label: Email
+        type: string
+        required: true
+      - name: image
+        label: Photo
+        description: Optional. A square photo works best; it is shown as a circle.
+        type: image
+      - name: bio
+        label: Bio
+        description: One or two sentences.
+        type: text
+        required: true

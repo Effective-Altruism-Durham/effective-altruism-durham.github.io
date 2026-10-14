@@ -2,10 +2,6 @@ name: CI
 
 # Build gate for PRs (including Dependabot bumps). The live deploy only runs on push to main,
 # so a red check here keeps a broken change off eadurham.org.
-#
-# Builds the Astro site only (`build:astro-only`): `tinacms build` needs the Tina Cloud
-# secrets, which GitHub doesn't pass to Dependabot or fork PRs. The deploy workflow runs the
-# full `pnpm run build`.
 on:
   pull_request:
     branches: [main]
@@ -31,4 +27,4 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
-      - run: pnpm run build:astro-only
+      - run: pnpm run build

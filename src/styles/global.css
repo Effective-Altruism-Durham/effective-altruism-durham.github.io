@@ -1,5 +1,5 @@
-/* Scan only src/ for class names. Tailwind otherwise scans the whole repo, and the vendored
-   Tina example and agent docs added ~15 kB of unused utilities to every page's CSS. */
+/* Scan only src/ for class names. Tailwind otherwise scans the whole repo, and the agent
+   docs in .agents/ add unused utilities to every page's CSS. */
 @import "tailwindcss" source("..");
 
 @theme {

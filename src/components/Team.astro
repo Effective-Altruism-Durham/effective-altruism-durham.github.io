@@ -1,23 +1,16 @@
 ---
 import PersonCard from "./PersonCard.astro";
-import type { TeamData } from "../lib/team";
+import type { TeamMember } from "../lib/team";
 
 interface Props {
-  data: TeamData;
-  showTitle?: boolean;
+  people: TeamMember[];
 }
 
-const { data, showTitle = true } = Astro.props;
+const { people } = Astro.props;
 ---
 
-{showTitle && (
-  <h1 class="mb-[54px] text-center font-ea-heading text-[44px] font-normal leading-none text-ea-dark-teal sm:text-[56px]">
-    {data.title}
-  </h1>
-)}
-
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center items-stretch">
-  {data.people.map((person) => (
+  {people.map((person) => (
     <div class="h-full">
       <PersonCard person={person} />
     </div>

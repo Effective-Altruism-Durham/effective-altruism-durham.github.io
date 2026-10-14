@@ -2,7 +2,6 @@
 import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import tina from '@tinacms/astro/integration';
 
 // unicode-range values copied from @fontsource-variable/*/index.css.
 const SUBSETS = {
@@ -34,12 +33,7 @@ function fontsourceVariants(slug, weights) {
 // Pure static site: GitHub Pages serves the built `dist/` directly.
 export default defineConfig({
   site: 'https://www.eadurham.org',
-  integrations: [sitemap(), tina()],
-  // @tinacms/astro copies its visual-editing script to `${build.client}admin/bridge.js`, but
-  // build.client defaults to dist/client/, which only server builds publish. './' (relative
-  // to outDir) puts the script at dist/admin/bridge.js, served as /admin/bridge.js where
-  // pages load it from. Astro itself ignores build.client for static output.
-  build: { client: './' },
+  integrations: [sitemap()],
   // Astro 7 defaults to 'jsx', which drops the newline between text and a following inline
   // element (e.g. "reasoning to\n<a>…" rendered as "reasoning to…" with no space). `true` is
   // Astro 6's lossless minification, so the markup renders exactly as written.

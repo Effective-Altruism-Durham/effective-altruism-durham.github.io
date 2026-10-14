@@ -2,13 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import TinaIsland from '@tinacms/astro/TinaIsland.astro';
 import Team from '../components/Team.astro';
 import PageFrame from '../components/PageFrame.astro';
 import { getTeam } from '../lib/team';
-import { islands } from '../lib/islands';
 
-const team = await getTeam();
+const people = await getTeam();
 ---
 
 <Layout
@@ -18,9 +16,9 @@ const team = await getTeam();
 	<SiteHeader />
 
 	<PageFrame title="Contact Us" spaciousTitle>
-		<TinaIsland name="team" wrapper={islands.team.wrapper}>
-			<Team data={team.data} showTitle={false} />
-		</TinaIsland>
+		<div class="mx-auto w-full max-w-[1200px] px-6 pt-[52px] pb-24 sm:px-8 lg:px-0">
+			<Team people={people} />
+		</div>
 	</PageFrame>
 
 	<SiteFooter />
