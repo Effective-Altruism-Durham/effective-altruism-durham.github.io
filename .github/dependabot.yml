@@ -15,6 +15,9 @@ updates:
       # Astro majors need a manual upgrade (Astro 7 changed whitespace handling, for example).
       - dependency-name: "astro"
         update-types: ["version-update:semver-major"]
+      # @types/node tracks the Node runtime (24, see .node-version), not the latest release.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
 
   # GitHub Actions used by the workflows. Low-risk, so all bumps share one PR.
   - package-ecosystem: "github-actions"
