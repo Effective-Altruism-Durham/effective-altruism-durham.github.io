@@ -72,6 +72,7 @@ const roleList = person.roles
 		</div>
 
 		<!-- Email Button -->
+		{person.email && (
 		<div class="mb-5 flex items-center justify-center">
 			<a
 				href={`mailto:${person.email}`}
@@ -91,6 +92,7 @@ const roleList = person.roles
 				<span>Email me!</span>
 			</a>
 		</div>
+		)}
 
 		<!-- Thin Divider -->
 		<div class="w-12 h-px bg-ea-border mb-5"></div>

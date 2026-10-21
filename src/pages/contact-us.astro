@@ -3,10 +3,12 @@ import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import Team from '../components/Team.astro';
+import AlumniCard from '../components/AlumniCard.astro';
 import PageFrame from '../components/PageFrame.astro';
-import { getTeam } from '../lib/team';
+import { getAlumni, getTeam } from '../lib/team';
 
 const people = await getTeam();
+const alumni = await getAlumni();
 ---
 
 <Layout
@@ -18,6 +20,21 @@ const people = await getTeam();
 	<PageFrame title="Contact Us" spaciousTitle>
 		<div class="mx-auto w-full max-w-[1200px] px-6 pt-[52px] pb-24 sm:px-8 lg:px-0">
 			<Team people={people} />
+
+			{alumni.length > 0 && (
+				<details class="group mt-16">
+					<summary class="mx-auto flex w-fit cursor-pointer list-none items-center gap-2 rounded-lg border border-ea-active-teal bg-white/95 px-6 py-2.5 font-ea-body text-sm font-semibold text-ea-active-teal transition-colors hover:bg-ea-active-teal hover:text-white [&::-webkit-details-marker]:hidden">
+						<span class="group-open:hidden">See alumni</span>
+						<span class="hidden group-open:inline">Hide alumni</span>
+						<svg viewBox="0 0 20 20" class="h-4 w-4 fill-current transition-transform group-open:rotate-180" aria-hidden="true">
+							<path d="M5.3 7.3a1 1 0 0 1 1.4 0L10 10.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-4 4a1 1 0 0 1-1.4 0l-4-4a1 1 0 0 1 0-1.4z"></path>
+						</svg>
+					</summary>
+					<div class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+						{alumni.map((person) => <AlumniCard person={person} />)}
+					</div>
+				</details>
+			)}
 		</div>
 	</PageFrame>
 
