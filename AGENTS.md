@@ -31,7 +31,7 @@
 
 ## Content (Pages CMS)
 
-- Committee members are the only CMS-managed content: one JSON file per person in `content/team-members/`, loaded by the `team` content collection (`src/content.config.ts`) and `src/lib/team.ts`.
+- Committee members and alumni are the only CMS-managed content: one JSON file per person in `content/team-members/`, loaded by the `team` content collection (`src/content.config.ts`) and `src/lib/team.ts`. `alumni: true` moves a person from `getTeam()` to `getAlumni()`, shown in the "See alumni" disclosure on `/contact-us`.
 - Non-technical editors use [Pages CMS](https://pagescms.org) at https://app.pagescms.org (the footer "Admin" link). They sign in with GitHub, or by email after someone with GitHub write access invites them under Collaborators. Saves commit straight to `main`, which redeploys the site. README §Editing the website is the editor-facing guide; keep it short and non-technical.
 - Pages CMS keeps email invites across a repo rename but deletes them when the repo is transferred to another owner (`lib/github-webhook-installation.ts` in the Pages CMS source). A rename still breaks the footer Admin link, which hardcodes the repo name.
 - `.pages.yml` defines the CMS fields and media folder (`public/uploads`, served as `/uploads`). Keep it in sync with the Zod schema in `src/content.config.ts`; a CMS save that breaks the schema fails the build rather than deploying.
