@@ -1,5 +1,3 @@
-@/Users/Subspace_Explorer/.codex/RTK.md
-
 # EA Durham Site Notes
 
 ## Tooling
@@ -16,7 +14,7 @@
 - `pnpm install` installs dependencies.
 - `pnpm run dev` starts the Astro dev server.
 - `pnpm run build` is the production build; `pnpm check` type-checks. CI (`.github/workflows/ci.yml`) runs both on every PR. No credentials are needed.
-- Dependabot (`.github/dependabot.yml`) opens one weekly PR for minor/patch npm bumps and one for GitHub Actions. `.github/workflows/dependabot-automerge.yml` queues non-major ones for auto-merge, which waits for the required "Type-check and build" check. Majors (Astro majors are ignored entirely) are upgraded by hand.
+- Dependabot (`.github/dependabot.yml`) opens one weekly PR for minor/patch npm bumps and one for GitHub Actions. `.github/workflows/dependabot-automerge.yml` queues non-major ones for auto-merge, which waits for the required "Type-check and build" check. Majors are upgraded by hand; Astro and `@types/node` majors are ignored entirely (`@types/node` tracks the Node 24 runtime).
 - `pnpm run preview` previews the built site.
 - `pnpm astro ...` runs Astro CLI commands through the repo package manager.
 
@@ -43,15 +41,14 @@
 - Use root-relative links for site routes, matching the existing `/programmes`, `/opportunities`, `/causes`, `/events`, and `/contact-us` pattern.
 - Before calling work complete, run `pnpm run build` unless the change is documentation-only.
 
-## Wix Reference Migration Notes
+## Layout and Styling
 
-- The exported Wix pages are fixed-width, visually positioned layouts. When porting another page, first inspect the reference page at a wide viewport and at 50% browser zoom, then map major sections to a centered `980px` canvas before tuning responsive behavior.
-- Use Playwright/browser screenshots for visual work. Compare against `reference_site/*.html` through a local static server if direct `file://` access is blocked.
+- The site was ported from a fixed-width Wix site. Desktop sections sit on a centred `980px` canvas (`max-w-[980px]`); new sections should match it, then add mobile behaviour.
+- Pages are built from small, page-specific section components, with Tailwind for ordinary styling and a few inline numeric values where exact positioning is needed.
 - Tailwind v4 layers matter: keep global resets in `@layer base` in `src/styles/global.css`. Unlayered heading, anchor, or paragraph resets after `@import "tailwindcss"` can override Tailwind utilities such as `mb-*`, `text-white`, and spacing classes.
-- The homepage reference match succeeded by using small, page-specific Astro components for each section, with Tailwind for ordinary styling and a few inline numeric values where Wix-style exact positioning was needed.
-- For header/logo work, use the actual `public/favicon.svg` mark directly for the header icon rather than nesting it inside another white circle; the SVG already contains the white circular background.
-- Keep desktop navigation and mobile navigation in sync. The Wix reference is not mobile-friendly, so Astro pages should add a small-screen burger menu while preserving the desktop reference layout.
-- Many Wix dividers are SVG shapes, not simple borders. Reuse the extracted divider SVG/path when matching top notches or sloped section transitions.
+- Use `public/favicon.svg` directly as the header icon; it already contains the white circular background, so don't nest it in another circle.
+- Section dividers (top notches, sloped transitions) are SVG shapes, not borders. Reuse the existing divider SVG paths.
+- Check visual changes in a browser at desktop and phone widths.
 
 ## Performance and Upgrade Notes
 
