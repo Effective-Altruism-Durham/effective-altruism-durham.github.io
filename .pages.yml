@@ -13,14 +13,14 @@ media:
 content:
   - name: team
     label: Committee
-    description: The people listed on the Contact Us page.
+    description: The people listed on the Contact Us page. Tick "Past member" when someone leaves to move them to the alumni list.
     type: collection
     path: content/team-members
     format: json
     filename: "{fields.name}.json"
     view:
       primary: name
-      fields: [name, roles, order]
+      fields: [name, roles, order, alumni]
       sort: [order, name]
       default:
         sort: order
@@ -42,14 +42,31 @@ content:
         required: true
       - name: email
         label: Email
+        description: Leave empty for past members; it is not shown for them.
         type: string
-        required: true
       - name: image
         label: Photo
         description: Optional. A square photo works best; it is shown as a circle.
         type: image
       - name: bio
         label: Bio
-        description: One or two sentences.
+        description: One or two sentences. Not shown for past members.
         type: text
         required: true
+      - name: alumni
+        label: Past member
+        description: Tick when someone leaves the committee. They move to the "See alumni" list, which shows their roles but not their email or bio.
+        type: boolean
+        default: false
+      - name: years
+        label: Years on committee
+        description: Optional, past members only, e.g. "2023–2025".
+        type: string
+      - name: now
+        label: Now
+        description: Optional, past members only. What they do now, e.g. "Research Analyst at GiveWell".
+        type: string
+      - name: link
+        label: Link
+        description: Optional, past members only. A LinkedIn or personal website address.
+        type: string

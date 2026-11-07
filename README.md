@@ -18,6 +18,8 @@ https://effective-altruism-durham.github.io/.
 
 Roles are separated by commas. People with a lower display order appear first. Square photos work best.
 
+When someone leaves the committee, tick **Past member** instead of deleting them. They move to a "See alumni" list under the committee, which shows their roles but not their email or bio. You can add their years on the committee, what they do now, and a LinkedIn link.
+
 **To give someone access**
 
 - **To edit only:** someone who already has GitHub access opens the site in Pages CMS, goes to **Collaborators**, and invites the person by email. They don't need a GitHub account.
